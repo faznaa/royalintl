@@ -1,7 +1,7 @@
 // Photos from https://citizenofnowhe.re/lines-of-the-city
 import "./styles.css";
 import { useRef } from "react";
-// import ReactLenis from 'lenis/dist/lenis-react'
+import ReactLenis from 'lenis/dist/lenis-react'
 import {
   motion,
   useScroll,
@@ -31,7 +31,8 @@ function Image({ id }: { id: number }) {
 
   return (
     <section className="relative">
-      <div ref={ref} className="w-full h-screen relative">
+     
+     <div ref={ref} className="w-full h-screen relative">
         <motion.img src={`/hero2.jpg`} alt="A London skyscraper" 
         className="img object-cover object-top blur-[1px]"
         style={{
@@ -45,9 +46,9 @@ function Image({ id }: { id: number }) {
       </div>
         <motion.h2 style={{ y:yText,
         // opacity: fadeOutText,
-        // letterSpacing:-3,
+        letterSpacing:-3,
 
-       }} className="absolute -top-24 text-7xl text-primary text-center leading-tight ">
+       }} className="absolute uppercase  -top-24 text-7xl text-primary text-center leading-tight ">
         RoyalIntl
       </motion.h2>
       <motion.h2 style={{ y:yText,
@@ -72,7 +73,14 @@ export default function HomePage() {
 
   return (
     <div>
-        <Image id={1} />
+      <ReactLenis root
+     options={{
+      lerp: 0.5
+     }}
+     >
+              <Image id={1} />
+
+     </ReactLenis>
         
     </div>
   );

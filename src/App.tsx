@@ -4,13 +4,12 @@ import "./App.css";
 import HomePage from "./components/HomePage/HomePage";
 import Navbar from "./components/Navbar";
 import ParallaxText from "./components/ParallaxText";
-import HomePageCopy from "./components/HomePage/HomePage copy";
 import { motion, useScroll, useTransform } from "framer-motion";
 function App() {
   const { scrollYProgress } = useScroll();
   const imgX = useTransform(scrollYProgress, [0, 1], [-200,0]);
   const imgY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
+  const textX = useTransform(scrollYProgress, [0, 1], [100,-100]);
   return (
     <div className="">
       <head>
@@ -20,18 +19,18 @@ function App() {
       </head>
       <Navbar />
       <HomePage />
-      <div className=" text-4xl  leading-tight bg-red-700 text-white py-20  h-[500vh]">
+      <div className=" text-4xl  leading-tight bg-red-800 text-white py-20  h-[500vh]">
       <ParallaxText baseVelocity={-5}>Redefining Priorities</ParallaxText>
       <ParallaxText baseVelocity={5}>Redefining Priorities</ParallaxText>
       
       <div className="grid sm:grid-cols-2 py-10">
         <div>
-        <motion.img src='hero1.jpg' alt="a picture of London" className="w-full h-full"
+        <motion.img src='hero1.jpg' alt="a picture of London" className="grayscale w-full h-full"
         style={{x:imgX}}
         whileInView={{ opacity: 1 }}
         />
         </div>
-        <div className="text-lg w-full  p-20 bg-red-700 leading-9">
+        <motion.div style={{x:textX}} className="text-lg w-full  p-20 leading-9">
         Where does it come from? Contrary to popular belief, Lorem Ipsum is not
         simply random text. It has roots in a piece of classical Latin
         literature from 45 BC, making it over 2000 years old. Richard
@@ -40,12 +39,12 @@ function App() {
         Ipsum passage, and going through the cites of the word in classical
         literature, discovered the undoubtable source. Lorem Ipsum comes from
         sections 1.10.32 and 1.10.33 of "de Finibus Bonoru
-      </div>
+      </motion.div>
      
       </div>
      
       </div>
-      <div className="text-lg w-96 p-20 bg-green-700">
+      <div className="text-lg w-full px-25 p-20 bg-red-800">
         Where does it come from? Contrary to popular belief, Lorem Ipsum is not
         simply random text. It has roots in a piece of classical Latin
         literature from 45 BC, making it over 2000 years old. Richard
