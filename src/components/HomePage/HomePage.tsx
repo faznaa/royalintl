@@ -22,6 +22,8 @@ function Image({ id }: { id: number }) {
   const ySub = useParallax(scrollYProgress, 500);
 
   const fadeOutText = useTransform(scrollY, [0, 500], [1,0]);
+  // Make text scroll down as we scroll uup
+  const yText = useTransform(scrollY, [0, 500], [300,700]);
   const imgZoom = useTransform(scrollY, [0,1000], [1.3,1.9]);
   const letterSpacing = useTransform(scrollY, [0, 500], [-3,3]);
   const fadeOut = useTransform(scrollY, [0, 1000], [1,0.2]);
@@ -41,14 +43,14 @@ function Image({ id }: { id: number }) {
         }}
         />
       </div>
-        <motion.h2 style={{ y,
+        <motion.h2 style={{ y:yText,
         // opacity: fadeOutText,
         // letterSpacing:-3,
 
        }} className="absolute -top-24 text-7xl text-primary text-center leading-tight ">
         RoyalIntl
       </motion.h2>
-      <motion.h2 style={{ y,
+      <motion.h2 style={{ y:yText,
         // opacity: fadeOutText,
         // letterSpacing
 
