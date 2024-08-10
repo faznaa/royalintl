@@ -9,6 +9,12 @@ module.exports = {
         primary: "#C12929",
         darkred:'#8D0000'
 
+      },
+      fontFamily:{
+        'poppins':['Poppins', 'sans-serif'],
+        'alegreya':['Alegreya', 'serif'],
+        'plaster':['Plaster', 'cursive'],
+        'limelight':['Limelight', 'cursive']
       }
     },
   },
