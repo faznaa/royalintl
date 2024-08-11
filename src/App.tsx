@@ -10,9 +10,7 @@ import AnimatedText from "./components/AnimatedText";
 import ReactLenis from "lenis/dist/lenis-react";
 function App() {
   const { scrollYProgress } = useScroll();
-  const imgX = useTransform(scrollYProgress, [0, 1], [-200,0]);
-  const imgY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const textX = useTransform(scrollYProgress, [0, 1], [100,-100]);
+
   const [isVisible1, setIsVisible1] = useState(false);
   const [isVisible2, setIsVisible2] = useState(false);
   const [isVisible3, setIsVisible3] = useState(false);
@@ -33,12 +31,10 @@ function App() {
       </head>
       <Navbar />
       <ReactLenis root options={{ lerp: 0.9 }}>
-      <ScrollImageExpand/>
-
-     
-<AnimatedText word="Migration " isVisible={isVisible1} caption="Streamlined data transition" />
-<AnimatedText word="Precision " isVisible={isVisible2} caption="Clean room expertise."/>
-<AnimatedText word="Logistics " isVisible={isVisible3} caption="Specialized equipment handling."/>
+        <ScrollImageExpand/>
+        <AnimatedText word="Migration " isVisible={isVisible1} caption="Streamlined data transition" />
+        <AnimatedText word="Precision " isVisible={isVisible2} caption="Clean room expertise."/>
+        <AnimatedText word="Logistics " isVisible={isVisible3} caption="Specialized equipment handling."/>
       </ReactLenis>
 
 

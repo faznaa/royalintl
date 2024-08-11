@@ -21,15 +21,15 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   // const translateY = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 100,0,100,0]); // Translate Y from 0px to 100px
   const skewX = useTransform(scrollYProgress, [0, 1], [5,0]); // Skew from 0deg to 10deg
   const skewY = useTransform(scrollYProgress, [0, 1], [10, 0]);  // Skew from 0deg to 5deg
-  const translateXImg = useTransform(scrollYProgress, [0, 1], [300,300]); // Translate Y from 0px to 100px
-  const translateYImg = useTransform(scrollYProgress, [0, 0.9,0.95,1], [75, -50,-50, -100]);
+  const translateXImg = useTransform(scrollYProgress, [0, 1], ["60%","60%"]); // Translate Y from 0px to 100px
+  const translateYImg = useTransform(scrollYProgress, [0, 0.5,0.9,0.95,1], [75,60, -50,-50, -100]);
   const translateYImgSecond = useTransform(scrollYProgress, [0, 0.9,0.95,1], [-100, -50,-50, 75]);
   const opacityImg = useTransform(scrollYProgress, [0, 0.3,0.5,0.75,0.95,1], [0, 1,1,1,1,0]);
   const getTransform = () => {
     return `translate3d(-50%, -50%, 20px) skew(${skewX.get()}deg, ${skewY.get()}deg)`;
   };
   const getImageTransform = () => {
-    return `translate3d(${translateXImg.get()}px, ${translateYImg.get()}%, 0px) `;
+    return `translate3d(${translateXImg.get()}, ${translateYImg.get()}%, 0px) `;
   };
   const getSecondImageTransform = () => {
     return `translate3d(77%, ${translateYImgSecond.get()}%, 0px) `;
@@ -50,15 +50,17 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
   
   return (
-    <section ref={ref} className='h-[200vh]  w-full ' >
-      {/* {word} */}
-      <div className='sm:grid sm:grid-cols-3'>
+    <>
+    <section ref={ref}  className='h-[200vh]  w-full '>
+          {/* <div className='' ref={ref}></div> */}
+
+      <div className='sm:grid sm:grid-cols-3 h-[200vh]'>
         <motion.img src="/hero1.jpg"
-        className='rounded-lg h-96 w-64 object-cover fixed top-1/2 grayscale'
+        className='rounded-lg h-64 w-48 sm:h-96 sm:w-64 object-cover fixed top-1/2 grayscale'
         style={{ transform: imgTransform,opacity:opacityImg  }}
         alt="A London skyscraper" />
       
-      <div  className={`flex flex-col items-center justify-center space-y-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div  className={`flex flex-col  items-center justify-center`}>
       <motion.div className="text-5xl font-bold flex space-x-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       {/* {getBlurValue(1)} */}
         {word?.split("").map((char:string, index:number) => (
@@ -93,8 +95,12 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
         alt="A London skyscraper" /> */}
       
     </div>
+
     
     </section>
+    {/* <div ref={ref} className='w-full h-[12vh] bg-indigo-500' /> */}
+
+    </>
   );
 };
 
