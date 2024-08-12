@@ -51,13 +51,13 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
       className={`fixed w-full z-30 transition-colors duration-300 ${
         hasScrolled || isWhiteTheme
           ? "bg-black text-gray-200 hover:text-white shadow-lg z-50"
-          : "bg-transparent text-black"
+          : "bg-black text-white"
       }`}
     >
       <MobileNavbar hasScrolled={hasScrolled || isWhiteTheme} />
 
       <div className="hidden md:block  mx-auto lg:mx-16 px-4">
-        <div className="flex justify-between">
+        <div className="flex justify-start items-center">
           <div className="flex justify-start items-center space-x-4">
             <a href="/" className="pt-2 ">
               {/* Website Logo */}
@@ -80,7 +80,8 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
               )}
             </a>
           </div>
-          <div className="hidden md:flex items-center justify-between space-x-1 gap-x-4 ">
+         <div className="w-full flex justify-center mr-32">
+         <div className="hidden md:flex items-center justify-between space-x-1 gap-x-4 ">
             {navigation.map((item) => (
               <NavbarItem
                 key={item.href}
@@ -91,6 +92,7 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
               </NavbarItem>
             ))}
           </div>
+         </div>
         </div>
       </div>
     </nav>

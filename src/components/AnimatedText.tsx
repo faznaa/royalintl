@@ -51,7 +51,7 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   
   return (
     <>
-    <section ref={ref}  className='h-[200vh]  w-full '>
+    <section ref={ref}  className='h-[300vh]  w-full '>
           {/* <div className='' ref={ref}></div> */}
 
       <div className='sm:grid sm:grid-cols-3 h-[200vh]'>
@@ -86,7 +86,16 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
           {caption}
         </motion.span>
      </div>
-
+     {/* <div className='fixed top-1/2 left-1/2 pt-20 '>
+     <motion.img 
+     src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000"
+     className='w-12 h-12 animate-ping  fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-24'
+     style={{
+      opacity: opacityP,
+      // transform: transform,
+      // transform:transform,
+    }}/>
+     </div> */}
     
     </div>
     {/* <motion.img src="/hero1.jpg"
