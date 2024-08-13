@@ -21,8 +21,8 @@ export function GridBackgroundDemo() {
     {/* Radial gradient for the container to give a faded look */}
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     {/* bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 */}
-    <div className="absolute w-full h-36 md:h-72 z-10 left-1/4 top-1/4">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+    <div className="absolute w-full h-72 z-10 left-1/4 top-1/4">
+          {/* <World data={sampleArcs} globeConfig={globeConfig} /> */}
           {/* <ScrollLottieAnimation /> */}
         </div>
         {/* <DotLottieReact
@@ -79,13 +79,13 @@ function App() {
     <GridBackgroundDemo />
     {/* <GlobeDemo/> */}
     
-      {/* <ReactLenis root options={{ lerp: 0.5 }}>
+      <ReactLenis root options={{ lerp: 0.5 }}>
      
-        <ScrollImageExpand/>
+        {/* <ScrollImageExpand/> */}
         <AnimatedText word="Migration " isVisible={isVisible1} caption="Streamlined data transition" />
         <AnimatedText word="Precision " isVisible={isVisible2} caption="Clean room expertise."/>
         <AnimatedText word="Logistics " isVisible={isVisible3} caption="Specialized equipment handling."/>
-      </ReactLenis> */}
+      </ReactLenis>
 
 
       {/* <HomePage />
