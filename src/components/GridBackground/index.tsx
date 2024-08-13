@@ -7,6 +7,8 @@ export default function GridBackground() {
     return (
       <div className="h-screen w-full dark:bg-black bg-black  dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"/>
+
       <div className="absolute w-96 h-72 z-10 left-3/4 top-1/4 mr-32 ">
       {/* A circular blur effect / shadow around the globe */}
   
@@ -32,7 +34,7 @@ export default function GridBackground() {
      </p>
      <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
   
-    className="animate-bounce  w-12 h-12 rounded-full fixed z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-32">
+    className="animate-bounce  w-12 h-12 rounded-full fixed z-20 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-32">
    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
   </motion.svg>
      </div>

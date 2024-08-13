@@ -1,6 +1,6 @@
 const globeConfig = {
     pointSize: 4,
-    globeColor: "#0B3A99",
+    globeColor: "#062056",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
@@ -8,7 +8,7 @@ const globeConfig = {
     emissiveIntensity: 0.1,
     shininess: 0.9,
     polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#75D2FA",
+    ambientLight: "#38bdf8",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
     pointLight: "#ffffff",
@@ -20,7 +20,7 @@ const globeConfig = {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#4DE0F9", "#639CF8", "#A1A3F7"];
+  const colors = ["#4DE0F9", "#639CF8", "#6366f1"];
   const sampleArcs = [
     {
       order: 1,
