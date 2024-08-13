@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { TracingBeam } from './ui/TracingBeam';
 
 const AnimatedText = ({word,caption, isVisible}:any) => {
   const ref = useRef(null);
@@ -37,11 +38,13 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   const [transform, setTransform] = React.useState('');
   const [imgTransform, setImgTransform] = React.useState('');
   const [secondImgTransform, setSecondImgTransform] = React.useState('');
+  const [visible, setIsVisible] = React.useState(false);
   useEffect(() => {
     return scrollYProgress.onChange(() => {
       setTransform(getTransform());
       setImgTransform(getImageTransform());
       setSecondImgTransform(getSecondImageTransform());
+      setIsVisible(scrollYProgress.get() > 0 && scrollYProgress.get() < 1);
     });
   }, [scrollYProgress]);
 
@@ -51,6 +54,7 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   
   return (
     <>
+    <TracingBeam visible={visible} opacity={opacity}>
     <section ref={ref}  className='h-[300vh]  w-full '>
           {/* <div className='' ref={ref}></div> */}
 
@@ -107,6 +111,7 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
 
     
     </section>
+    </TracingBeam>
     {/* <div ref={ref} className='w-full h-[12vh] bg-indigo-500' /> */}
 
     </>
