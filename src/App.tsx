@@ -17,21 +17,21 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export function GridBackgroundDemo() {
   return (
-    <div className="h-screen w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+    <div className="h-screen w-full dark:bg-black bg-black  dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
     {/* Radial gradient for the container to give a faded look */}
-    <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+    <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     {/* bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 */}
     <div className="absolute w-full h-36 md:h-72 z-10 left-1/4 top-1/4">
           <World data={sampleArcs} globeConfig={globeConfig} />
           {/* <ScrollLottieAnimation /> */}
         </div>
-        <DotLottieReact
+        {/* <DotLottieReact
         className="absolute w-full h-36 md:h-72 z-10 left-1/4 top-1/4"
         src="https://lottie.host/embed/a26c72e0-ca92-4684-a6b6-d3be7df9c6dd/0OpMpyRlsu.json"
         autoplay={true}
         loop={false}
         // style={{ maxWidth: "600px" }}
-      />
+      /> */}
    <div>
 
    <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
