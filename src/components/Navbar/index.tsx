@@ -51,7 +51,7 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
       className={`fixed w-full z-30 transition-colors duration-300 ${
         hasScrolled || isWhiteTheme
           ? "bg-black text-gray-200 hover:text-white shadow-lg z-50"
-          : "bg-black text-white"
+          : " text-white"
       }`}
     >
       <MobileNavbar hasScrolled={hasScrolled || isWhiteTheme} />

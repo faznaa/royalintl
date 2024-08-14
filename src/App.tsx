@@ -16,8 +16,18 @@ import { globeConfig, sampleArcs } from "./data/globeutils";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export function GridBackgroundDemo() {
+ 
   return (
-    <div className="h-screen w-full dark:bg-black bg-black  dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
+    // <div className="h-screen w-full dark:bg-black bg-black  dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
+    <div className="h-screen w-full dark:bg-black bg-black  dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center overflow-hidden">
+      {/* Vertical Lines */}
+      <div className="absolute top-0 left-1/4 w-[2px] h-full bg-white animate-verticalLine1"></div>
+      <div className="absolute top-0 left-3/4 w-[2px] h-full bg-white animate-verticalLine2"></div>
+      
+      {/* Horizontal Lines */}
+      <div className="absolute left-0 top-1/4 w-full h-[2px] bg-white animate-horizontalLine1"></div>
+      <div className="absolute left-0 top-3/4 w-full h-[2px] bg-white animate-horizontalLine2"></div>
+      
     {/* Radial gradient for the container to give a faded look */}
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     {/* bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 */}
@@ -33,14 +43,13 @@ export function GridBackgroundDemo() {
         // style={{ maxWidth: "600px" }}
       /> */}
    <div>
+    <h1 className="text-4xl sm:text-5xl font-extralight relative z-20 text-gray-300 text-center mb-5">Moving Beyond Relocation - Innovating the <br /> Future of High-Tech Logistics</h1>
 
-   <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
-    
-    ">
+   <h2 className="text-4xl text-center sm:text-4xl font-medium relative z-20 text-gray-300 text-center">
      We offer you <FlipWords words={['Expertise','Efficiency','Reliability']} />
-   </p>
+   </h2>
    <p className="text-xl sm:text-2xl text-center mt-8  relative z-20 text-gray-300 ">
-     Just a simple Subtitle here to give you an idea.<br/> We offer you all the services.
+   From data centers to clean rooms, we ensure seamless transitions <br/> in the most critical environments
    </p>
    <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
    //  style={{ opacity: opacityImg }}
@@ -86,44 +95,6 @@ function App() {
         <AnimatedText word="Precision " isVisible={isVisible2} caption="Clean room expertise."/>
         <AnimatedText word="Logistics " isVisible={isVisible3} caption="Specialized equipment handling."/>
       </ReactLenis>
-
-
-      {/* <HomePage />
-      <div className=" text-4xl  leading-tight bg-red-800 text-white py-20  h-[500vh]">
-      <ParallaxText baseVelocity={-5}>Redefining Priorities</ParallaxText>
-      <ParallaxText baseVelocity={5}>Redefining Priorities</ParallaxText>
-      
-      <div className="grid sm:grid-cols-2 py-10">
-        <div>
-        <motion.img src='hero1.jpg' alt="a picture of London" className="grayscale w-full h-full"
-        style={{x:imgX}}
-        whileInView={{ opacity: 1 }}
-        />
-        </div>
-        <motion.div style={{x:textX}} className="text-lg w-full  p-20 leading-9">
-        Where does it come from? Contrary to popular belief, Lorem Ipsum is not
-        simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard
-        McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-        looked up one of the more obscure Latin words, consectetur, from a Lorem
-        Ipsum passage, and going through the cites of the word in classical
-        literature, discovered the undoubtable source. Lorem Ipsum comes from
-        sections 1.10.32 and 1.10.33 of "de Finibus Bonoru
-      </motion.div>
-     
-      </div>
-     
-      </div>
-      <div className="text-lg w-full px-25 p-20 bg-red-800">
-        Where does it come from? Contrary to popular belief, Lorem Ipsum is not
-        simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard
-        McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-        looked up one of the more obscure Latin words, consectetur, from a Lorem
-        Ipsum passage, and going through the cites of the word in classical
-        literature, discovered the undoubtable source. Lorem Ipsum comes from
-        sections 1.10.32 and 1.10.33 of "de Finibus Bonoru
-      </div> */}
 
     </div>
   );
