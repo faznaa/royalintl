@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TracingBeam } from './ui/TracingBeam';
 
-const AnimatedText = ({word,caption, isVisible}:any) => {
+const AnimatedText = ({word,caption}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
 
@@ -53,8 +53,6 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
   
   return (
-    <>
-    <TracingBeam visible={visible} opacity={opacity}>
     <section ref={ref}  className='h-[300vh]  w-full '>
           {/* <div className='' ref={ref}></div> */}
 
@@ -111,10 +109,7 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
 
     
     </section>
-    </TracingBeam>
-    {/* <div ref={ref} className='w-full h-[12vh] bg-indigo-500' /> */}
-
-    </>
+   
   );
 };
 

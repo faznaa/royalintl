@@ -11,14 +11,14 @@ import { cn } from "../../../lib/utils";
 
 export const TracingBeam = ({
   children,
-  visible,
   className,
-  opacity
+  word,
+  isVisible
 }: {
   children: React.ReactNode;
   className?: string;
-  visible?: boolean;
-  opacity:any
+  word:any,
+  isVisible?:boolean
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -50,12 +50,14 @@ export const TracingBeam = ({
     }
   );
 
+ 
   return (
     <motion.div
       ref={ref}
       className={cn("relative w-screen mx-auto h-[300vh]", className)}
     >
-      <div className={`fixed bottom-3 left-3 z-50`}
+     
+     {word &&  <div className={`${isVisible? 'fixed'  : 'hidden'} bottom-3 left-3 z-50`}
       >
         
         <svg
@@ -78,7 +80,7 @@ export const TracingBeam = ({
           <motion.path
             d={`M 0 1 H -36 ${svgWidth}`}
             fill="none"
-            stroke="url(#gradient)"
+            stroke={`url(#${word})`}
             strokeWidth="1.25"
             className="z-30 motion-reduce:hidden"
             transition={{
@@ -88,7 +90,7 @@ export const TracingBeam = ({
           <defs 
           >
             <motion.linearGradient
-              id="gradient"
+              id={`${word}`}
               gradientUnits="userSpaceOnUse"
               x1={x1}
               x2={x2}
@@ -104,7 +106,7 @@ export const TracingBeam = ({
             </motion.linearGradient>
           </defs>
         </svg>
-      </div>
+      </div>}
       <div ref={contentRef}>{children}</div>
     </motion.div>
   );

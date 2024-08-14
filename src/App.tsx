@@ -5,6 +5,7 @@ import { useScroll } from "framer-motion";
 import AnimatedText from "./components/AnimatedText";
 import ReactLenis from "lenis/dist/lenis-react";
 import GridBackground from "./components/GridBackground";
+import { TracingBeam } from "components/ui/TracingBeam";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
-      setIsVisible1(latest > 0.25 && latest < 0.55);
+      setIsVisible1(latest > 0.20 && latest < 0.55);
       setIsVisible2(latest > 0.45 && latest < 0.85);
       setIsVisible3(latest > 0.66);
     });
@@ -35,9 +36,16 @@ function App() {
       <ReactLenis root options={{ lerp: 0.5 }}>
      
         {/* <ScrollImageExpand/> */}
-        <AnimatedText word="Migration " isVisible={isVisible1} caption="Streamlined data transition" />
-        <AnimatedText word="Precision " isVisible={isVisible2} caption="Clean room expertise."/>
-        <AnimatedText word="Logistics " isVisible={isVisible3} caption="Specialized equipment handling."/>
+        <TracingBeam  word={"migration"} isVisible={isVisible1}>
+        <AnimatedText word="Migration " caption="Streamlined data transition" />
+        </TracingBeam>
+        <TracingBeam  word={"precision"} isVisible={isVisible2}>
+
+        <AnimatedText word="Precision "  caption="Clean room expertise."/>
+        </TracingBeam>
+        <TracingBeam  word={"logistics"} isVisible={isVisible3}>
+        <AnimatedText word="Logistics "  caption="Specialized equipment handling."/>
+        </TracingBeam>
       </ReactLenis>
     </div>
   );
