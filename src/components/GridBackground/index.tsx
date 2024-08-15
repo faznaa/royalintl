@@ -4,6 +4,7 @@ import { FlipWords } from "../FlipWords";
 import { cubicBezier, motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import PathAnimationTest from "components/PathAnimationTest";
+import BorderMagicBtn from "components/ui/BorderMagicBtn";
 
 const Circles = () => {
   return (
@@ -128,7 +129,7 @@ const Path2 = () => {
      L 520 0
      "
   stroke="url(#blueGradient)"
-  strokeWidth="2"
+  strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
   opacity={0.8}
@@ -149,7 +150,7 @@ const Path4 = () => {
      L 1600 240
      "
   stroke="url(#pinkGradient)"
-  strokeWidth="2"
+  strokeWidth="1"
   strokeLinecap="round"
   fill="none"
   opacity={0.8}
@@ -170,7 +171,7 @@ const Path3 = () => {
      L 0 300
      "
   stroke="url(#orangeGradient)"
-  strokeWidth="2"
+  strokeWidth="1.3"
   strokeLinecap="round"
   fill="none"
   opacity={0.8}
@@ -190,11 +191,11 @@ export default function GridBackground() {
       <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
            {/* A circular blur effect / shadow around the globe */}
-      <motion.div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"
+      {/* <motion.div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}      
-      />
+      /> */}
 
       <div className="absolute w-screen h-screen">
   <svg className="w-full h-full" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`} xmlns="http://www.w3.org/2000/svg">
@@ -271,6 +272,9 @@ export default function GridBackground() {
      <p className="text-xl sm:text-2xl text-center mt-8  relative z-20 text-gray-300 ">
        Just a simple Subtitle here to give you an idea.<br/> We offer you all the services.
      </p>
+     <div className="w-full flex justify-center mt-10">
+     <BorderMagicBtn >Get Started</BorderMagicBtn>
+     </div>
      <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
   
     className="animate-bounce  w-12 h-12 rounded-full fixed z-20 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-32">
