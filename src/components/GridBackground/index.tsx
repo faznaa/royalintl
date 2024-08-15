@@ -5,51 +5,95 @@ import { cubicBezier, motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import PathAnimationTest from "components/PathAnimationTest";
 
+const Circles = () => {
+  return (
+    <>
+    <circle cx="200" cy="200" r="4" fill="limegreen" stroke="none">
+</circle>
+<circle cx="200" cy="200" r="4" fill="limegreen" stroke="none">
+  <animate
+    attributeName="r"
+    values="4;8;4" 
+    dur="1s"
+    repeatCount="indefinite"
+  />
+  <animate
+    attributeName="opacity"
+    values="1;0.5;1" 
+    dur="1s"
+    repeatCount="indefinite"
+  />
+  <animateMotion dur="10s" repeatCount="indefinite">
+    {/* <mpath href="#gridPath" /> */}
+  </animateMotion>
 
+</circle>
+<circle cx="920" cy="440" r="4" fill="skyblue" stroke="none">
+</circle>
+<circle cx="920" cy="440" r="4" fill="skyblue" stroke="none">
+  <animate
+    attributeName="r"
+    values="4;8;4" 
+    dur="1s"
+    repeatCount="indefinite"
+  />
+  <animate
+    attributeName="opacity"
+    values="1;0.5;1" 
+    dur="1s"
+    repeatCount="indefinite"
+  />
+  <animateMotion dur="10s" repeatCount="indefinite">
+    {/* <mpath href="#gridPath" /> */}
+  </animateMotion>
 
-
-export default function GridBackground() {
-
- 
-    return (
-      <div className="h-screen w-full dark:bg-black bg-black  relative flex items-center justify-center">
-      <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-
-           {/* A circular blur effect / shadow around the globe */}
-      {/* <div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"/> */}
-
-      <div className="absolute w-screen h-screen">
-  <svg className="w-full h-full" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`} xmlns="http://www.w3.org/2000/svg">
+</circle>
+</>
+  )
+}
+const Gradients = () => {
+  return (
     <defs>
-      <pattern id="grida" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.3" />
-      </pattern>
-
-
-      {/* <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{ stopColor: "blue", stopOpacity: 1 }} />
-        <stop offset="100%" style={{ stopColor: "cyan", stopOpacity: 1 }} />
-      </linearGradient> */}
-        <motion.linearGradient
-              id={`lineGradient`}
+      <motion.linearGradient
+              id={`pinkGradient`}
               gradientUnits="userSpaceOnUse"
               x1={"0%"} y1={"0%"} x2="100%" y2="100%"
               className="z-50"
-            //   className={`${visible ? 'visible z-20' :'hidden'}`}
             >
-               {/* <stop offset="0%" style={{ stopColor: "blue", stopOpacity: 1 }} />
-               <stop offset="100%" style={{ stopColor: "cyan", stopOpacity: 1 }} /> */}
-                <stop stopColor="#18CCFC" stopOpacity="0"></stop>
+              <stop offset="0.0564843" stop-color="#FF4A81"></stop>
+              <stop stop-color="#FF4A81" stop-opacity="0"></stop>
+              <stop offset="0.4616" stop-color="#DF6CF6"></stop>
+              <stop offset="1" stop-color="#0196FF" stop-opacity="0"></stop>
+               
+            </motion.linearGradient>
+            
+            <motion.linearGradient
+              id={`blueGradient`}
+              gradientUnits="userSpaceOnUse"
+              x1={"0%"} y1={"0%"} x2="100%" y2="100%"
+              className="z-50">
+                 <stop stopColor="#18CCFC" stopOpacity="0"></stop>
               <stop stopColor="#18CCFC"></stop>
               <stop offset="0.325" stopColor="#6344F5"></stop>
               <stop offset="1" stopColor="#AE48FF" stopOpacity="0"></stop>
+              </motion.linearGradient>
+
+              <motion.linearGradient
+              id="orangeGradient"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#FF7432" stopOpacity="0" />
+              <stop offset="0.05" stopColor="#FF7432" />
+              <stop offset="0.37" stopColor="#F7CC4B" />
+              <stop offset="1" stopColor="#F7CC4B" stopOpacity="0" />
             </motion.linearGradient>
     </defs>
-    
-    <rect width="100%" height="100%" fill="url(#grida)" />
+  );
+};
 
-
-    <motion.path
+const Path1 = () => {
+  return (
+ <motion.path
   id="gridPath"
   d="M 200 200 
      L 360 200 
@@ -60,9 +104,8 @@ export default function GridBackground() {
      L 800 360
      L 920 360
      L 920 440
-    
      "
-  stroke="url(#lineGradient)"
+  stroke="url(#pinkGradient)"
   strokeWidth="2"
   strokeLinecap="round"
   fill="none"
@@ -71,20 +114,115 @@ export default function GridBackground() {
   animate={{ pathLength: 1 }}
   transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse', 
    ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
-/>
-<path
-  id="gridPath2"
-  d="M 480 600
-     L 480 320
-     L 800 320
-     L 800 600
-     L 480 600
+/> 
 
+  )
+}
+
+const Path2 = () => {
+  return (
+    <motion.path
+  id="gridPath"
+  d="M 0 200 
+     L 520 200
+     L 520 0
      "
-  // stroke="url(#lineGradient)"
+  stroke="url(#blueGradient)"
   strokeWidth="2"
+  strokeLinecap="round"
   fill="none"
-/>
+  opacity={0.8}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', 
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+  )
+}
+
+const Path4 = () => {
+  return (
+    <motion.path
+  id="gridPath"
+  d="M 800 0
+     L 800 240
+     L 1600 240
+     "
+  stroke="url(#pinkGradient)"
+  strokeWidth="2"
+  strokeLinecap="round"
+  fill="none"
+  opacity={0.8}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', 
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+  )
+}
+const Path3 = () => {
+  return (
+      
+<motion.path
+  id="gridPath"
+  d="M 360 1000 
+     L 360 300
+     L 0 300
+     "
+  stroke="url(#orangeGradient)"
+  strokeWidth="2"
+  strokeLinecap="round"
+  fill="none"
+  opacity={0.8}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse', 
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+  )
+}
+
+export default function GridBackground() {
+
+ 
+    return (
+      <div className="h-screen w-full dark:bg-black bg-black  relative flex items-center justify-center">
+      <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+
+           {/* A circular blur effect / shadow around the globe */}
+      <motion.div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}      
+      />
+
+      <div className="absolute w-screen h-screen">
+  <svg className="w-full h-full" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grida" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.3" />
+      </pattern>             
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#grida)" />
+      <Gradients />
+      {/* <Circles /> */}
+
+      {/* Main Path  */}
+      {/* <Path1 /> */}
+
+      {/* Blue Path  */}
+      <Path2 />
+
+      {/* Orange Path  */}
+      <Path3 />
+
+      {/* Pink Path  */}
+      <Path4 />
+    
+
+
+
 
 {/* FINAL CODE  */}
 {/* <circle cx="0" cy="0" r="1" fill="none" stroke="url(#lineGradient)" strokeWidth="2">
@@ -94,46 +232,6 @@ export default function GridBackground() {
 </circle>  */}
 
 
-<circle cx="200" cy="200" r="4" fill="limegreen" stroke="none">
-</circle>
-<circle cx="200" cy="200" r="4" fill="limegreen" stroke="none">
-  <animate
-    attributeName="r"
-    values="4;8;4" 
-    dur="1s"
-    repeatCount="indefinite"
-  />
-  <animate
-    attributeName="opacity"
-    values="1;0.5;1" 
-    dur="1s"
-    repeatCount="indefinite"
-  />
-  <animateMotion dur="10s" repeatCount="indefinite">
-    {/* <mpath href="#gridPath" /> */}
-  </animateMotion>
-
-</circle>
-<circle cx="920" cy="440" r="4" fill="skyblue" stroke="none">
-</circle>
-<circle cx="920" cy="440" r="4" fill="skyblue" stroke="none">
-  <animate
-    attributeName="r"
-    values="4;8;4" 
-    dur="1s"
-    repeatCount="indefinite"
-  />
-  <animate
-    attributeName="opacity"
-    values="1;0.5;1" 
-    dur="1s"
-    repeatCount="indefinite"
-  />
-  <animateMotion dur="10s" repeatCount="indefinite">
-    {/* <mpath href="#gridPath" /> */}
-  </animateMotion>
-
-</circle>
 
 {/* <circle cx="0" cy="0" r="4" fill="skyblue" stroke="none">
   <animate
