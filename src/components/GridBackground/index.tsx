@@ -88,6 +88,15 @@ const Gradients = () => {
               <stop offset="0.37" stopColor="#F7CC4B" />
               <stop offset="1" stopColor="#F7CC4B" stopOpacity="0" />
             </motion.linearGradient>
+            <motion.linearGradient
+              id="redBlueGradient"
+              gradientUnits="userSpaceOnUse"
+              >
+      <stop offset="0%" stopColor="rgba(63,94,251,1)" />
+      <stop offset="50%" stopColor="rgba(250,210,250,1)" />
+
+      <stop offset="100%" stopColor="rgba(252,70,107,1)" />
+              </motion.linearGradient>
     </defs>
   );
 };
@@ -128,7 +137,7 @@ const Path2 = () => {
      L 520 200
      L 520 0
      "
-  stroke="url(#blueGradient)"
+  stroke="url(#redBlueGradient)"
   strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"

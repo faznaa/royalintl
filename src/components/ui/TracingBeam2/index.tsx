@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import { cn } from "../../../lib/utils";
 
-export const TracingBeam = ({
+export const TracingBeam2 = ({
   children,
   className,
   word,
