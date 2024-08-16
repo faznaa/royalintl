@@ -6,6 +6,7 @@ import AnimatedText from "./components/AnimatedText";
 import ReactLenis from "lenis/dist/lenis-react";
 import GridBackground from "./components/GridBackground";
 import { TracingBeam } from "components/ui/TracingBeam";
+import Services from "components/Services";
 import { TracingBeam2 } from "components/ui/TracingBeam2";
 import AnimatedText2 from "components/AnimatedText2";
 
@@ -54,6 +55,7 @@ function App() {
         </TracingBeam2>
       </div>
       </ReactLenis>
+      <Services />
     </div>
   );
 }
