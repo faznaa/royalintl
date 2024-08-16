@@ -1,7 +1,7 @@
 import { World } from "../ui/globe";
 import { globeConfig, sampleArcs } from "../../data/globeutils";
 import { FlipWords } from "../FlipWords";
-import { cubicBezier, motion, useAnimation } from "framer-motion";
+import { AnimatePresence, cubicBezier, motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import PathAnimationTest from "components/PathAnimationTest";
 import BorderMagicBtn from "components/ui/BorderMagicBtn";
@@ -88,23 +88,27 @@ const Gradients = () => {
               <stop offset="0.37" stopColor="#F7CC4B" />
               <stop offset="1" stopColor="#F7CC4B" stopOpacity="0" />
             </motion.linearGradient>
+            <motion.linearGradient
+              id="redBlueGradient"
+              gradientUnits="userSpaceOnUse"
+              >
+      <stop offset="0%" stopColor="rgba(63,94,251,1)" />
+      <stop offset="50%" stopColor="rgba(250,210,250,1)" />
+
+      <stop offset="100%" stopColor="rgba(252,70,107,1)" />
+              </motion.linearGradient>
     </defs>
   );
 };
 
 const Path1 = () => {
   return (
+ <>
  <motion.path
   id="gridPath"
-  d="M 200 200 
-     L 360 200 
-     L 360 360
-     L 480 360
-     L 480 480
-     L 800 480
-     L 800 360
-     L 920 360
-     L 920 440
+  d="M 400 1600
+     L 920 0
+     L 0 0
      "
   stroke="url(#pinkGradient)"
   strokeWidth="2"
@@ -113,9 +117,43 @@ const Path1 = () => {
   opacity={0.8}
   initial={{ pathLength: 0 }}
   animate={{ pathLength: 1 }}
-  transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse', 
+  transition={{ duration: 5, once:true,
    ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
 /> 
+<motion.path
+  id="gridPath"
+  d="M 640 1600
+     L 1160 0
+     L 0 0
+     "
+  stroke="url(#pinkGradient)"
+  strokeWidth="2"
+  strokeLinecap="round"
+  fill="none"
+  opacity={0.8}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 5, once:true,
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+<motion.path
+  id="gridPath"
+  d="M 520 1600
+     L 1040 0
+     L 0 0
+     "
+  stroke="url(#pinkGradient)"
+  strokeWidth="6"
+  strokeDasharray="90, 40"
+  // strokeLinecap="round"
+  fill="none"
+  opacity={0.8}
+  initial={{  opacity: 0 }}
+  animate={{  opacity:1 }}
+  transition={{ duration: 2,delay: 3, once:true,
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+</>
 
   )
 }
@@ -128,7 +166,7 @@ const Path2 = () => {
      L 520 200
      L 520 0
      "
-  stroke="url(#blueGradient)"
+  stroke="url(#redBlueGradient)"
   strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
@@ -146,8 +184,8 @@ const Path4 = () => {
     <motion.path
   id="gridPath"
   d="M 800 0
-     L 800 240
-     L 1600 240
+     L 800 160
+     L 1600 160
      "
   stroke="url(#pinkGradient)"
   strokeWidth="1"
@@ -183,19 +221,38 @@ const Path3 = () => {
   )
 }
 
+const Path5 = () => {
+  return (
+    <motion.path
+  id="gridPath"
+  d="M 920 1600
+     L 920 480
+     L 1600 480
+     "
+  stroke="url(#pinkGradient)"
+  strokeWidth="2"
+  strokeLinecap="round"
+  fill="none"
+  opacity={1}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', 
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+  )
+}
+
 export default function GridBackground() {
 
+  const { scrollYProgress } = useScroll();
+  const size = useTransform(scrollYProgress, [0,0.2], [1,0.1]);
+  const sizeH = useTransform(scrollYProgress, [0,0.2], [1,0.1]);
  
     return (
       <div className="h-screen w-full dark:bg-black bg-black  relative flex items-center justify-center">
       <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
-           {/* A circular blur effect / shadow around the globe */}
-      {/* <motion.div className="absolute w-48 h-48 z-10 left-3/4 top-1/4 ml-20 mt-14 blur-2xl bg-[#C5D0D4] rounded-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}      
-      /> */}
+       
 
       <div className="absolute w-screen h-screen">
   <svg className="w-full h-full" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`} xmlns="http://www.w3.org/2000/svg">
@@ -209,17 +266,13 @@ export default function GridBackground() {
       <Gradients />
       {/* <Circles /> */}
 
-      {/* Main Path  */}
+      {/* Road */}
       {/* <Path1 /> */}
 
-      {/* Blue Path  */}
       <Path2 />
-
-      {/* Orange Path  */}
       <Path3 />
-
-      {/* Pink Path  */}
       <Path4 />
+      <Path5 />
     
 
 
@@ -256,28 +309,50 @@ export default function GridBackground() {
  </svg>
 </div>
 
-
-      <div className="absolute w-96 h-72 z-10 left-3/4 top-1/4 mr-32 ">
-  
-            {/* <World data={sampleArcs} globeConfig={globeConfig} /> */}
-            {/* <ScrollLottieAnimation /> */}
-          </div>
+    {/* A circular blur effect / shadow around the globe */}
+      {/* <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}      
+      /> */}
+      {/* <div className="absolute h-[500px] z-20 right-0  mr-32  ">
+            <World data={sampleArcs} globeConfig={globeConfig} />
+          </div> */}
      <div>
   
-     <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
+     {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
       
       ">
        We offer you <FlipWords words={['Expertise','Efficiency','Reliability']} />
      </p>
      <p className="text-xl sm:text-2xl text-center mt-8  relative z-20 text-gray-300 ">
        Just a simple Subtitle here to give you an idea.<br/> We offer you all the services.
-     </p>
+     </p> */}
+    <AnimatePresence>
+    <motion.h1
+     initial={{ opacity: 0, y:-50 }}
+     animate={{ opacity: 1, y:0 }}
+     transition={{ duration: 0.7 }}
+     exit={{ opacity: 0, scale:0.8 }}
+     style={{ scale: size }}
+     className="text-4xl sm:text-5xl font-extralight relative z-20 text-gray-300 text-center mb-10 tracking-tighter">
+      Moving Beyond Relocation - Innovating the <br /> Future of High-Tech Logistics</motion.h1>
+
+<motion.h2
+initial={{opacity:0}}
+animate={{opacity:1}}
+transition={{duration:0.7}}
+style={{scale: sizeH}}
+className="text-4xl text-center sm:text-7xl font-medium relative z-20 text-gray-300 text-center tracking-tighter">
+  We offer you <FlipWords words={['Expertise','Efficiency','Reliability']} />
+</motion.h2>
+    </AnimatePresence>
      <div className="w-full flex justify-center mt-10">
      <BorderMagicBtn >Get Started</BorderMagicBtn>
      </div>
      <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
   
-    className="animate-bounce  w-12 h-12 rounded-full fixed z-20 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-32">
+    className="animate-bounce  w-12 h-12 bg-black/[0.6] py-2  rounded-full fixed z-20 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-32">
    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
   </motion.svg>
      </div>

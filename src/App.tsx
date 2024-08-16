@@ -7,6 +7,8 @@ import ReactLenis from "lenis/dist/lenis-react";
 import GridBackground from "./components/GridBackground";
 import { TracingBeam } from "components/ui/TracingBeam";
 import Services from "components/Services";
+import { TracingBeam2 } from "components/ui/TracingBeam2";
+import AnimatedText2 from "components/AnimatedText2";
 
 
 function App() {
@@ -18,9 +20,9 @@ function App() {
 
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
-      setIsVisible1(latest > 0.20 && latest < 0.55);
+      setIsVisible1(latest > 0.25 && latest < 0.45);
       setIsVisible2(latest > 0.45 && latest < 0.85);
-      setIsVisible3(latest > 0.66);
+      setIsVisible3(latest > 0.50);
     });
   }, [scrollYProgress]);
   return (
@@ -37,16 +39,21 @@ function App() {
       <ReactLenis root options={{ lerp: 0.5 }}>
      
         {/* <ScrollImageExpand/> */}
-        <TracingBeam  word={"migration"} isVisible={isVisible1}>
-        <AnimatedText word="Migration " caption="Streamlined data transition" />
-        </TracingBeam>
-        <TracingBeam  word={"precision"} isVisible={isVisible2}>
+      <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 "  
+          //  <div className="bg-black" 
 
-        <AnimatedText word="Precision "  caption="Clean room expertise."/>
-        </TracingBeam>
-        <TracingBeam  word={"logistics"} isVisible={isVisible3}>
-        <AnimatedText word="Logistics "  caption="Specialized equipment handling."/>
-        </TracingBeam>
+      // style={{ background:"url(bgblack.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover"}}
+      >
+      <TracingBeam2  word={"migration"} isVisible={isVisible1}>
+          <AnimatedText2 word="Migration " caption="Streamlined data transition" />
+        </TracingBeam2>
+        <TracingBeam2  word={"precision"} isVisible={isVisible2}>
+          <AnimatedText2 word="Precision "  caption="Clean room expertise."/>
+        </TracingBeam2>
+        <TracingBeam2  word={"logistics"} isVisible={isVisible3}>
+          <AnimatedText2 word="Logistics "  caption="Specialized equipment handling."/>
+        </TracingBeam2>
+      </div>
       </ReactLenis>
       <Services />
     </div>
