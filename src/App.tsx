@@ -6,6 +6,7 @@ import AnimatedText from "./components/AnimatedText";
 import ReactLenis from "lenis/dist/lenis-react";
 import GridBackground from "./components/GridBackground";
 import { TracingBeam } from "components/ui/TracingBeam";
+import Services from "components/Services";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <AnimatedText word="Logistics "  caption="Specialized equipment handling."/>
         </TracingBeam>
       </ReactLenis>
+      <Services />
     </div>
   );
 }
