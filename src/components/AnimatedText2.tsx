@@ -6,11 +6,11 @@ import { CardBody, CardContainer, CardItem } from './ui/3dCard';
 const CardImage = ({ src}:any) => {
   return (
     <motion.img
-    whileHover={{
-      scale:1.1
-    }}
-    transition={{duration:0.5}}
-    src={src} className='w-full h-full object-cover' alt="A new img" />
+    // whileHover={{
+    //   scale:1.1
+    // }}
+    // transition={{duration:0.5}}
+    src={src} className='w-full h-full object-cover hover:scale-110 transition duration-500' alt="A new img" />
   );
 }
 
@@ -20,7 +20,7 @@ const AnimatedText2 = ({word,caption}:any) => {
 
   
   // Define transformation for opacity and blur based on scroll progress
-  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,0.95,1], [0,0.8, 1,1,1,0.5,0]);
+  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,0.95,1], [0,0.8, 1,1,1,1,0]);
   const blur = useTransform(scrollYProgress, [0, 1], [0.5,0.1]);
   // const skewDeg = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 10,]);
   const translate3d = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -133,7 +133,7 @@ const AnimatedText2 = ({word,caption}:any) => {
         ))}
        
       </motion.div>
-      <motion.div className="text-2xl font-semibold flex space-x-2 text-gray-300 fixed top-1/3 left-0 ml-20 mt-20 max-w-md"
+      <motion.div className="text-2xl font-normal tracking-tight flex space-x-2 text-gray-300 fixed top-1/3 left-0 ml-20 mt-20 max-w-md"
       style={{
         opacity,
         animationDelay: '1s',

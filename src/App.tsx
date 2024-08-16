@@ -38,7 +38,9 @@ function App() {
       <ReactLenis root options={{ lerp: 0.5 }}>
      
         {/* <ScrollImageExpand/> */}
-      <div className="bg-black" 
+      <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 "  
+          //  <div className="bg-black" 
+
       // style={{ background:"url(bgblack.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover"}}
       >
       <TracingBeam2  word={"migration"} isVisible={isVisible1}>
