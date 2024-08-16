@@ -15,7 +15,7 @@ interface ServiceType {
 }
 
 // Define the array of images
-const images: string[] = [img1, img2, img3, img4];
+const images: any[] = [img1, img2, img3, img4];
 
 // Define the array of services
 const services: ServiceType[] = [
