@@ -72,10 +72,11 @@ const Gradients = () => {
             gradientUnits="userSpaceOnUse"
             x1={"0%"} y1={"0%"} x2="100%" y2="100%"
             className="z-50">
-              <stop offset="0.0564843" stop-color="#FF4A81"></stop>
-              <stop stop-color="#FF4A81" stop-opacity="0"></stop>
-              <stop offset="0.4616" stop-color="#DF6CF6"></stop>
-              <stop offset="1" stop-color="#0196FF" stop-opacity="0"></stop>
+              <stop stopColor="#E2CBFF" stopOpacity="0"></stop>
+              <stop stopColor="#393BB2"></stop>
+
+              <stop offset="0.4616" stopColor="#E2CBFF"></stop>
+              <stop offset="1" stopColor="#393BB2" stopOpacity="0"></stop>
             </motion.linearGradient>
             
             <motion.linearGradient
@@ -84,7 +85,7 @@ const Gradients = () => {
               x1={"0%"} y1={"0%"} x2="100%" y2="100%"
               className="z-50">
                  <stop stopColor="#18CCFC" stopOpacity="0"></stop>
-              <stop stopColor="#18CCFC"></stop>
+              <stop stopColor="#4DE0F9"></stop>
               <stop offset="0.325" stopColor="#6344F5"></stop>
               <stop offset="1" stopColor="#AE48FF" stopOpacity="0"></stop>
               </motion.linearGradient>
@@ -189,7 +190,7 @@ const Path2 = () => {
      L 520 200
      L 520 0
      "
-  stroke="url(#redBlueGradient)"
+  stroke="url(#purpleGradient)"
   strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
@@ -211,7 +212,6 @@ const PathAll = ({ d ,stroke,duration,delay,repeatDelay}:any) => {
   strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
-  opacity={0.8}
   initial={{ pathLength: 0 }}
   animate={{ pathLength: 1 }}
   transition={{ duration,delay, repeat: Infinity, repeatType: 'mirror', repeatDelay,
@@ -245,12 +245,12 @@ const Path3 = () => {
       
 <motion.path
   id="gridPath"
-  d="M 360 1000 
-     L 360 300
-     L 0 300
+  d="M 0 300
+    L 360 300
+    L 360 1000
      "
-  stroke="url(#orangeGradient)"
-  strokeWidth="1.3"
+  stroke="url(#violetGradient)"
+  strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
   opacity={0.8}
@@ -312,6 +312,24 @@ export default function GridBackground() {
 
       <Path2 />
       <Path3 />
+      <PathAll 
+      d="M 0 120 
+     L 720 120
+     L 720 0"
+     stroke="url(#blueGradient)"
+     duration={4} repeatDelay={0} delay={1} />
+     <PathAll 
+      d="M 0 560 
+     L 720 560
+     L 720 1100"
+     stroke="url(#blueGradient)"
+     duration={4} repeatDelay={2} delay={2} />
+     <PathAll 
+      d="M 0 440 
+     L 640 440
+     L 640 1100"
+     stroke="url(#pinkGradient)"
+     duration={4} repeatDelay={0} delay={3} />
       {/* <PathAll
       stroke="url(#pinkGradient)"
       d="M 0 240 
@@ -371,7 +389,7 @@ export default function GridBackground() {
         L 280 400
         L 280 1000
 
-      " duration={4} repeatDelay={0} delay={1} />
+      " duration={4} repeatDelay={0} delay={0} />
 
 <PathAll
       stroke="url(#purpleGradient)"
@@ -385,7 +403,7 @@ export default function GridBackground() {
         L 240 360
         L 240 1000
 
-      " duration={4} repeatDelay={0} delay={1} /> */}
+      " duration={4} repeatDelay={2} delay={1} /> */}
       {/* <Path4 />
       <Path5 /> */}
       
