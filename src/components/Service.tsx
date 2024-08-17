@@ -94,7 +94,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
                 translateX: gridTranslateX,
               }}
             >
-              <StaggeredGrid video={video} images={images} isBlackBg={isOdd()? false : true} />
+              <StaggeredGrid video={video} images={images} isBlackBg={false} />
             </motion.div>
           </motion.div>
         </div>
