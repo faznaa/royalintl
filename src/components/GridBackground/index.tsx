@@ -179,6 +179,27 @@ const Path2 = () => {
   )
 }
 
+const PathAll = () => {
+  return (
+    <motion.path
+  id="gridPath"
+  d="M 0 200 
+     L 520 200
+     L 520 0
+     "
+  stroke="url(#redBlueGradient)"
+  strokeWidth="1.5"
+  strokeLinecap="round"
+  fill="none"
+  opacity={0.8}
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', 
+   ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
+/> 
+  )
+}
+
 const Path4 = () => {
   return (
     <motion.path
@@ -269,10 +290,10 @@ export default function GridBackground() {
       {/* Road */}
       {/* <Path1 /> */}
 
-      {/* <Path2 />
-      <Path3 /> */}
-      <Path4 />
-      <Path5 />
+      <Path2 />
+      <Path3 />
+      {/* <Path4 />
+      <Path5 /> */}
     
 
 
@@ -310,14 +331,14 @@ export default function GridBackground() {
 </div>
 
     {/* A circular blur effect / shadow around the globe */}
-      {/* <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
+      <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}      
-      /> */}
-      {/* <div className="absolute h-[500px] z-20 right-0  mr-32  ">
+      />
+      <div className="absolute h-[500px] z-20 right-0  mr-32  ">
             <World data={sampleArcs} globeConfig={globeConfig} />
-          </div> */}
+          </div>
      <div>
   
      {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
