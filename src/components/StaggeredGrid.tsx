@@ -8,9 +8,10 @@ import img5 from 'assets/images/img1.jpg';
 interface StaggeredGridProps {
   video: string;
   images: string[];
+  isBlackBg?: boolean;
 }
 
-const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images }) => {
+const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalHovered, setIsModalHovered] = useState(false);
   const [hoveredElement, setHoveredElement] = useState<string | number | null>(null);
@@ -63,7 +64,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images }) => {
           {nImages.slice(0,2).map((image, index) => (
             <div
               key={index}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} `}
+              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} ${isBlackBg ? 'border-2 border-white' :''} `}
               onMouseEnter={() => showModal(index)}
               onMouseLeave={hideModal}
             >
@@ -75,7 +76,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images }) => {
          {nImages.slice(2,).map((image, index) => (
             <div
               key={index}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} `}
+              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} ${isBlackBg ? 'border-2 border-white' :''}`}
               onMouseEnter={() => showModal(index)}
               onMouseLeave={hideModal}
             >
@@ -89,7 +90,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images }) => {
         <AnimatePresence>
           {(isHovered || isModalHovered) && (
             <motion.div
-              className="absolute top-0 w-full h-full rounded-lg z-10"
+              className={`absolute top-0 w-full h-full rounded-lg z-10 ${isBlackBg ? 'border-2 border-white' :''}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -101,7 +102,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images }) => {
               }}
             >
               {hoveredElement === 'video' ? (
-                <video className="w-full h-full object-cover rounded-lg" autoPlay muted loop>
+                <video className={`w-full h-full object-cover rounded-lg `} autoPlay muted loop>
                   <source src={video} type="video/mp4" />
                 </video>
               ) : (

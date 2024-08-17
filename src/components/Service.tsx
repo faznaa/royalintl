@@ -20,12 +20,15 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
   const isOdd = () => index%2 !== 0
   const containerTranslateX = useTransform(scrollYProgress, [0, 0.25], [isOdd() ? '100%' : '-100%', '0%']);
   const containerTranslateY = useTransform(scrollYProgress, [0, 0.25], ['100%', '0%']);
+  // const containerBorderRadius =useTransform(scrollYProgress, [0, 0.1,0.4,1], ['50%', '0%','0%','0%']);
   const gridScale = useTransform(scrollYProgress, [0.25, 0.5, 75, 1], [0, 1, 1, 0]);
   const gridOpacity = useTransform(scrollYProgress, [0.25, 0.5, .75, 1], [0, 1, 1, 0]);
   const gridTranslateX = useTransform(scrollYProgress, [0.75, 1], ['0', isOdd() ? '-100%' : '100%']);
-  const textOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0.25, 0.5,0.75,0.8,1], [0, 1,1,0.3,0]);
   const textTranslateY = useTransform(scrollYProgress, [0.5, .75], ['0%', '-100%']);
-  const textVisiblity = useTransform(scrollYProgress, [0, .75, 1], ['visible', 'hidden', 'hidden']);
+  const textVisiblity = useTransform(scrollYProgress, [0, .75, 0.8,1], ['visible', 'visible', 'hidden', 'hidden']);
+  const textScale = useTransform(scrollYProgress, [0.75, 1], [1,0.8]);
+  const textTranslateX = useTransform(scrollYProgress, [0.75, 1], ['0%', isOdd() ? '100%' : '-100%']);
 
   return (
     <motion.div
@@ -37,21 +40,24 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
         style={{
           translateX: containerTranslateX,
           translateY: containerTranslateY,
+          // borderRadius: containerBorderRadius
         }}
       >
         {/* Section 1 */}
-        <div className='w-full h-[90%] flex justify-center items-center p-10'>
+        <div className='w-full h-[90%] flex justify-start items-center p-10'>
           {/* Text */}
           <motion.div
             className={`${index % 2 !== 0 ? 'order-last ml-6 items-start' : 'mr-4 items-end'} w-1/2 h-1/2 overflow-hidden`}
             style={{
               visibility: textVisiblity,
+              translateY:textTranslateX
             }}
           >
             <motion.h1
-              className='text-5xl font-medium mb-4'
+              className='text-5xl font-medium mb-4 tracking-tight'
               style={{
                 opacity: textOpacity,
+                scale: textScale,
               }}
             >
               {title}
@@ -61,10 +67,11 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
                 <div className='absolute inset-0 bg-gradient-to-b from-black via-transparent via-30% to-black pointer-events-none z-10' />
               }
               <motion.p
-                className='text-4xl font-medium z-0'
+                className={`text-4xl ${isOdd() ? 'text-gray-700' : 'text-gray-200'} font-normal  tracking-tighter z-0`}
                 style={{
                   opacity: textOpacity,
                   translateY: textTranslateY,
+                  scale: textScale,
                 }}
               >
                 {description}
@@ -86,7 +93,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
                 translateX: gridTranslateX,
               }}
             >
-              <StaggeredGrid video={video} images={images} />
+              <StaggeredGrid video={video} images={images} isBlackBg={isOdd()? false : true} />
             </motion.div>
           </motion.div>
         </div>

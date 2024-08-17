@@ -36,14 +36,9 @@ function App() {
   
     <GridBackground />
     
-      <ReactLenis root options={{ lerp: 0.5 }}>
+      {/* <ReactLenis root options={{ lerp: 0.5 }}>
      
-        {/* <ScrollImageExpand/> */}
-      <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 "  
-          //  <div className="bg-black" 
-
-      // style={{ background:"url(bgblack.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover"}}
-      >
+      <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 ">
       <TracingBeam2  word={"migration"} isVisible={isVisible1}>
           <AnimatedText2 word="Migration " caption="Streamlined data transition" />
         </TracingBeam2>
@@ -54,7 +49,7 @@ function App() {
           <AnimatedText2 word="Logistics "  caption="Specialized equipment handling."/>
         </TracingBeam2>
       </div>
-      </ReactLenis>
+      </ReactLenis> */}
       <Services />
     </div>
   );

@@ -269,8 +269,8 @@ export default function GridBackground() {
       {/* Road */}
       {/* <Path1 /> */}
 
-      <Path2 />
-      <Path3 />
+      {/* <Path2 />
+      <Path3 /> */}
       <Path4 />
       <Path5 />
     
