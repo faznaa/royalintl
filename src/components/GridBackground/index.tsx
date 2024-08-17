@@ -426,14 +426,14 @@ export default function GridBackground() {
 </div>
 
     {/* A circular blur effect / shadow around the globe */}
-      {/* <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
+      <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}      
+      transition={{ duration: 2, delay: 5 }}      
       />
-      <div className="absolute h-[500px] z-20 right-0  mr-32  ">
+      <div className="absolute h-[500px] w-[600px] z-20 right-0  mr-18  ">
             <World data={sampleArcs} globeConfig={globeConfig} />
-          </div> */}
+          </div>
      <div>
   
      {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300

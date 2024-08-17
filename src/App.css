@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+@keyframes verticalMove {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes horizontalMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-verticalLine1 {
+  animation: verticalMove 6s ease-in-out infinite;
+}
+
+.animate-verticalLine2 {
+  animation: verticalMove 8s ease-in-out infinite;
+}
+
+.animate-horizontalLine1 {
+  animation: horizontalMove 6s ease-in-out infinite;
+}
+
+.animate-horizontalLine2 {
+  animation: horizontalMove 8s ease-in-out infinite;
+}

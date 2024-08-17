@@ -10,7 +10,6 @@ import Services from "components/Services";
 import { TracingBeam2 } from "components/ui/TracingBeam2";
 import AnimatedText2 from "components/AnimatedText2";
 
-
 function App() {
   const { scrollYProgress } = useScroll();
 
