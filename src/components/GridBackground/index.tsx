@@ -179,22 +179,19 @@ const Path2 = () => {
   )
 }
 
-const PathAll = () => {
+const PathAll = ({ d ,stroke,duration,delay,repeatDelay}:any) => {
   return (
     <motion.path
   id="gridPath"
-  d="M 0 200 
-     L 520 200
-     L 520 0
-     "
-  stroke="url(#redBlueGradient)"
+  d={d}
+  stroke={stroke}
   strokeWidth="1.5"
   strokeLinecap="round"
   fill="none"
   opacity={0.8}
   initial={{ pathLength: 0 }}
   animate={{ pathLength: 1 }}
-  transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', 
+  transition={{ duration,delay, repeat: Infinity, repeatType: 'mirror', repeatDelay,
    ease: cubicBezier(0.5, 0.1, 0.13, 1) }}
 /> 
   )
@@ -290,8 +287,55 @@ export default function GridBackground() {
       {/* Road */}
       {/* <Path1 /> */}
 
-      <Path2 />
-      <Path3 />
+      {/* <Path2 />
+      <Path3 /> */}
+      <PathAll
+      stroke="url(#pinkGradient)"
+      d="M 0 240 
+     L 40 240
+     L 40 280
+     L 80 280
+     L 80 320
+     L 120 320
+     L 120 360
+     L 160 360
+     L 160 400
+     L 200 400
+     L 200 440
+     L 240 440
+     L 240 480
+     L 280 480
+     L 280 520
+     L 320 520
+     L 320 560
+     L 360 560
+     L 360 600
+     L 400 600
+     L 400 640
+     L 440 640
+     L 440 680
+     L 480 680
+     " duration={4} repeatDelay={5} delay={1} />
+     <PathAll
+      stroke="url(#orangeGradient)"
+      d="M 40 360
+      L 120 360
+      L 120 440
+      L 200 440
+      L 200 520
+      L 280 520
+      L 280 600
+      L 360 600
+      L 360 680
+      L 440 680
+      L 440 760
+      L 520 760
+      L 520 840
+      L 600 840
+      L 600 920
+      L 680 920
+      " duration={4} repeatDelay={9} delay={1} />
+      
       {/* <Path4 />
       <Path5 /> */}
     
@@ -331,14 +375,14 @@ export default function GridBackground() {
 </div>
 
     {/* A circular blur effect / shadow around the globe */}
-      <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
+      {/* <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2, delay: 5 }}      
       />
       <div className="absolute h-[500px] w-[600px] z-20 right-0  mr-18  ">
             <World data={sampleArcs} globeConfig={globeConfig} />
-          </div>
+          </div> */}
      <div>
   
      {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
