@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { TracingBeam } from './ui/TracingBeam';
 
-const AnimatedText = ({word,caption, isVisible}:any) => {
+const AnimatedText = ({word,caption}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
 
@@ -25,6 +26,14 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   const translateYImg = useTransform(scrollYProgress, [0, 0.5,0.9,0.95,1], [75,60, -50,-50, -100]);
   const translateYImgSecond = useTransform(scrollYProgress, [0, 0.9,0.95,1], [-100, -50,-50, 75]);
   const opacityImg = useTransform(scrollYProgress, [0, 0.3,0.5,0.75,0.95,1], [0, 1,1,1,1,0]);
+  const [transform, setTransform] = React.useState('');
+  const [imgTransform, setImgTransform] = React.useState('');
+  const [secondImgTransform, setSecondImgTransform] = React.useState('');
+  const [visible, setIsVisible] = React.useState(false);
+  const blurP = useTransform(scrollYProgress, [0, 1], [10, 0]); // Blur from 10px to 0px
+  const opacityP = useTransform(scrollYProgress, [0, 0.5,0.75,0.98,1], [0,0, 1,1,0]); // Opacity from 0.5 to 1
+  const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
+  
   const getTransform = () => {
     return `translate3d(-50%, -50%, 20px) skew(${skewX.get()}deg, ${skewY.get()}deg)`;
   };
@@ -34,23 +43,18 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
   const getSecondImageTransform = () => {
     return `translate3d(77%, ${translateYImgSecond.get()}%, 0px) `;
   };
-  const [transform, setTransform] = React.useState('');
-  const [imgTransform, setImgTransform] = React.useState('');
-  const [secondImgTransform, setSecondImgTransform] = React.useState('');
+  
   useEffect(() => {
     return scrollYProgress.onChange(() => {
       setTransform(getTransform());
       setImgTransform(getImageTransform());
       setSecondImgTransform(getSecondImageTransform());
+      setIsVisible(scrollYProgress.get() > 0 && scrollYProgress.get() < 1);
     });
   }, [scrollYProgress]);
 
-  const blurP = useTransform(scrollYProgress, [0, 1], [10, 0]); // Blur from 10px to 0px
-  const opacityP = useTransform(scrollYProgress, [0, 0.5,0.75,0.98,1], [0,0, 1,1,0]); // Opacity from 0.5 to 1
-  const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
-  
+ 
   return (
-    <>
     <section ref={ref}  className='h-[300vh]  w-full '>
           {/* <div className='' ref={ref}></div> */}
 
@@ -107,9 +111,7 @@ const AnimatedText = ({word,caption, isVisible}:any) => {
 
     
     </section>
-    {/* <div ref={ref} className='w-full h-[12vh] bg-indigo-500' /> */}
-
-    </>
+   
   );
 };
 
