@@ -67,6 +67,16 @@ const Gradients = () => {
               <stop offset="1" stop-color="#0196FF" stop-opacity="0"></stop>
                
             </motion.linearGradient>
+            <motion.linearGradient
+            id={`violetGradient`}
+            gradientUnits="userSpaceOnUse"
+            x1={"0%"} y1={"0%"} x2="100%" y2="100%"
+            className="z-50">
+              <stop offset="0.0564843" stop-color="#FF4A81"></stop>
+              <stop stop-color="#FF4A81" stop-opacity="0"></stop>
+              <stop offset="0.4616" stop-color="#DF6CF6"></stop>
+              <stop offset="1" stop-color="#0196FF" stop-opacity="0"></stop>
+            </motion.linearGradient>
             
             <motion.linearGradient
               id={`blueGradient`}
@@ -78,7 +88,20 @@ const Gradients = () => {
               <stop offset="0.325" stopColor="#6344F5"></stop>
               <stop offset="1" stopColor="#AE48FF" stopOpacity="0"></stop>
               </motion.linearGradient>
+              <motion.linearGradient
+          id="purpleGradient"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0" stopColor="#FF47D7" stopOpacity="0" />
+          <stop stopColor="#FF47D7"></stop>
 
+          <stop offset="0.325" stopColor="#6E00C5" />
+          <stop offset="1" stopColor="#AE48FF" stopOpacity="0" />
+        </motion.linearGradient>
               <motion.linearGradient
               id="orangeGradient"
               gradientUnits="userSpaceOnUse"
@@ -287,9 +310,9 @@ export default function GridBackground() {
       {/* Road */}
       {/* <Path1 /> */}
 
-      {/* <Path2 />
-      <Path3 /> */}
-      <PathAll
+      <Path2 />
+      <Path3 />
+      {/* <PathAll
       stroke="url(#pinkGradient)"
       d="M 0 240 
      L 40 240
@@ -315,8 +338,8 @@ export default function GridBackground() {
      L 440 640
      L 440 680
      L 480 680
-     " duration={4} repeatDelay={5} delay={1} />
-     <PathAll
+     " duration={4} repeatDelay={5} delay={1} /> */}
+     {/* <PathAll
       stroke="url(#orangeGradient)"
       d="M 40 360
       L 120 360
@@ -334,10 +357,38 @@ export default function GridBackground() {
       L 600 840
       L 600 920
       L 680 920
-      " duration={4} repeatDelay={9} delay={1} />
+      " duration={4} repeatDelay={9} delay={1} /> */}
       
+      {/* <PathAll
+      stroke="url(#blueGradient)"
+      d="M 0 280
+        L 200 280
+        L 200 240
+        L 160 240
+        L 160 440
+        L 320 440
+        L 320 400
+        L 280 400
+        L 280 1000
+
+      " duration={4} repeatDelay={0} delay={1} />
+
+<PathAll
+      stroke="url(#purpleGradient)"
+      d="M 0 320
+        L 240 320
+        L 240 200
+        L 120 200
+        L 120 480
+        L 360 480
+        L 360 360
+        L 240 360
+        L 240 1000
+
+      " duration={4} repeatDelay={0} delay={1} /> */}
       {/* <Path4 />
       <Path5 /> */}
+      
     
 
 

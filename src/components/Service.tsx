@@ -74,6 +74,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
                   scale: textScale,
                 }}
               >
+                <br/>
                 {description}
               </motion.p>
             </div>
