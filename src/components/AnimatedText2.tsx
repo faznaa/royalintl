@@ -77,7 +77,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
 
       <div className='sm:grid sm:grid-cols-2 h-[200vh]'>
         <motion.div 
-        className={`fixed top-1/2 translate-y-[-50%]  mr-64 ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
+        className={`fixed top-1/2 translate-y-[-50%]  ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
         // initial={{y:"50%"}}
         style={{ transform:imgTransform,opacity:opacityImg  }}
         id='stagerredgrid'>
