@@ -22,8 +22,7 @@ function App() {
       <Navbar />
   
     <GridBackground />
-    
-      
+  
       <Services />
     </div>
   );
