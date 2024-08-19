@@ -49,7 +49,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
           style={{ gridAutoFlow: 'dense' }}
         >
           {/* Video */}
-         <div className='flex flex-col items-end  justify-center gap-4'>
+         <div className={`flex ${isBlackBg ? 'order-last items-start' : 'items-end '} flex-col  justify-center gap-4`}>
          <div
             className="col-span-2 row-span-8 bg-gray-100 rounded-lg"
             onMouseEnter={() => showModal('video')}
@@ -64,7 +64,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
           {nImages.slice(0,2).map((image, index) => (
             <div
               key={image.id}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} ${isBlackBg ? 'border-2 border-white' :''} `}
+              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} `}
               onMouseEnter={() => showModal(image.id)}
               onMouseLeave={hideModal}
             >
@@ -72,11 +72,11 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
             </div>
           ))}
          </div>
-         <div className='flex flex-col items-start justify-start gap-4 '>
+         <div className={`flex ${isBlackBg ? 'items-end' : 'items-start '} flex-col justify-start gap-4 `}>
          {nImages.slice(2,).map((image, index) => (
             <div
               key={image.id}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} ${isBlackBg ? 'border-2 border-white' :''}`}
+              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className}`}
               onMouseEnter={() => showModal(image.id)}
               onMouseLeave={hideModal}
             >
@@ -90,7 +90,7 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
         <AnimatePresence>
           {(isHovered || isModalHovered) && (
             <motion.div
-              className={`absolute top-0 w-full h-full rounded-lg z-10 ${isBlackBg ? 'border-2 border-white' :''}`}
+              className={`absolute top-0 w-full h-full rounded-lg z-10 `}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               // exit={{ opacity: 0, scale: 0.9 }}
