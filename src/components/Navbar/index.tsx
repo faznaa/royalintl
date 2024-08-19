@@ -2,11 +2,13 @@
 
 import { useContext, useEffect, useState } from "react";
 import MobileNavbar from "../MobileNavbar";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 const NavbarItem = (props: any) => {
   const { isWhiteTheme, ..._props } = props;
   return (
-    <a
+    <Link
+    to={props.href}
       {..._props}
       className="relative group py-2 my-5 mx-3 inline-block transition duration-300"
     >
@@ -16,7 +18,7 @@ const NavbarItem = (props: any) => {
           isWhiteTheme ? "bg-black" : "bg-white"
         } transition-opacity duration-500 group-hover:opacity-100 absolute left-0 bottom-0`}
       />
-    </a>
+    </Link>
   );
 };
 

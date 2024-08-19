@@ -14,7 +14,7 @@ const CardImage = ({ src}:any) => {
   );
 }
 
-const AnimatedText2 = ({word,caption}:any) => {
+const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref ,  offset: ["center end", "end end"]});
 
@@ -27,7 +27,7 @@ const AnimatedText2 = ({word,caption}:any) => {
 
 
   const getBlurValue = (i:any) => {
-    return `blur(${blur.get()*i}px)`;
+    return `blur(${(blur.get()*i)/2}px)`;
   };
   // const skewX = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 10,0,10,0]); // Skew from 0deg to 10deg
   // const skewY = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 5,0,5,0]);  // Skew from 0deg to 5deg
@@ -73,11 +73,11 @@ const AnimatedText2 = ({word,caption}:any) => {
     <motion.section
     // initial={{opacity:0}}
     // whileInView={{opacity:1}}
-    ref={ref} className='h-[300vh]  w-full  text-white '>
+    ref={ref} className={`h-[300vh]  w-full   ${isImgLeft ? 'bg-black/[0.9]  text-white' : 'bg-gray-200 text-gray-800'}`}>
 
       <div className='sm:grid sm:grid-cols-2 h-[200vh]'>
         <motion.div 
-        className='fixed top-1/2 translate-y-[-50%] left-1/2 mr-64'
+        className={`fixed top-1/2 translate-y-[-50%]  mr-64 ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
         // initial={{y:"50%"}}
         style={{ transform:imgTransform,opacity:opacityImg  }}
         id='stagerredgrid'>
@@ -98,30 +98,30 @@ const AnimatedText2 = ({word,caption}:any) => {
                 src="/hero1.jpg" className='w-full h-full object-cover transition duration-500' alt="A London skyscraper" />
               </div>
               <div className='overflow-hidden  w-64 h-64  rounded-3xl'>
-                <CardImage src="/img1.jpg" />
+                <CardImage src={images[0]} />
               </div>
               <div className='overflow-hidden  w-72 h-96  rounded-3xl'>
-              <CardImage src="/img2.jpg" />
+              <CardImage src={images[1]} />
 
               </div>
             </div>
             <div className='flex flex-col items-start justify-end gap-4'>
               <div className='overflow-hidden  w-64 h-72  rounded-3xl'>
-               <CardImage src="/img3.jpg" />
+               <CardImage src={images[2]} />
               </div>
               <div className='overflow-hidden  w-72 h-64 rounded-3xl'>
-              <CardImage src="/img4.jpg" />
+              <CardImage src={images[3]} />
 
               </div>
               <div className='overflow-hidden  w-96 h-72 rounded-3xl'>
-              <CardImage src="/img5.jpg" />
+              <CardImage src={images[4]} />
               </div>
             </div>
           </motion.div>
         </motion.div>
       
-      <div  className={`flex flex-col  items-center justify-center`}>
-      <motion.div className="text-5xl font-bold flex space-x-2 fixed top-1/3 left-0 transform  -translate-y-1/2 ml-20">
+      <div  className={`flex flex-col ${isImgLeft ? 'order-last' : ''}  items-center justify-center`}>
+      <motion.div className={`text-5xl font-bold flex space-x-2 fixed transform  top-1/3 -translate-y-1/2 ${isImgLeft? ' left-0  ml-20' : 'right-0  mr-20'}`} >
       {/* {getBlurValue(1)} */}
         {word?.split("").map((char:string, index:number) => (
           <motion.span
@@ -133,7 +133,7 @@ const AnimatedText2 = ({word,caption}:any) => {
         ))}
        
       </motion.div>
-      <motion.div className="text-2xl font-normal tracking-tight flex space-x-2 text-gray-300 fixed top-1/3 left-0 ml-20 mt-20 max-w-md"
+      <motion.div className={`text-2xl font-normal tracking-tight flex space-x-2  fixed top-1/3 ${isImgLeft? ' text-gray-300 left-0  ml-20' : 'right-0 text-gray-700 mr-20 text-right'} mt-20 max-w-xl`}
       style={{
         opacity,
         animationDelay: '1s',
@@ -142,7 +142,8 @@ const AnimatedText2 = ({word,caption}:any) => {
       transition={{ delay: 0.5, duration: 2 }}
 
       >
-       Known for its commitment to excellence, Royal Intl consistently delivers top-tier services and products that cater to the needs of a sophisticated clientele. 
+        {description}
+       {/* Known for its commitment to excellence, Royal Intl consistently delivers top-tier services and products that cater to the needs of a sophisticated clientele.  */}
       </motion.div>
       
      {/* <div className=''>
