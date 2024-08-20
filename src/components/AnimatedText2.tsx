@@ -20,7 +20,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
 
   
   // Define transformation for opacity and blur based on scroll progress
-  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,0.95,1], [0,0.8, 1,1,1,1,0]);
+  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,.9], [0,0.8, 1,1,1,0]);
   const blur = useTransform(scrollYProgress, [0, 1], [0.5,0.1]);
   // const skewDeg = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 10,]);
   const translate3d = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -39,7 +39,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const scaleImg = useTransform(scrollYProgress, [0,0.2,0.9, 1], [1,1,1.1,1]);
 
   const translateYImgSecond = useTransform(scrollYProgress, [0, 0.9,0.95,1], [-100, -50,-50, 75]);
-  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.95,1], [0, 1,1,1,1,0]);
+  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.85,1], [0, 1,1,1,1,0]);
   const translateParagraph = useTransform(scrollYProgress, [0, 0.3,0.9,1], ["50%","0%","0%","0%"]);
   const [transform, setTransform] = React.useState('');
   const [imgTransform, setImgTransform] = React.useState('');
@@ -47,7 +47,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const [visible, setIsVisible] = React.useState(false);
   const blurP = useTransform(scrollYProgress, [0, 1], [10, 0]); // Blur from 10px to 0px
   const opacityP = useTransform(scrollYProgress, [0, 0.5,0.75,0.98,1], [0,0, 1,1,0]); // Opacity from 0.5 to 1
-  const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
+  const textMarginRight = useTransform(scrollYProgress, [0,.5], ["-10px","0px"]); // Opacity from 0 to .5
   
   const getTransform = () => {
     return `translate3d(-50%, -50%, 20px) skew(${skewX.get()}deg, ${skewY.get()}deg)`;
