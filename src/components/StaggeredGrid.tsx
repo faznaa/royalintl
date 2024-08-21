@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import img1 from 'assets/images/img1.jpg';
-import img2 from 'assets/images/img2.jpg';
-import img3 from 'assets/images/img3.jpg';
-import img4 from 'assets/images/img4.png';
-import img5 from 'assets/images/img1.jpg';
 interface StaggeredGridProps {
   video: string;
   images: string[];
@@ -16,11 +11,11 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
   const [isModalHovered, setIsModalHovered] = useState(false);
   const [hoveredElement, setHoveredElement] = useState<string | number | null>(null);
   const nImages = [
-    {id: 0,src:img1,className:'aspect-[3/2.7] w-56'},
-    {id: 1,src:img2,className:'aspect-[2/3] w-64'},
-    {id: 2,src:img3,className:'aspect-[2/3] w-56'},
-    {id: 3,src:img4,className:'aspect-[2/3] w-72'},
-    {id: 4,src:img5,className:'aspect-[1/1.4] w-64'},
+    {id: 0,src:images[0],className:'aspect-[3/2.7] w-56'},
+    {id: 1,src:images[1],className:'aspect-[2/3] w-64'},
+    {id: 2,src:images[2],className:'aspect-[2/3] w-56'},
+    {id: 3,src:images[3],className:'aspect-[2/3] w-72'},
+    {id: 4,src:images[4],className:'aspect-[1/1.4] w-64'},
   ]
 
   const showModal = (index: string | number) => {
