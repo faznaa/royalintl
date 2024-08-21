@@ -1,4 +1,5 @@
 import AnimatedText2 from 'components/AnimatedText2'
+import ProgressBar from 'components/ProgressBar';
 import { TracingBeam2 } from 'components/ui/TracingBeam2'
 import { useScroll } from 'framer-motion';
 import ReactLenis from 'lenis/dist/lenis-react'
@@ -41,7 +42,7 @@ export default function About() {
           visble: isVisible3
         },
         {
-          title: 'Structured  Cable',
+          title: 'Structured  Cable  Networking',
           description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
           visible: isVisible4
@@ -50,23 +51,21 @@ export default function About() {
       const images = ['assets/img1.jpg','assets/img2.jpg','assets/img3.jpg','assets/img4.png','assets/img1.jpg','assets/img2.jpg',];
   return (
   <div>
-    <div className='text-white bg-black/[0.9] h-screen flex justify-center items-center text-center text-4xl sm:text-6xl'>
-      <p className='font-bold'>About Us</p>
-    </div>
-      <ReactLenis root options={{ lerp: 0.5 }}>
-     
+    <ReactLenis root options={{ lerp: 0.5 }}>
      {/* <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 "> */}
      <div className='bg-black/[0.9]'>
-    {services.map((service, index) => (
-       <TracingBeam2  word={service.title} isVisible={isVisible3}>
-         <AnimatedText2 word={service.title}  description={service.description}
-          caption="Specialized equipment handling."
-          images={images}
-          isImgLeft={index % 2 === 0}
-          />
-       </TracingBeam2>))}
+      {services.map((service, index) => (
+        <TracingBeam2  word={service.title} isVisible={isVisible3}>
+          <AnimatedText2 word={service.title}  description={service.description} index={index}
+            caption="Specialized equipment handling."
+            images={images}
+            isImgLeft={index % 2 === 0}
+            />
+            <ProgressBar index={index} length={services.length}/>
+        </TracingBeam2>
+      ))}
      </div>
-     </ReactLenis>
+    </ReactLenis>
   </div>
   )
 }
