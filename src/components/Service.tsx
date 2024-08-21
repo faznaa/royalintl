@@ -38,7 +38,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
     >
       {index === 0 &&
         <div
-          className="mt-[50vh] mx-32 text-5xl font-extralight text-center mb-10 leading-[1.5]"        
+          className="mt-[50vh] mx-32 text-5xl font-extralight text-center mb-10 leading-[2]"        
         >
           Royal International is expanding into niche services, specializing in data center migration, clean room & lab relocations, and tailored logistics for high-tech industries
         </div>

@@ -40,7 +40,7 @@ const services: ServiceType[] = [
     video: video,
   },
   {
-    title: 'Structured Cable',
+    title: 'Structured Cable Networking',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: images,
