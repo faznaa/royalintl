@@ -14,7 +14,7 @@ const CardImage = ({ src}:any) => {
   );
 }
 
-const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
+const AnimatedText2 = ({word,description,caption,images,isImgLeft,index}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref ,  offset: ["center end", "end end"]});
 
@@ -74,8 +74,12 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
     // initial={{opacity:0}}
     // whileInView={{opacity:1}}
     ref={ref} className={`h-[300vh]  w-full   ${isImgLeft ? 'bg-black/[0.9]  text-white' : 'bg-gray-200 text-gray-800'}`}>
-
       <div className='sm:grid sm:grid-cols-2 h-[200vh]'>
+        {index == 0 &&
+          <div className="relative w-screen flex justify-center mt-[40%]">
+            <p className='text-8xl font-medium text-white text-center'>About Us</p>
+          </div>
+        }
         <motion.div 
         className={`fixed top-1/2 translate-y-[-50%]  ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
         // initial={{y:"50%"}}
