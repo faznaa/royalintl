@@ -14,7 +14,7 @@ const CardImage = ({ src}:any) => {
   );
 }
 
-const AnimatedText2 = ({word,description,caption,images,isImgLeft,index}:any) => {
+const AnimatedText2 = ({word,description,caption,images,isImgLeft,index,video}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref ,  offset: ["center end", "end end"]});
 
@@ -95,11 +95,14 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft,index}:any) =>
           className='grid sm:grid-cols-2 gap-4 '>
             <div className='flex flex-col items-end justify-end gap-4 '>
               <div className='overflow-hidden   w-96 h-64 rounded-3xl'>
-                <motion.img
-                style={{
+                <motion.video
+                 style={{
                   scale: scaleImg,
-                }}
-                src="/hero1.jpg" className='w-full h-full object-cover transition duration-500' alt="A London skyscraper" />
+                 }}
+                  className="w-full h-full object-cover rounded-lg" autoPlay muted loop
+                >
+                  <source src={video} type="video/mp4" />
+                </motion.video>
               </div>
               <div className='overflow-hidden  w-64 h-64  rounded-3xl'>
                 <CardImage src={images[0]} />
