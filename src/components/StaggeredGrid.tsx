@@ -46,24 +46,39 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
           {/* Video */}
          <div className={`flex ${isBlackBg ? 'order-last items-start' : 'items-end '} flex-col  justify-center gap-4`}>
          <div
-            className="col-span-2 row-span-8 bg-gray-100 rounded-lg"
-            onMouseEnter={() => showModal('video')}
+            className="col-span-2 row-span-8 rounded-3xl hover:cursor-pointer"
+            onClick={() => showModal('video')}
             onMouseLeave={hideModal}
           >
-            <video className="w-full h-full object-cover rounded-lg" autoPlay muted loop>
-              <source src={video} type="video/mp4" />
-            </video>
+            <div className='w-full h-full overflow-hidden rounded-3xl'>
+              <motion.video
+                className="w-full h-full object-cover rounded-3xl"
+                autoPlay
+                muted
+                loop
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: .5 }}
+              >
+                <source src={video} type="video/mp4" />
+              </motion.video>
+            </div>
           </div>
 
           {/* Images */}
           {nImages.slice(0,2).map((image, index) => (
             <div
               key={image.id}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className} `}
-              onMouseEnter={() => showModal(image.id)}
+              className={`rounded-3xl overflow-hidden ${image.className} hover:cursor-pointer`}
+              onClick={() => showModal(image.id)}
               onMouseLeave={hideModal}
             >
-              <img src={image.src} alt={`image-${index}`} className=" w-full h-full object-cover rounded-lg" />
+              <motion.img
+                src={image.src}
+                alt={`image-${index}`}
+                className="w-full h-full object-cover rounded-lg"
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: .5 }}
+              />
             </div>
           ))}
          </div>
@@ -71,11 +86,17 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
          {nImages.slice(2,).map((image, index) => (
             <div
               key={image.id}
-              className={` bg-gray-400 rounded-3xl overflow-hidden ${image.className}`}
-              onMouseEnter={() => showModal(image.id)}
+              className={`rounded-3xl overflow-hidden ${image.className} hover:cursor-pointer`}
+              onClick={() => showModal(image.id)}
               onMouseLeave={hideModal}
             >
-              <img src={image.src} alt={`image-${index}`} className="w-full h-full object-cover rounded-lg" />
+              <motion.img
+                src={image.src}
+                alt={`image-${index}`}
+                className="w-full h-full object-cover rounded-lg"
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: .5 }}
+              />
             </div>
           ))}
          </div>
@@ -85,12 +106,13 @@ const StaggeredGrid: React.FC<StaggeredGridProps> = ({ video, images,isBlackBg }
         <AnimatePresence>
           {(isHovered || isModalHovered) && (
             <motion.div
-              className={`absolute top-0 w-full h-full rounded-lg z-10 `}
+              className={`absolute top-0 w-full h-full rounded-lg z-10 hover:cursor-pointer`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               // exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 1 }}
               onMouseEnter={() => setIsModalHovered(true)}
+              onClick={() => setIsModalHovered(false)}
               onMouseLeave={() => {
                 setIsModalHovered(false);
                 hideModal();
