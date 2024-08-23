@@ -88,7 +88,7 @@ const ServiceCopy: React.FC<ServiceProps> = ({ title, description, video, images
         <div
           className="mt-[50vh] mx-32 text-5xl font-extralight text-center mb-10 leading-[1.5]"        
         >
-          Royal International is <Highlight>expanding into niche services</Highlight>, specializing in data center migration, clean room & lab relocations, and tailored logistics for high-tech industries
+          Royal International is <Highlight><span className='text-white font-bold'>expanding into niche services</span></Highlight>, specializing in data center migration, clean room & lab relocations, and tailored logistics for high-tech industries
         </div>
       }
       <motion.section
