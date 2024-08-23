@@ -13,7 +13,7 @@ export const TracingBeam2 = ({
   children,
   className,
   word,
-  isVisible
+  isVisible,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -54,7 +54,7 @@ export const TracingBeam2 = ({
   return (
     <motion.div
       ref={ref}
-      className={cn("relative w-screen mx-auto h-[300vh]", className)}
+      className={cn("relative w-screen mx-auto h-[400vh]", className)}
     >
      
      {word &&  <div className={`${isVisible? 'fixed'  : 'hidden'} bottom-3 left-3 z-50`}

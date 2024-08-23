@@ -50,19 +50,20 @@ export default function About() {
       const images = ['assets/img1.jpg','assets/img2.jpg','assets/img3.jpg','assets/img4.png','assets/img1.jpg','assets/img2.jpg',];
   return (
   <div>
-    <div className='text-white bg-black/[0.9] h-screen flex justify-center items-center text-center text-4xl sm:text-6xl'>
+    <div className='text-white bg-[#191919] h-screen flex justify-center items-center text-center text-4xl sm:text-6xl'>
       <p className='font-bold'>About Us</p>
     </div>
       <ReactLenis root options={{ lerp: 0.5 }}>
      
      {/* <div className="bg-gradient-to-b from-black via-red-950 to-slate-800 "> */}
-     <div className='bg-black/[0.9]'>
+     <div className='bg-[#191919]'>
     {services.map((service, index) => (
-       <TracingBeam2  word={service.title} isVisible={isVisible3}>
+       <TracingBeam2  word={service.title} isVisible={isVisible3} className={index> 0 ? (index%2==0 ? 'bg-gray-200' : 'bg-black'): ''}>
          <AnimatedText2 word={service.title}  description={service.description}
           caption="Specialized equipment handling."
           images={images}
           isImgLeft={index % 2 === 0}
+          className={`z-[${(index+1)*10}]`}
           />
        </TracingBeam2>))}
      </div>

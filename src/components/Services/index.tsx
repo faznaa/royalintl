@@ -5,6 +5,7 @@ import img3 from '../../assets/images/img3.jpg';
 import img4 from '../../assets/images/img4.png';
 import video from '../../assets/videos/video1.mp4';
 import Service from 'components/Service';
+import ServiceCopy from 'components/ServiceCopy';
 
 // Define the structure of a service object
 interface ServiceType {
@@ -53,7 +54,7 @@ const Services: React.FC = () => {
   return (
     <div className="w-full h-auto">
       {services.map((service, index) => (
-        <Service
+        <ServiceCopy
           key={index}
           index={index}
           title={service.title}

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@headlessui/react": "^2.1.2",
+    "@heroicons/react": "^2.1.5",
     "@lottiefiles/dotlottie-react": "^0.8.7",
     "@motionone/utils": "^10.18.0",
     "@react-three/drei": "^9.109.5",

@@ -2,26 +2,31 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TracingBeam } from './ui/TracingBeam';
 import { CardBody, CardContainer, CardItem } from './ui/3dCard';
+import ParallaxText from './ParallaxText';
 
-const CardImage = ({ src}:any) => {
-  return (
-    <motion.img
-    // whileHover={{
-    //   scale:1.1
-    // }}
-    // transition={{duration:0.5}}
-    src={src} className='w-full h-full object-cover hover:scale-110 transition duration-500' alt="A new img" />
-  );
-}
 
 const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref ,  offset: ["center end", "end end"]});
 
+  const CardImage = ({ src}:any) => {
+    return (
+      <motion.img
+      // whileHover={{
+      //   scale:1.1
+      // }}
+      // transition={{duration:0.5}}
+      style={{
+        scale: scaleImg,
+      }}
+      src={src} 
+      className='w-full h-full object-cover hover:scale-110 transition duration-500' alt="A new img" />
+    );
+  }
   
   // Define transformation for opacity and blur based on scroll progress
-  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,0.95,1], [0,0.8, 1,1,1,1,0]);
-  const blur = useTransform(scrollYProgress, [0, 1], [0.5,0.1]);
+  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.85,1], [0,0.8, 1,1,1]);
+  const blur = useTransform(scrollYProgress, [0, 0.2,0.25], [0.5,0.1,0]);
   // const skewDeg = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 10,]);
   const translate3d = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
@@ -35,19 +40,16 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const skewX = useTransform(scrollYProgress, [0, 1], [5,0]); // Skew from 0deg to 10deg
   const skewY = useTransform(scrollYProgress, [0, 1], [10, 0]);  // Skew from 0deg to 5deg
   const translateXImg = useTransform(scrollYProgress, [0, 1], ["60%","60%"]); // Translate Y from 0px to 100px
-  const translateYImg = useTransform(scrollYProgress, [0,0.2,0.9, 1], [100,-36,-50,-100]);
+  const translateYImg = useTransform(scrollYProgress, [0,0.2,0.9, 1], [100,-36,-50,-60]);
   const scaleImg = useTransform(scrollYProgress, [0,0.2,0.9, 1], [1,1,1.1,1]);
 
   const translateYImgSecond = useTransform(scrollYProgress, [0, 0.9,0.95,1], [-100, -50,-50, 75]);
-  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.95,1], [0, 1,1,1,1,0]);
+  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.95,1], [0, 1,1,1,1,0.6]);
   const translateParagraph = useTransform(scrollYProgress, [0, 0.3,0.9,1], ["50%","0%","0%","0%"]);
   const [transform, setTransform] = React.useState('');
   const [imgTransform, setImgTransform] = React.useState('');
-  const [secondImgTransform, setSecondImgTransform] = React.useState('');
   const [visible, setIsVisible] = React.useState(false);
-  const blurP = useTransform(scrollYProgress, [0, 1], [10, 0]); // Blur from 10px to 0px
-  const opacityP = useTransform(scrollYProgress, [0, 0.5,0.75,0.98,1], [0,0, 1,1,0]); // Opacity from 0.5 to 1
-  const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
+  const textMarginRight = useTransform(scrollYProgress, [0,0.25,0.26], ["-10px","-3px","-3px"]); // Opacity from 0.5 to 1
   
   const getTransform = () => {
     return `translate3d(-50%, -50%, 20px) skew(${skewX.get()}deg, ${skewY.get()}deg)`;
@@ -63,7 +65,6 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
     return scrollYProgress.onChange(() => {
       setTransform(getTransform());
       setImgTransform(getImageTransform());
-      setSecondImgTransform(getSecondImageTransform());
       setIsVisible(scrollYProgress.get() > 0 && scrollYProgress.get() < 1);
     });
   }, [scrollYProgress]);
@@ -73,9 +74,11 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
     <motion.section
     // initial={{opacity:0}}
     // whileInView={{opacity:1}}
-    ref={ref} className={`h-[300vh]  w-full   ${isImgLeft ? 'bg-black/[0.9]  text-white' : 'bg-gray-200 text-gray-800'}`}>
+    ref={ref} className={`h-[400vh]  w-full rounded-t-[100px]  ${isImgLeft ? 'bg-black/[0.9]  text-white' : 'bg-gray-200 text-gray-800'}`}>
 
-      <div className='sm:grid sm:grid-cols-2 h-[200vh]'>
+      <div className={` h-[300vh] sm:mx-20 `}>
+        {/* <div className={`bg-gray-300 mx-20 z-10 w-full h-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}> */}
+        <div>
         <motion.div 
         className={`fixed top-1/2 translate-y-[-50%]  ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
         // initial={{y:"50%"}}
@@ -91,11 +94,12 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
           className='grid sm:grid-cols-2 gap-4 '>
             <div className='flex flex-col items-end justify-end gap-4 '>
               <div className='overflow-hidden   w-96 h-64 rounded-3xl'>
-                <motion.img
+                {/* <motion.img
                 style={{
                   scale: scaleImg,
                 }}
-                src="/hero1.jpg" className='w-full h-full object-cover transition duration-500' alt="A London skyscraper" />
+                src="/hero1.jpg" className='w-full h-full object-cover transition duration-500' alt="A London skyscraper" /> */}
+                 <CardImage src={'hero1.jpg'} />
               </div>
               <div className='overflow-hidden  w-64 h-64  rounded-3xl'>
                 <CardImage src={images[0]} />
@@ -169,7 +173,13 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
      </div> */}
     
     </div>
+        </div>
    
+   <div className='fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  '>
+    {/* <ParallaxText baseVelocity={100}>Hello all </ParallaxText>
+    <ParallaxText baseVelocity={500}>Good mornign </ParallaxText> */}
+
+   </div>
     </div>
 
     
