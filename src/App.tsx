@@ -13,25 +13,24 @@ import About from "./pages/About";
 
 import { TracingBeam2 } from "components/ui/TracingBeam2";
 import AnimatedText2 from "components/AnimatedText2";
+import Home from "pages/Home";
 
 function App() {
  
   return (
     <Router>
-    <div className="">
-    <Helmet>
+    <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link href="https://fonts.googleapis.com/css2?family=Plaster&display=swap" rel="stylesheet" />
-    </Helmet>
+    </head>
       <Navbar />
   
-    <GridBackground />
       <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
       </Routes>
-    </div>
     </Router>
   );
 }
