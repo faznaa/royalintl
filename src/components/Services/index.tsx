@@ -28,10 +28,13 @@ import video2 from '../../assets/videos/video2.mp4';
 import video3 from '../../assets/videos/video3.mp4';
 import video4 from '../../assets/videos/video4.mp4';
 import Service from 'components/Service';
+import ServiceCard from 'components/ServiceCard';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 // Define the structure of a service object
 interface ServiceType {
   title: string;
+  subtitle: string;
   description: string;
   images: string[];
   video: string;
@@ -44,12 +47,14 @@ const images: any[] = [img1, img2, img3, img4];
 const services: ServiceType[] = [
   {
     title: 'Data Center Migration',
+    subtitle: 'The Power of Secure Element Technology',
     description:"We offer comprehensive data center migration services at Royal International, ensuring a seamless transition from legacy systems to modern, scalable infrastructures. Our expert team handles every aspect of the migration process, minimizing downtime and ensuring data integrity. Whether you're moving to a cloud environment or upgrading your on-premise infrastructure, we tailor our solutions to fit your unique business needs, ensuring a smooth and efficient migration.",
     images: [dataCentreImg1, dataCentreImg2, dataCentreImg3, dataCentreImg4, dataCentreImg5],
     video: video1,
   },
   {
     title: 'Clean Room and Labs',
+    subtitle: 'The Power of Secure Element Technology',
     description:
       'We offer state-of-the-art clean room and laboratory solutions at Royal International, designed to meet the highest standards of cleanliness and safety for various industries. Our facilities are equipped with advanced technology and precision-controlled environments, ensuring that critical research, development, and manufacturing processes are conducted with minimal contamination risk. Whether for pharmaceuticals, electronics, or biotechnology, our clean rooms and labs are customized to support your unique operational requirements.',
     images: [cleanRoomImg1, cleanRoomImg2, cleanRoomImg3, cleanRoomImg4, cleanRoomImg5],
@@ -57,6 +62,7 @@ const services: ServiceType[] = [
   },
   {
     title: 'Special logistics',
+    subtitle: 'The Power of Secure Element Technology',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [logisticsImg1, logisticsImg2, logisticsImg3, logisticsImg4, logisticsImg5],
@@ -64,6 +70,7 @@ const services: ServiceType[] = [
   },
   {
     title: 'Structured Cable Networking',
+    subtitle: 'The Power of Secure Element Technology',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [structuredCableImg1, structuredCableImg2, structuredCableImg3, structuredCableImg4, structuredCableImg5],
@@ -74,18 +81,22 @@ const services: ServiceType[] = [
 // Services component
 const Services: React.FC = () => {
   return (
-    <div className="w-full h-auto">
+    <section
+      className="relative h-auto"
+    >
       {services.map((service, index) => (
-        <Service
+        <ServiceCard
           key={index}
           index={index}
+          bg='#000000'
+          textColor='#ffffff'
           title={service.title}
+          subtitle={service.subtitle}
           description={service.description}
-          images={service.images}
-          video={service.video}
+          src={service.images[0]}
         />
       ))}
-    </div>
+    </section>
   );
 };
 
