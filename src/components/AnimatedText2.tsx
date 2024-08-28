@@ -14,13 +14,13 @@ const CardImage = ({ src}:any) => {
   );
 }
 
-const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
+const AnimatedText2 = ({word,description,caption,images,isImgLeft,index,video}:any) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref ,  offset: ["center end", "end end"]});
 
   
   // Define transformation for opacity and blur based on scroll progress
-  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,0.95,1], [0,0.8, 1,1,1,1,0]);
+  const opacity = useTransform(scrollYProgress, [0,0.01, 0.25,0.5,0.75,.9], [0,0.8, 1,1,1,0]);
   const blur = useTransform(scrollYProgress, [0, 1], [0.5,0.1]);
   // const skewDeg = useTransform(scrollYProgress, [0, 0.25,0.5,0.75,1], [0, 10,]);
   const translate3d = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -39,7 +39,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const scaleImg = useTransform(scrollYProgress, [0,0.2,0.9, 1], [1,1,1.1,1]);
 
   const translateYImgSecond = useTransform(scrollYProgress, [0, 0.9,0.95,1], [-100, -50,-50, 75]);
-  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.95,1], [0, 1,1,1,1,0]);
+  const opacityImg = useTransform(scrollYProgress, [0, 0.02,0.5,0.75,0.85,1], [0, 1,1,1,1,0]);
   const translateParagraph = useTransform(scrollYProgress, [0, 0.3,0.9,1], ["50%","0%","0%","0%"]);
   const [transform, setTransform] = React.useState('');
   const [imgTransform, setImgTransform] = React.useState('');
@@ -47,7 +47,7 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
   const [visible, setIsVisible] = React.useState(false);
   const blurP = useTransform(scrollYProgress, [0, 1], [10, 0]); // Blur from 10px to 0px
   const opacityP = useTransform(scrollYProgress, [0, 0.5,0.75,0.98,1], [0,0, 1,1,0]); // Opacity from 0.5 to 1
-  const textMarginRight = useTransform(scrollYProgress, [0,1], ["-10px","0px"]); // Opacity from 0.5 to 1
+  const textMarginRight = useTransform(scrollYProgress, [0,.5], ["-10px","0px"]); // Opacity from 0 to .5
   
   const getTransform = () => {
     return `translate3d(-50%, -50%, 20px) skew(${skewX.get()}deg, ${skewY.get()}deg)`;
@@ -74,8 +74,12 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
     // initial={{opacity:0}}
     // whileInView={{opacity:1}}
     ref={ref} className={`h-[300vh]  w-full   ${isImgLeft ? 'bg-black/[0.9]  text-white' : 'bg-gray-200 text-gray-800'}`}>
-
       <div className='sm:grid sm:grid-cols-2 h-[200vh]'>
+        {index == 0 &&
+          <div className="relative w-screen flex justify-center mt-[40%]">
+            <p className='text-8xl font-medium text-white text-center'>About Us</p>
+          </div>
+        }
         <motion.div 
         className={`fixed top-1/2 translate-y-[-50%]  ${isImgLeft? 'right-0 mr-20' : 'left-0 ml-20'}`}
         // initial={{y:"50%"}}
@@ -91,11 +95,14 @@ const AnimatedText2 = ({word,description,caption,images,isImgLeft}:any) => {
           className='grid sm:grid-cols-2 gap-4 '>
             <div className='flex flex-col items-end justify-end gap-4 '>
               <div className='overflow-hidden   w-96 h-64 rounded-3xl'>
-                <motion.img
-                style={{
+                <motion.video
+                 style={{
                   scale: scaleImg,
-                }}
-                src="/hero1.jpg" className='w-full h-full object-cover transition duration-500' alt="A London skyscraper" />
+                 }}
+                  className="w-full h-full object-cover rounded-lg" autoPlay muted loop
+                >
+                  <source src={video} type="video/mp4" />
+                </motion.video>
               </div>
               <div className='overflow-hidden  w-64 h-64  rounded-3xl'>
                 <CardImage src={images[0]} />

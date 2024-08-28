@@ -24,11 +24,12 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
   const gridScale = useTransform(scrollYProgress, [0.25, 0.5, 75, 1], [0, 1, 1, 0]);
   const gridOpacity = useTransform(scrollYProgress, [0.25, 0.5, .75, 1], [0, 1, 1, 0]);
   const gridTranslateX = useTransform(scrollYProgress, [0.75, 1], ['0', isOdd() ? '-100%' : '100%']);
-  const textOpacity = useTransform(scrollYProgress, [0.25, 0.5,0.75,0.8,1], [0, 1,1,0.3,0]);
-  const textTranslateY = useTransform(scrollYProgress, [0.5, .75], ['0%', '-100%']);
+  const textOpacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75, 0.8, 1], [0, 1, 1, 0.3, 0]);
+  const textTranslateY = useTransform(scrollYProgress, [0.5, .75], ['0%', '-80%']);
   const textVisiblity = useTransform(scrollYProgress, [0, .75, 0.8,1], ['visible', 'visible', 'hidden', 'hidden']);
   const textScale = useTransform(scrollYProgress, [0.75, 1], [1,0.8]);
   const textTranslateX = useTransform(scrollYProgress, [0.75, 1], ['0%', isOdd() ? '100%' : '-100%']);
+  const titleMarginBottom = useTransform(scrollYProgress, [0, 0.5, 0.51, 0.75], ['16px', '16px', '32px', '32px']);
 
   return (
     <motion.div
@@ -37,7 +38,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
     >
       {index === 0 &&
         <div
-          className="mt-[50vh] mx-32 text-5xl font-extralight text-center mb-10 leading-[1.5]"        
+          className="mt-[50vh] mx-32 text-5xl font-extralight text-center mb-10 leading-[2]"        
         >
           Royal International is expanding into niche services, specializing in data center migration, clean room & lab relocations, and tailored logistics for high-tech industries
         </div>
@@ -61,10 +62,11 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
             }}
           >
             <motion.h1
-              className='text-5xl font-medium mb-4 tracking-tight'
+              className='text-5xl font-medium tracking-tight'
               style={{
                 opacity: textOpacity,
                 scale: textScale,
+                marginBottom: titleMarginBottom,
               }}
             >
               {title}
@@ -74,7 +76,7 @@ const Service: React.FC<ServiceProps> = ({ title, description, video, images, in
                 <div className='absolute inset-0 bg-gradient-to-b from-black via-transparent via-30% to-black pointer-events-none z-10' />
               }
               <motion.p
-                className={`text-4xl ${isOdd() ? 'text-gray-700' : 'text-gray-200'} font-normal  tracking-tighter z-0`}
+                className={`text-4xl ${isOdd() ? 'text-gray-700' : 'text-gray-200'} font-normal tracking-tighter leading-[1.5] z-0`}
                 style={{
                   opacity: textOpacity,
                   translateY: textTranslateY,
