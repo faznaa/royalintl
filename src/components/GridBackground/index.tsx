@@ -291,7 +291,7 @@ export default function GridBackground() {
  
     return (
       <div className="h-screen w-full dark:bg-black bg-black  relative flex items-center justify-center">
-      <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      {/* <div className="absolute pointer-events-none z-20 inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div> */}
 
        
 
@@ -444,14 +444,14 @@ export default function GridBackground() {
 </div>
 
     {/* A circular blur effect / shadow around the globe */}
-      <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
+      {/* <motion.div className="absolute w-[350px] h-[350px] z-10 right-0  mr-32 blur-2xl bg-[#C5D0D4] rounded-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2, delay: 5 }}      
-      />
-      <div className="absolute h-[500px] w-[600px] z-20 right-0  mr-18  ">
+      /> */}
+      {/* <div className="absolute h-[500px] w-[600px] z-20 right-0  mr-48 mt-104">
             <World data={sampleArcs} globeConfig={globeConfig} />
-          </div>
+          </div> */}
      <div>
   
      {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300
@@ -482,7 +482,7 @@ className="text-4xl text-center sm:text-7xl font-medium relative z-20 text-gray-
 </motion.h2>
     </AnimatePresence>
      <div className="w-full flex justify-center mt-10">
-     <BorderMagicBtn >Get Started</BorderMagicBtn>
+     {/* <BorderMagicBtn >Get Started</BorderMagicBtn> */}
      </div>
      <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
   
