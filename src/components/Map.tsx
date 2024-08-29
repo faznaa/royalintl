@@ -1,6 +1,7 @@
 import React from 'react';
 import svg from '../assets/svg/map1.svg';
 import PingDot from '../components/PingDot';
+import FadeIn from './FadeIn';
 // import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 function getDeviceDimensions() {
@@ -24,13 +25,15 @@ const Map = () => {
       <div 
         // ref={ref} 
         className={`w-[60%] space-y-6 transform transition-all duration-[1s] ease-out ${
-          isVisible ? '-translate-y-0 opacity-100 blur-none' : '-translate-y-[40%] opacity-0 blur-md'
+        isVisible ? '-translate-y-0 opacity-100 blur-none' : '-translate-y-[40%] opacity-0 blur-md'
         }`}
       >
         {/* <h1 className='text-3xl font-medium'>An Expert in International Relocation Services</h1> */}
-         <h1 className=' text-xl sm:text-4xl font-medium '>We cover all continents</h1>
+        <FadeIn>
+        <h1 className=' text-xl sm:text-4xl font-medium '>We cover all continents</h1>
         <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10'>Over the last 15 years , we've grown into an international relocation company with a presence of 20+ partners aroudn the world.</p>
    
+        </FadeIn>
         {/* <h2 className='text-5xl font-extralight'>We Have More Than 20+ Country Coverage Area</h2>
         <p className='text-lg'>In the last 15 years, We have become an international relocation company by  expanding our services to offer a strong presence and coverage in 20+  countries across Europe, Asia and Africa through our partners.</p> */}
       </div>

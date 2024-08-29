@@ -1,6 +1,8 @@
 import { useScroll, useTransform, MotionValue } from "framer-motion";
 import React, { RefObject } from "react";
 import { GoogleGeminiEffect } from "../components/ui/google-gemini-effect";
+import {motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 
 const leftPaths = [
   {
@@ -64,7 +66,10 @@ const OurExpertise: React.FC = () => {
   const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
   const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
   const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
-
+  const firstDiv =useTransform(scrollYProgress, [0, 0.25,0.3,0.75], [0,0,1,1]);
+  const secondDiv =useTransform(scrollYProgress, [0, 0.3,0.35,0.75], [0,0,1,1]);
+  const fullOpacity =useTransform(scrollYProgress, [0.7, 0.8], [1,0.5]);
+  const fullScale =useTransform(scrollYProgress, [0.7, 0.8], [1,0.8]);
   return (
     <div
       className="h-[400vh] bg-black w-full  relative pt-40 overflow-clip"
@@ -82,25 +87,27 @@ const OurExpertise: React.FC = () => {
           ]}
           // className="top-0 left-0"
         />
-        <div className="text-white flex flex-col justify-center items-center space-y-8 text-center">
-          <h3 className="text-5xl leading-[1.3]">International Relocation</h3>
-          <p className="w-1/2">
+        <motion.div
+        style={{opacity:fullOpacity, scale:fullScale}}
+        className="text-white flex flex-col justify-center items-center space-y-8 text-center">
+          <FadeIn><h3 className="text-5xl leading-[1.3]">International Relocation</h3></FadeIn>
+          <FadeIn><p className="w-1/2 mx-auto">
             With over 15 years of experience, Royal International Worldwide
             Relocations is a trusted leader in the relocation industry. We offer
             reliable, safe, and affordable services both domestically and
             internationally, with a focus on quality and timely delivery
-          </p>
-          <div className="flex justify-center gap-4">
-            <div className="space-y-2">
+          </p></FadeIn>
+          <div className="flex justify-center gap-4 gap-x-12">
+            <motion.div style={{opacity:firstDiv}} className="space-y-2">
               <span className="text-red-600 text-5xl font-medium">150 k</span>
               <p className="uppercase">home moving</p>
-            </div>
-            <div className="space-y-2">
+            </motion.div>
+            <motion.div style={{opacity:secondDiv}} className="space-y-2">
               <span className="text-red-600 text-5xl font-medium">250 k</span>
               <p className="uppercase">ship expedition</p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
         <GoogleGeminiEffect
           svgPaths={rightPaths}
           pathLengths={[

@@ -30,6 +30,8 @@ import video4 from '../../assets/videos/video4.mp4';
 import Service from 'components/Service';
 import ServiceCard from 'components/ServiceCard';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import FadeIn from 'components/FadeIn';
 
 // Define the structure of a service object
 interface ServiceType {
@@ -63,7 +65,7 @@ const services: ServiceType[] = [
       'We offer state-of-the-art clean room and laboratory solutions at Royal International, designed to meet the highest standards of cleanliness and safety for various industries. Our facilities are equipped with advanced technology and precision-controlled environments, ensuring that critical research, development, and manufacturing processes are conducted with minimal contamination risk. Whether for pharmaceuticals, electronics, or biotechnology, our clean rooms and labs are customized to support your unique operational requirements.',
     images: [cleanRoomImg1, cleanRoomImg2, cleanRoomImg3, cleanRoomImg4, cleanRoomImg5],
     video: video2,
-     bg:'#B84900',
+     bg:'#ce4257',
     fg:'#ffffff'
   },
   {
@@ -73,7 +75,7 @@ const services: ServiceType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [logisticsImg1, logisticsImg2, logisticsImg3, logisticsImg4, logisticsImg5],
     video: video3,
-     bg:'#508AA8',
+     bg:'#f27059',
     fg:'#ffffff'
   },
   {
@@ -83,22 +85,36 @@ const services: ServiceType[] = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [structuredCableImg1, structuredCableImg2, structuredCableImg3, structuredCableImg4, structuredCableImg5],
     video: video4,
-     bg:'#A0D6F8',
+     bg:'#db7c26',
     fg:'#ffffff'
   },
 ];
 
+
 // Services component
 const Services: React.FC = () => {
+  const [selectedId,setSelectedId] = React.useState<string>('service-0')
+  const scrollToId = (id: string) => {
+    setSelectedId(id)
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section
       className="relative h-auto bg-white"
     >
-       <h1 className=' text-xl sm:text-4xl font-medium text-center mt-20 sm:mt-40'>Our Specializations</h1>
-        <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10 text-center'>
+       <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center mt-20 sm:mt-40'>Our Specializations</h1></FadeIn>
+       <FadeIn> <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
-        </p>
+        </p></FadeIn>
    
+
+      <div className='flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight'>
+      {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+        ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`} >{service.title}</button>))}
+      </div>
       {services.map((service, index) => (
         <ServiceCard
           key={index}

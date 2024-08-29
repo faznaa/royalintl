@@ -10,7 +10,7 @@ const NavbarItem = (props: any) => {
     <Link
     to={props.href}
       {..._props}
-      className="relative group py-2 my-5 mx-3 inline-block transition duration-300"
+      className="relative group py-2 mx-3 inline-block transition duration-300 font-medium"
     >
       {_props.children}
       <div
@@ -50,17 +50,18 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
 
   return (
     <nav
-      className={`fixed w-full z-30 transition-colors duration-300 ${
-        hasScrolled || isWhiteTheme
-          ? "bg-black text-gray-200 hover:text-white shadow-lg z-50"
-          : "bg-black/30 text-white"
-      }`}
+      // className={`fixed w-full z-30 transition-colors duration-300 ${
+      //   hasScrolled || isWhiteTheme
+      //     ? "bg-black text-gray-200 hover:text-white shadow-lg z-50"
+      //     : "bg-black/30 text-white"
+      // }`}
+      className="fixed bg-white w-full z-50 rounded-3xl  shadow-lg sm:max-w-4xl  mx-auto left-1/2 transform -translate-x-1/2 mt-4"
     >
       <MobileNavbar hasScrolled={hasScrolled || isWhiteTheme} />
 
-      <div className="hidden md:block  mx-auto lg:mx-16 px-4">
+      <div className="hidden md:block  mx-auto  px-4">
         <div className="flex justify-start items-center">
-          <div className="flex justify-start items-center space-x-4">
+          <div className="flex justify-start items-center space-x-4 ml-6">
             <a href="/" className="pt-2 ">
               {/* Website Logo */}
               {hasScrolled || isWhiteTheme ? (
@@ -82,7 +83,7 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
               )}
             </a>
           </div>
-         <div className="w-full flex justify-center mr-32">
+         <div className="w-full flex justify-center py-2">
          <div className="hidden md:flex items-center justify-between space-x-1 gap-x-4 ">
             {navigation.map((item) => (
               <NavbarItem
@@ -95,6 +96,17 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
             ))}
           </div>
          </div>
+         <div className=" w-64  flex justify-end">
+         <button className="  rounded-3xl  bg-black px-4  text-white py-1.5">
+         <div className="flex justify-center items-center space-x-2">
+         Get In Touch 
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+</svg></div>
+
+         </button>
+         </div>
+        
         </div>
       </div>
     </nav>
