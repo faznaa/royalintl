@@ -57,7 +57,9 @@ const Hero = () => {
           <BorderMagicBtn>Get Started</BorderMagicBtn>
         </div>
       </div>
-      <div className=" flex justify-center items-center  h-[500px] -mt-40 w-full relative  z-40 ">
+      <motion.div  initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{delay:2,duration:0.5}} className=" flex justify-center items-center  h-[500px] -mt-40 w-full relative  z-40 ">
         <div className="absolute top-20 left-72 "><CustomText>5K Ship expedition</CustomText></div>
         <div className="absolute top-48 left-60 "><CustomText>10K Home Moving</CustomText></div>
         <div className="absolute top-80 left-72 "><CustomText>100M Trucking</CustomText></div>
@@ -66,13 +68,11 @@ const Hero = () => {
         <div className="absolute top-80 right-72 "><CustomText>100M Trucking</CustomText></div>
 
       <motion.div
-      style={{
-        // scale:globeSize
-      }}
+     
       className=" h-[500px]  w-[600px] z-20 px-auto  flex justify-center items-center object-center">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </motion.div>
-      </div>
+      </motion.div>
       
     </section>
   );
