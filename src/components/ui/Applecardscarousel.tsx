@@ -123,6 +123,10 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                     once: true,
                   },
                 }}
+                whileHover={{
+                  scale:1.2,
+                  zIndex:40
+                }}
                 key={"card" + index}
                 className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
               >

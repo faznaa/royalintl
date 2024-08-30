@@ -63,7 +63,7 @@ export default function TrustedForAllRelocation() {
     const opacity = useTransform(scrollYProgress, [0.3, 0.4], [1, 0]);
     const textScale = useTransform(scrollYProgress, [0.2, 0.4], [1,0.7]);
     const opacityOfBtns = useTransform(scrollYProgress, [0.4, 0.5], [0,1]);
-    const [starSize,setStarSize] = useState("1.0")
+    const [starSize,setStarSize] = useState("1.2")
     // useEffect(() => {
     //   return scrollYProgress.onChange(() => {
     //       if(scrollYProgress.get()>0.4) {
@@ -77,8 +77,8 @@ export default function TrustedForAllRelocation() {
     // },[scrollYProgress])
     return (
       <section className="relative w-full  h-[270vh] bg-black" ref={ref}>
-        <div className=" overflow-hidden z-0 absolute top-0">
-          <WaveParticles starSize={starSize} />
+        <div className=" overflow-hidden z-0 absolute  h-[50vh]  rounded-b-full">
+          <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} />
         </div>
         <motion.div
         // style={{ translateY: translateOut, opacity: opacity,scale:textScale }}

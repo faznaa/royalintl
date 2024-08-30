@@ -21,16 +21,14 @@ const Map = () => {
   console.log(`Device width: ${width}px, height: ${height}px`);
 
   return (
-    <section className='w-full h-screen flex flex-col justify-center items-center text-center space-y-6 mb-8 overflow-hidden'>
+    <div className='w-full  h-screen flex flex-col justify-center items-center text-center space-y-6 pb-8 overflow-hidden'>
       <div 
         // ref={ref} 
-        className={`w-[60%] space-y-6 transform transition-all duration-[1s] ease-out ${
-        isVisible ? '-translate-y-0 opacity-100 blur-none' : '-translate-y-[40%] opacity-0 blur-md'
-        }`}
+        className={`w-[60%] space-y-6 transform transition-all duration-[1s] ease-out bg-white`}
       >
         {/* <h1 className='text-3xl font-medium'>An Expert in International Relocation Services</h1> */}
         <FadeIn>
-        <h1 className=' text-xl sm:text-4xl font-medium '>We cover all continents</h1>
+        <h1 className=' text-xl sm:text-4xl font-medium bg-white'>We cover all continents</h1>
         <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10'>Over the last 15 years , we've grown into an international relocation company with a presence of 20+ partners aroudn the world.</p>
    
         </FadeIn>
@@ -49,7 +47,7 @@ const Map = () => {
         <img src={svg} alt="svg" className='w-full h-auto object-cover z-0'/>
       </div>
       </div>
-    </section>
+    </div>
   )
 }
 

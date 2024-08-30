@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
 
-const WaveParticles = ({ starSize }) => {
+const WaveParticles = ({ starSize, AMOUNTX=50,AMOUNTY=50,CAMERAPOINT=75 }) => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
@@ -19,11 +19,11 @@ const WaveParticles = ({ starSize }) => {
     height: window.innerHeight
   });
 
-  const SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
+  const SEPARATION = 100;
 
   useEffect(() => {
     const init = () => {
-      cameraRef.current = new THREE.PerspectiveCamera(75, windowSize.width / windowSize.height, 1, 10000);
+      cameraRef.current = new THREE.PerspectiveCamera(CAMERAPOINT, windowSize.width / windowSize.height, 1, 10000);
       
       // Set camera position to top view
       cameraRef.current.position.set(-100, 1000, 100);  // Positioned high above the scene
@@ -154,7 +154,7 @@ const WaveParticles = ({ starSize }) => {
       }
       window.removeEventListener('resize', onWindowResize);
     };
-  }, [windowSize,starSize]);
+  }, [windowSize,starSize,CAMERAPOINT]);
 
   return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
 };
