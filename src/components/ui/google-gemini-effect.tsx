@@ -45,12 +45,13 @@ export const GoogleGeminiEffect: React.FC<GoogleGeminiEffectProps> = ({
               style={{ pathLength: pathLengths[index] }}
               transition={transition}
             />
-            <path
+            <motion.path
               d={pathData.path}
               stroke={pathData.color}
               strokeWidth="2"
               fill="none"
-              pathLength={1}
+              initial={{ pathLength: 0 }}
+              style={{ pathLength: pathLengths[index] }}
               filter="url(#blurMe)"
             />
           </React.Fragment>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, MotionValue, useTransform } from 'framer-motion';
 import FadeIn from './FadeIn';
 
 interface ServiceCardProps {
@@ -10,37 +10,44 @@ interface ServiceCardProps {
   description: string;
   src: string;
   index: number;
+  progress: MotionValue<number>;
+  range: [number, number];
+  targetScale: number;
+  gradientBg: string;
 }
 
-const scaleX: { [key: number]: number } = {
-  0: 1,
-  1: 1.02,
-  2: 1.04,
-  3: 1.05,
-}
-
-
-const ServiceCard: React.FC<ServiceCardProps> = ({ bg, textColor, title, subtitle, description, src, index }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ bg, textColor, title, subtitle, description, src, index, progress, range, targetScale, gradientBg }) => {
  
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start end', 'start start']
+  })
+
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.5, 1])
+  const scale = useTransform(progress, range, [1, targetScale]);
+
   return (
     <motion.div
+      ref={container}
       className='w-full h-screen sticky flex justify-center items-center overflow-hidden'
       style={{
-        top: index*30,
-        scaleX: scaleX[index],
+        top: `calc(6% + ${index * 30}px)`,
+        zIndex: index,
       }}
       id={`service-${index}`}
     >
       <motion.div
-        className={`w-3/4 h-3/4 grid grid-cols-2 items-center gap-x-12 sm:gap-x-20 p-12 border rounded-3xl overflow-hidden`}
+        className={`w-3/4 h-3/4 grid grid-cols-2 items-center gap-x-12 sm:gap-x-20 p-12 rounded-3xl overflow-hidden ${gradientBg}`}
         style={{
           backgroundColor: bg,
           color: textColor,
+          scale,
         }}
       >
         {/* Image */}
-        <div className='w-full h-full'>
-          <img src={src} alt={title} className='w-full h-full object-cover' />
+        <div className='w-full h-full overflow-hidden rounded-xl'>
+          <motion.img src={src} alt={title} className='w-full h-full object-cover rounded-xl' style={{scale: imageScale}} />
         </div>
         {/* Text content */}
         <FadeIn>
