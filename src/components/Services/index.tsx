@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import img1 from '../../assets/images/img1.jpg';
 import img2 from '../../assets/images/img2.jpg';
 import img3 from '../../assets/images/img3.jpg';
@@ -42,6 +42,7 @@ interface ServiceType {
   video: string;
   bg:string;
   fg:string;
+  gradientBg: string;
 }
 
 // Define the array of images
@@ -56,7 +57,8 @@ const services: ServiceType[] = [
     images: [dataCentreImg1, dataCentreImg2, dataCentreImg3, dataCentreImg4, dataCentreImg5],
     video: video1,
     bg:'#000000',
-    fg:'#ffffff'
+    fg:'#ffffff',
+    gradientBg:"bg-gradient-to-br from-black to-gray-800",
   },
   {
     title: 'Clean Room and Labs',
@@ -66,7 +68,8 @@ const services: ServiceType[] = [
     images: [cleanRoomImg1, cleanRoomImg2, cleanRoomImg3, cleanRoomImg4, cleanRoomImg5],
     video: video2,
      bg:'#ce4257',
-    fg:'#ffffff'
+    fg:'#ffffff',
+    gradientBg:"bg-gradient-to-br from-pink-200 to-pink-400",
   },
   {
     title: 'Special logistics',
@@ -76,7 +79,8 @@ const services: ServiceType[] = [
     images: [logisticsImg1, logisticsImg2, logisticsImg3, logisticsImg4, logisticsImg5],
     video: video3,
      bg:'#f27059',
-    fg:'#ffffff'
+    fg:'#ffffff',
+    gradientBg:"bg-gradient-to-br from-blue-600 to-sky-400",
   },
   {
     title: 'Structured Cable Networking',
@@ -86,7 +90,8 @@ const services: ServiceType[] = [
     images: [structuredCableImg1, structuredCableImg2, structuredCableImg3, structuredCableImg4, structuredCableImg5],
     video: video4,
      bg:'#db7c26',
-    fg:'#ffffff'
+    fg:'#ffffff',
+    gradientBg:"bg-gradient-to-br from-cyan-500 to-blue-300",
   },
 ];
 
@@ -94,6 +99,12 @@ const services: ServiceType[] = [
 // Services component
 const Services: React.FC = () => {
   const [selectedId,setSelectedId] = React.useState<string>('service-0')
+  const container = useRef(null);
+  const { scrollYProgress, scrollY } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  })
+  const z = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
   const scrollToId = (id: string) => {
     setSelectedId(id)
     const element = document.getElementById(id);
@@ -103,30 +114,44 @@ const Services: React.FC = () => {
   };
   return (
     <section
-      className="relative h-auto bg-white"
+      className="relative h-auto bg-white z-20 pt-40"
     >
-       <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center mt-20 sm:mt-40'>Our Specializations</h1></FadeIn>
+       <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center'>Our Specializations</h1></FadeIn>
        <FadeIn> <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
-   
-
-      <div className='flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight'>
-      {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
-        ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`} >{service.title}</button>))}
-      </div>
-      {services.map((service, index) => (
-        <ServiceCard
-          key={index}
-          index={index}
-          bg={service.bg}
-          textColor='#ffffff'
-          title={service.title}
-          subtitle={service.subtitle}
-          description={service.description}
-          src={service.images[0]}
-        />
-      ))}
+        <motion.div
+          ref={container}
+          className='relative h-auto'
+        >
+            <motion.div
+              className='sticky top-[12%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight'
+              style={{
+                zIndex: z,
+              }}  
+            >
+          {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+            ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`} >{service.title}</button>))}
+          </motion.div>
+          {services.map((service, index) => {
+            const targetScale = 1 - ( (services.length - index) * 0.05);
+            return <ServiceCard
+                    key={index}
+                    index={index}
+                    bg={service.bg}
+                    textColor='#ffffff'
+                    title={service.title}
+                    subtitle={service.subtitle}
+                    description={service.description}
+                    src={service.images[0]}
+                    progress={scrollYProgress}
+                    range={[index * .25, 1]}
+                    targetScale={targetScale}
+                    gradientBg={service.gradientBg}
+                  />
+          }
+          )}
+        </motion.div>
     </section>
   );
 };
