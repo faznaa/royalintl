@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
 
-const WaveParticles = () => {
+const WaveParticles = ({ starSize }) => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
@@ -59,8 +59,8 @@ const WaveParticles = () => {
         vertexShader: `
           attribute float scale;
           void main() {
-            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-            gl_PointSize = scale * (300.0 / -mvPosition.z);
+            vec4 mvPosition = modelViewMatrix * vec4(position,  ${starSize});
+            gl_PointSize = scale  * (300.0 / -mvPosition.z);
             gl_Position = projectionMatrix * mvPosition;
           }
         `,
@@ -154,7 +154,7 @@ const WaveParticles = () => {
       }
       window.removeEventListener('resize', onWindowResize);
     };
-  }, [windowSize]);
+  }, [windowSize,starSize]);
 
   return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
 };
