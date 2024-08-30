@@ -110,6 +110,7 @@ const Services: React.FC = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      
     }
   };
   return (

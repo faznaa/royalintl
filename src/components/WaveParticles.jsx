@@ -23,7 +23,7 @@ const WaveParticles = ({ starSize, AMOUNTX=50,AMOUNTY=50,CAMERAPOINT=75 }) => {
 
   useEffect(() => {
     const init = () => {
-      cameraRef.current = new THREE.PerspectiveCamera(CAMERAPOINT, windowSize.width / windowSize.height, 1, 10000);
+      cameraRef.current = new THREE.PerspectiveCamera(75, windowSize.width / windowSize.height, 1, 10000);
       
       // Set camera position to top view
       cameraRef.current.position.set(-100, 1000, 100);  // Positioned high above the scene
@@ -154,7 +154,7 @@ const WaveParticles = ({ starSize, AMOUNTX=50,AMOUNTY=50,CAMERAPOINT=75 }) => {
       }
       window.removeEventListener('resize', onWindowResize);
     };
-  }, [windowSize,starSize,CAMERAPOINT]);
+  }, [windowSize]);
 
   return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
 };

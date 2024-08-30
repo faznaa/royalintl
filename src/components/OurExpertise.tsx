@@ -111,7 +111,7 @@ const OurExpertise: React.FC = () => {
             internationally, with a focus on quality and timely delivery
           </p>
           <motion.div
-            className="flex justify-center gap-4"
+            className="flex justify-center gap-4 gap-x-10"
             style={{
               translateY: figureTransalteY,
               opacity: figureOpacity,  

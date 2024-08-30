@@ -29,27 +29,21 @@ const Hero = () => {
   const textScale = useTransform(scrollYProgress, [0.2, 0.4], [1, 0.7]);
 
   // Buttons fade in and everything scrolls out together
-  const opacityOfBtns = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
+  const opacityOfBtns = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
   const globeSize = useTransform(scrollYProgress, [0.4, 1], [1, 1]);
 
-  const [starSize, setStarSize] = useState(75);
 
-  useEffect(() => {
-    return scrollYProgress.onChange(() => {
-      // if (scrollYProgress.get() > 0.4) {
-      //   setStarSize("0.5");
-      // } else {
-      //   setStarSize("1.0");
-      // }
-      const val = scrollYProgress.get()
-      setStarSize(75-(100*val))
-    });
-  }, [scrollYProgress]);
+  // useEffect(() => {
+  //   return scrollYProgress.onChange(() => {
+  //     const val = scrollYProgress.get()
+  //     setStarSize(75-(100*val))
+  //   });
+  // }, [scrollYProgress]);
 
   return (
     <section className="relative w-screen h-[200vh] bg-black" ref={ref}>
       <div className="sticky top-0 w-full h-screen z-0 overflow-hidden">
-        <WaveParticles starSize={"1.0"} CAMERAPOINT={starSize} />
+        <WaveParticles starSize={"1.0"}/>
       </div>
       <motion.div
         style={{ translateY: translateOut, opacity: opacity, scale: textScale }}
@@ -87,13 +81,13 @@ const Hero = () => {
         </div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        style={{ translateY: translateUp, scale: globeSize }}
-        transition={{ delay: 2, duration: 0.5 }}
-        className="relative h-[500px] w-full mx-auto flex justify-center items-center flex-col z-10"
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // style={{ translateY: translateUp }}
+        // transition={{ delay: 2, duration: 0.5 }}
+        className="relative h-[900px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
-        <motion.div style={{ opacity: opacityOfBtns }}>
+        <motion.div className="-mt-96" style={{ opacity: opacityOfBtns }}>
           <div className="absolute top-20 left-72">
             <CustomText>5K Ship expedition</CustomText>
           </div>
@@ -114,9 +108,9 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.div className="h-[500px] w-[600px] z-20 px-auto flex justify-center items-center object-center">
-          <World data={sampleArcs} globeConfig={globeConfig} />
-        </motion.div>
+        <div className="h-[800px] w-[900px] z-20 px-auto flex justify-center items-center object-center">
+          <World data={sampleArcs} globeConfig={globeConfig} scrollYProgress={scrollYProgress} />
+        </div>
       </motion.div>
     </section>
   );
