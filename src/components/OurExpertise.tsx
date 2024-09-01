@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import React, { RefObject } from "react";
 import { GoogleGeminiEffect } from "../components/ui/google-gemini-effect";
+import FigureDigits from "./FigureDigits";
 
 const leftPaths = [
   {
@@ -72,7 +73,7 @@ const OurExpertise: React.FC = () => {
   const rightPathLengthFifth = useTransform(scrollYProgress, [0.6, 0.8], [0, 1.2]);
 
   const textTransalteY = useTransform(scrollYProgress, [0, 0.2], ["10%", "0%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   
   const figureTransalteY = useTransform(scrollYProgress, [0.25, 0.5], ["10%", "0%"]);
   const figureOpacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.5], [0, 0, 0, 1]);
@@ -118,11 +119,11 @@ const OurExpertise: React.FC = () => {
             }}
           >
             <div className="space-y-2">
-              <span className="text-red-600 text-5xl font-medium">150 k</span>
+              <FigureDigits digits={150} text="K"/>
               <p className="uppercase">home moving</p>
             </div>
             <div className="space-y-2">
-              <span className="text-red-600 text-5xl font-medium">250 k</span>
+              <FigureDigits digits={250} text="K"/>
               <p className="uppercase">ship expedition</p>
             </div>
           </motion.div>

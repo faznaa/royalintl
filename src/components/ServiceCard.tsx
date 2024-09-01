@@ -52,10 +52,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ bg, textColor, title, subtitl
         {/* Text content */}
         <FadeIn>
         <div className='space-y-4'>
-          <h3 className='text-5xl font-medium'>{title}</h3>
-          <h4 className='text-2xl font-extralight'>{subtitle}</h4>
+          <h3 className='text-5xl font-normal'>{title}</h3>
+          {/* <h4 className='text-2xl font-extralight'>{subtitle}</h4> */}
           <p className='font-extralight py-4'>{description.slice(0,150)}</p>
-          <button className='px-4 py-2 rounded-3xl bg-gray-100 text-black'>Explore &#8594;</button>
+          <button className='px-4 py-2 rounded-3xl bg-gray-100 text-black'>Know more &#8594;</button>
         </div>
         </FadeIn>
       </motion.div>

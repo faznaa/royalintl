@@ -55,7 +55,7 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
       //     ? "bg-black text-gray-200 hover:text-white shadow-lg z-50"
       //     : "bg-black/30 text-white"
       // }`}
-      className="fixed bg-white w-full z-50 rounded-3xl  shadow-lg sm:max-w-4xl  mx-auto left-1/2 transform -translate-x-1/2 mt-4"
+      className="fixed bg-white bg-opacity-85 backdrop-blur-sm w-full z-50 rounded-full  shadow-lg sm:max-w-4xl  mx-auto left-1/2 transform -translate-x-1/2 mt-4"
     >
       <MobileNavbar hasScrolled={hasScrolled || isWhiteTheme} />
 

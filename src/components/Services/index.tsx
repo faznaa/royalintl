@@ -105,6 +105,7 @@ const Services: React.FC = () => {
     offset: ['start start', 'end end']
   })
   const z = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
+  const tabHidden = useTransform(scrollYProgress, [0,0.96,1], [1,1,0]);
   const scrollToId = (id: string) => {
     setSelectedId(id)
     const element = document.getElementById(id);
@@ -129,9 +130,12 @@ const Services: React.FC = () => {
               className='sticky top-[12%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight'
               style={{
                 zIndex: z,
+                opacity: tabHidden
               }}  
             >
-          {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+          {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  
+          
+          className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
             ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`} >{service.title}</button>))}
           </motion.div>
           {services.map((service, index) => {

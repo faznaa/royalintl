@@ -8,7 +8,7 @@ import { globeConfig, sampleArcs } from "../data/globeutils";
 import FadeIn from "./FadeIn";
 
 const CustomText = ({ children }: any) => (
-  <div className="px-4 py-1.5 uppercase text-sm text-white z-40 bg-red-800 rounded-2xl">
+  <div className="px-4 py-2 uppercase text-sm text-white z-40 bg-red-800 rounded-2xl">
     {children}
   </div>
 );
@@ -32,6 +32,11 @@ const Hero = () => {
   const opacityOfBtns = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
   const globeSize = useTransform(scrollYProgress, [0.4, 1], [1, 1]);
 
+  // CustomTextTransition From left to right 
+  const pillLeft = useTransform(scrollYProgress, [0.3, 0.4], [-200, 0])
+  const pillTop = useTransform(scrollYProgress, [0.3, 0.4], [-100, 0])
+  const pillBottom = useTransform(scrollYProgress, [0.3, 0.4], [100, 0])
+  const pillRight = useTransform(scrollYProgress, [0.3, 0.4], [200, 0])
 
   // useEffect(() => {
   //   return scrollYProgress.onChange(() => {
@@ -76,9 +81,9 @@ const Hero = () => {
             </motion.h2>
           </FadeIn>
         </AnimatePresence>
-        <div className="w-full flex justify-center mt-10">
+        {/* <div className="w-full flex justify-center mt-10">
           <BorderMagicBtn>Get Started</BorderMagicBtn>
-        </div>
+        </div> */}
       </motion.div>
       <motion.div
         // initial={{ opacity: 0 }}
@@ -88,24 +93,50 @@ const Hero = () => {
         className="relative h-[900px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
         <motion.div className="-mt-96" style={{ opacity: opacityOfBtns }}>
-          <div className="absolute top-20 left-72">
+          <motion.div className="absolute top-20 left-72"
+          style={{
+            x:pillLeft,
+            y:pillTop
+          }}
+          >
             <CustomText>5K Ship expedition</CustomText>
-          </div>
-          <div className="absolute top-48 left-60">
+          </motion.div>
+          <motion.div className="absolute top-48 left-60"
+           style={{
+            x:pillLeft
+          }}
+          >
             <CustomText>10K Home Moving</CustomText>
-          </div>
-          <div className="absolute top-80 left-72">
+          </motion.div>
+          <motion.div className="absolute top-80 left-72"
+           style={{
+            x:pillLeft,
+            y:pillBottom
+          }}>
             <CustomText>100M Trucking</CustomText>
-          </div>
-          <div className="absolute top-20 right-72">
+          </motion.div>
+          <motion.div className="absolute top-20 right-72"
+          style={{
+            x:pillRight,
+            y:pillTop
+          }}>
             <CustomText>5K Ship expedition</CustomText>
-          </div>
-          <div className="absolute top-48 right-60">
+          </motion.div>
+          <motion.div className="absolute top-48 right-60"
+          style={{
+            x:pillRight,
+          }}
+          >
             <CustomText>10K Home Moving</CustomText>
-          </div>
-          <div className="absolute top-80 right-72">
+          </motion.div>
+          <motion.div className="absolute top-80 right-72"
+          style={{
+            x:pillRight,
+            y:pillBottom
+          }}
+          >
             <CustomText>100M Trucking</CustomText>
-          </div>
+          </motion.div>
         </motion.div>
 
         <div className="h-[800px] w-[900px] z-20 px-auto flex justify-center items-center object-center">
