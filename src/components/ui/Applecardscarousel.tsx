@@ -16,7 +16,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "components/hooks/useOutsideClick";
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: any;
   initialScroll?: number;
 }
 
@@ -39,7 +39,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -53,6 +53,19 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (carouselRef.current) {
+      const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
+      const gap = isMobile() ? 4 : 8;
+      const scrollPosition = (cardWidth + gap) * (index==0? index : index-1);
+      carouselRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+      setCurrentIndex(index);
     }
   };
 
@@ -103,11 +116,11 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
+              "flex flex-row justify-start items-center gap-4 pl-4",
               "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
             )}
           >
-            {items.map((item, index) => (
+            {items.map((card:any, index:number) => (
               <motion.div
                 initial={{
                   opacity: 0,
@@ -123,18 +136,21 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                     once: true,
                   },
                 }}
-                whileHover={{
-                  scale:1.2,
-                  zIndex:40
-                }}
+                // whileHover={{
+                //   scale:1.2,
+                //   zIndex:40
+                // }}
                 key={"card" + index}
                 className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
               >
-                {item}
+                {/* {item} */}
+                <Card key={card.src} card={card} index={index} isMiddle={currentIndex === index}/>
+
               </motion.div>
             ))}
           </div>
         </div>
+       
         <div className="flex justify-end gap-2 mr-10">
           <button
             className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -150,6 +166,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           >
             <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
           </button>
+        </div>
+        <div className="flex justify-end gap-2 mr-10 z-40">
+          {[0,1,2,3,4].map((idx) => (
+            <button className="z-40 h-10 w-10 text-white font-lg rounded-full bg-gray-500" key={idx} onClick={() => scrollToIndex(idx)}>{idx+1}</button>
+          ))}
+          <div className="z-40 text-white"> CURRENT INDEX {currentIndex}</div>
         </div>
       </div>
     </CarouselContext.Provider>
@@ -199,6 +221,8 @@ export const Card = ({
     onCardClose(index);
   };
 
+  const ref= useRef()
+
   return (
     <>
       <AnimatePresence>
@@ -210,7 +234,7 @@ export const Card = ({
             // scale:isMiddle?1.3:1
         }}
         onClick={handleOpen}
-        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[20rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative ${isMiddle?'z-20':'z-10'}`}
+        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-20  md:h-[17rem] md:w-[30rem]':'z-10'}`}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -220,12 +244,12 @@ export const Card = ({
           >
             {card.category}
           </motion.p>
-          <motion.p
+          {/* <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
           >
             {card.title}
-          </motion.p>
+          </motion.p> */}
         </div>
         <BlurImage
           src={card.src}
@@ -233,7 +257,19 @@ export const Card = ({
           fill
           className="object-cover absolute z-10 inset-0"
         />
+       
+        {/* <video src="video1.mp4" 
+        onMouseOver={(event:any) => event.target.play()}
+        onMouseOut={(event:any) => event.target.pause()}
+        onClick={(event:any) => event.target.pause()}
+        autoPlay={false} loop muted className="object-fit absolute z-10 inset-0"/> */}
       </motion.button>
+      <motion.p
+            layoutId={layout ? `title-${card.title}` : undefined}
+            className="text-white px-1 text-pretty text-sm md:text-sm font-medium   font-sans mt-2"
+          >
+            {card.title}
+          </motion.p>
     </>
   );
 };
