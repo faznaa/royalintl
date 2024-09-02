@@ -56,11 +56,12 @@ export type GlobeConfig = {
 interface WorldProps {
   globeConfig: GlobeConfig;
   data: Position[];
+  scrollYProgress?: any;
 }
 
 let numbersOfRings = [0];
 
-export function Globe({ globeConfig, data }: WorldProps) {
+export function Globe({ globeConfig,scrollYProgress, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
     | {
         size: number;
@@ -71,8 +72,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
       }[]
     | null
   >(null);
+  
 
   const globeRef = useRef<ThreeGlobe | null>(null);
+  
 
   const defaultProps = {
     pointSize: 1,
@@ -82,7 +85,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     polygonColor: "rgba(255,255,255,0.7)",
     globeColor: "#1d072e",
     emissive: "#000000",
-    emissiveIntensity: 0.1,
+    emissiveIntensity: 0.4,
     shininess: 0.9,
     arcTime: 2000,
     arcLength: 0.9,
@@ -237,19 +240,31 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
+
   }, []);
 
   return null;
 }
 
 export function World(props: WorldProps) {
-  const { globeConfig } = props;
+  const { globeConfig, scrollYProgress } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
+  const [fov,setFov] = useState(40)
+  const camera = new PerspectiveCamera(fov, aspect, 180, 1800)
+  useEffect(() => {
+    return scrollYProgress.onChange(() => {
+      const val = scrollYProgress.get()
+      if((val*100) % 10 && val<0.4) {
+        // setFov(40 + 40*val)
+        camera.setFocalLength(40-40*val)
+      }
+    })
+  },[scrollYProgress])
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+    <Canvas scene={scene} camera={camera}>
       <WebGLRendererConfig />
-      <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
+      <ambientLight color={globeConfig.ambientLight} intensity={1} />
       <directionalLight
         color={globeConfig.directionalLeftLight}
         position={new Vector3(-400, 100, 400)}
