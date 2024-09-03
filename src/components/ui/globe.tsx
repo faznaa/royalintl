@@ -253,12 +253,13 @@ export function World(props: WorldProps) {
   const [fov,setFov] = useState(40)
   const camera = new PerspectiveCamera(fov, aspect, 180, 1800)
   useEffect(() => {
+    
     return scrollYProgress.onChange(() => {
       const val = scrollYProgress.get()
-      if((val*100) % 10 && val<0.4) {
+      // if((val*100) % 10 && val<0.4) {
         // setFov(40 + 40*val)
         camera.setFocalLength(40-40*val)
-      }
+      // }
     })
   },[scrollYProgress])
   return (

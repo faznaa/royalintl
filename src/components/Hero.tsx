@@ -22,7 +22,7 @@ const Hero = () => {
 
   // Globe stays in center for some time
   const translateUp = useTransform(scrollYProgress, [0.2, 0.5,0.9, 0.6], [-180, 70,70, -200]);
-  const translateOut = useTransform(scrollYProgress, [0, 0.1, 0.5], [-300, -200, 100]);
+  const translateOut = useTransform(scrollYProgress, [0, 0.1, 0.3], [-300, -250, -100]);
   
   // Text scales and fades out
   const opacity = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);

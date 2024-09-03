@@ -233,13 +233,13 @@ export const Card = ({
             {card.title}
           </motion.p> */}
         </div>
-        <BlurImage
+        {/* <BlurImage
           src={card.src}
           alt={card.title}
           fill
           className="object-cover absolute z-10 inset-0"
         />
-       
+        */}
         <video src="video1.mp4" 
         onMouseOver={(event:any) => event.target.play()}
         onMouseOut={(event:any) => event.target.pause()}
