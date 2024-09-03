@@ -8,6 +8,7 @@ import HeroFazna from 'components/HeroFazna';
 import TrustedByLeaders from 'components/TrustedByLeaders';
 import Continents from 'components/Continents';
 import TrustedForAllRelocation from 'components/TrustedForAllRelocation';
+import WhatSetUsApart from 'components/WhatSetUsApart';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Services />
       <TrustedByLeaders/>
       <Continents/>
+      <WhatSetUsApart />
       <TrustedForAllRelocation />
     </div>
   );

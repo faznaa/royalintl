@@ -8,6 +8,7 @@ import Footer from 'components/Footer';
 
 // import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Sparkles } from 'components/Sparkles';
 const DummyContent = () => <></>
 const items = [
   {name:'Facebook',src:'companies/1.png'},
@@ -159,8 +160,9 @@ export default function TrustedForAllRelocation() {
     // },[scrollYProgress])
     return (
       <section className="relative w-full  h-[270vh] bg-black" ref={ref}>
-        <div className=" overflow-hidden z-0 absolute  h-[50vh]  rounded-b-full">
-          <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} />
+        <div className="w-full overflow-hidden z-0 absolute top-0 h-[50vh]  rounded-b-full">
+          {/* <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} /> */}
+          <Sparkles />
         </div>
         <motion.div
         // style={{ translateY: translateOut, opacity: opacity,scale:textScale }}
