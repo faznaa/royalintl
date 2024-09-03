@@ -1,54 +1,133 @@
 import WaveParticles from 'components/WaveParticles'
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
-import { Card, Carousel } from 'components/ui/Applecardscarousel';
+import { Card,Carousel } from 'components/ui/Applecardscarousel';
 import FadeIn from 'components/FadeIn';
 import { SignupFormDemo } from './form';
 import Footer from 'components/Footer';
 
+// import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 const DummyContent = () => <></>
+const items = [
+  {name:'Facebook',src:'companies/1.png'},
+  {name:'bloomberg',src:'companies/2.png'},
+  {name:'Twitter',src:'companies/3.png'},
+  {name:'Company A',src:'companies/4.png'},
+  {name:'Company C',src:'companies/5.png'},
+  {name:'Company D',src:'companies/6.png'}
+]
 const data = [
   {
     category: "Artificial Intelligence 1",
-    title: "You can do more with AI.",
+    title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
+    logo:'companies/1.png'
   },
   {
     category: "Productivity 2",
     title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
-    isMiddle:true
+    logo:'companies/2.png'
   },
   {
     category: "Product 3",
     title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
+    logo:'companies/3.png'
+
   },{
     category: "Product 4",
-    title: "Launching the new Apple Vision Pro.",
+    title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
+    logo:'companies/4.png'
+
   },{
     category: "Product 5",
-    title: "Launching the new Apple Vision Pro.",
+    title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
+    logo:'companies/5.png'
+
   }]
+
 function CarouselDemo() {
   // const cards = data.map((card, index) => (
   //   <Card key={card.src} card={card} index={index} isMiddle={card?.isMiddle}/>
   // ));
  
+  
+ 
+
+  
   return (
     <div className="py-10 pt-0">
+
       {/* black shadow on left and right 1/3 width of screen */}
       <div className='w-1/3 h-full absolute bg-black opacity-60 blur-3xl z-20'></div>
       <div className='w-1/3 h-full absolute right-0 bg-black opacity-80 blur-3xl z-20'></div>
 
       <Carousel items={data} />
+      {/* <Carousel
+  additionalTransfrom={0}
+  afterChange={(previousSlide, { currentSlide }) => handleSlideChange(currentSlide)}
+  arrows={true}
+  autoPlaySpeed={3000}
+  centerMode={false}
+  className=""
+  containerClass="container-with-dots"
+  dotListClass=""
+  draggable
+  focusOnSelect={false}
+  infinite
+  itemClass=""
+  keyBoardControl
+  minimumTouchDrag={80}
+  pauseOnHover
+  renderArrowsWhenDisabled={false}
+  renderButtonGroupOutside={true}
+  renderDotsOutside={true}
+  responsive={{
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3,
+      partialVisibilityGutter: 40
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 1,
+      partialVisibilityGutter: 30
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    }
+  }}
+  rewind={false}
+  rewindWithAnimation={false}
+  rtl={false}
+  shouldResetAutoplay
+  showDots={true}
+  sliderClass=""
+  slidesToSlide={1}
+  swipeable
+>
+  {data?.map((card, index) =>    <Card key={card.src} card={card} index={index} isMiddle={(currentSlide)===(index+4)}/> )}
+</Carousel> */}
     </div>
   );
 }
@@ -98,7 +177,9 @@ export default function TrustedForAllRelocation() {
             >
               Trusted for all relocations
             </motion.h1>
+            <div className='w-screen sm:max-w-7xl'>
             <CarouselDemo/>
+            </div>
         </FadeIn>
 
 
