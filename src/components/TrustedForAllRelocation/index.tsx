@@ -9,43 +9,46 @@ import Footer from 'components/Footer';
 const DummyContent = () => <></>
 const data = [
   {
-    category: "Artificial Intelligence",
+    category: "Artificial Intelligence 1",
     title: "You can do more with AI.",
     src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
   },
   {
-    category: "Productivity",
-    title: "Enhance your productivity.",
+    category: "Productivity 2",
+    title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
     src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
     isMiddle:true
   },
   {
-    category: "Product",
+    category: "Product 3",
+    title: "With Royal International, everything regarding server relocation is done for us, and there’s less downtime and better performance.",
+    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },{
+    category: "Product 4",
     title: "Launching the new Apple Vision Pro.",
     src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
   },{
-    category: "Product",
-    title: "Launching the new Apple Vision Pro.",
-    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
-  },{
-    category: "Product",
+    category: "Product 5",
     title: "Launching the new Apple Vision Pro.",
     src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: <DummyContent />,
   }]
 function CarouselDemo() {
-  const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} isMiddle={card?.isMiddle}/>
-  ));
+  // const cards = data.map((card, index) => (
+  //   <Card key={card.src} card={card} index={index} isMiddle={card?.isMiddle}/>
+  // ));
  
   return (
     <div className="py-10 pt-0">
-     
-      <Carousel items={cards} />
+      {/* black shadow on left and right 1/3 width of screen */}
+      <div className='w-1/3 h-full absolute bg-black opacity-60 blur-3xl z-20'></div>
+      <div className='w-1/3 h-full absolute right-0 bg-black opacity-80 blur-3xl z-20'></div>
+
+      <Carousel items={data} />
     </div>
   );
 }

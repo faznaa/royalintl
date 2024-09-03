@@ -22,21 +22,21 @@ const Hero = () => {
 
   // Globe stays in center for some time
   const translateUp = useTransform(scrollYProgress, [0.2, 0.5,0.9, 0.6], [-180, 70,70, -200]);
-  const translateOut = useTransform(scrollYProgress, [0, 0.3, 1], [-300, -300, -1000]);
+  const translateOut = useTransform(scrollYProgress, [0, 0.1, 0.5], [-300, -200, 100]);
   
   // Text scales and fades out
-  const opacity = useTransform(scrollYProgress, [0.3, 0.4], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);
   const textScale = useTransform(scrollYProgress, [0.2, 0.4], [1, 0.7]);
 
   // Buttons fade in and everything scrolls out together
-  const opacityOfBtns = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
+  const opacityOfBtns = useTransform(scrollYProgress, [0.3, 0.4, 0.5,0.6], [0, 1,1,0]);
   const globeSize = useTransform(scrollYProgress, [0.4, 1], [1, 1]);
 
   // CustomTextTransition From left to right 
-  const pillLeft = useTransform(scrollYProgress, [0.3, 0.4], [-200, 0])
-  const pillTop = useTransform(scrollYProgress, [0.3, 0.4], [-100, 0])
-  const pillBottom = useTransform(scrollYProgress, [0.3, 0.4], [100, 0])
-  const pillRight = useTransform(scrollYProgress, [0.3, 0.4], [200, 0])
+  const pillLeft = useTransform(scrollYProgress, [0.3, 0.4,0.5,0.6], [100, 0,0,-200])
+  const pillTop = useTransform(scrollYProgress, [0.3, 0.4,0.5,0.6], [50, 0,0,-100])
+  const pillBottom = useTransform(scrollYProgress, [0.3, 0.4,0.5,0.6], [-50, 0,0,100])
+  const pillRight = useTransform(scrollYProgress, [0.3, 0.4,0.5,0.6], [-100, 0,0,200])
 
   // useEffect(() => {
   //   return scrollYProgress.onChange(() => {
@@ -46,7 +46,7 @@ const Hero = () => {
   // }, [scrollYProgress]);
 
   return (
-    <section className="relative w-screen h-[200vh] bg-black" ref={ref}>
+    <section className="relative w-screen  lg:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
       <div className="sticky top-0 w-full h-screen z-0 overflow-hidden">
         <WaveParticles starSize={"1.0"}/>
       </div>
