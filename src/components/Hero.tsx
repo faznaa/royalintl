@@ -59,27 +59,27 @@ const Hero = () => {
         <AnimatePresence>
           <FadeIn>
             <motion.h1
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="text-4xl sm:text-5xl font-extralight relative z-20 text-gray-300 text-center mb-10 tracking-tighter"
-            >
-              Moving Beyond Relocation - Innovating the <br /> Future of High-Tech
-              Logistics
-            </motion.h1>
-          </FadeIn>
-          <FadeIn>
-            <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7 }}
-              className="text-4xl text-center sm:text-7xl font-medium relative z-20 text-gray-300 tracking-tighter"
+              className="text-6xl text-center font-medium relative z-20 text-gray-300 tracking-tighter mb-10"
             >
               We offer you{" "}
               <span className="text-red-600">
                 <FlipWords words={["Expertise", "Efficiency", "Reliability"]} />
               </span>
+            </motion.h1>
+          </FadeIn>
+          <FadeIn>
+            <motion.h2
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="text-2xl font-normal relative z-20 text-gray-300 text-center tracking-tighter"
+            >
+              Moving Beyond Relocation - Innovating the <br /> Future of High-Tech
+              Logistics
             </motion.h2>
           </FadeIn>
         </AnimatePresence>

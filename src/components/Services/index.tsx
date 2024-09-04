@@ -133,8 +133,8 @@ const Services: React.FC = () => {
       className="relative h-auto bg-white pt-40 "
       ref={container}
     >
-       <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center'>Our Specializations</h1></FadeIn>
-       <FadeIn> <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10 text-center'>
+       <FadeIn><h1 className='text-6xl text-center'>Our Specializations</h1></FadeIn>
+       <FadeIn> <p className='text-2xl w-1/2 text-gray-400 mx-auto py-6 pb-10 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
           <motion.div
@@ -147,7 +147,7 @@ const Services: React.FC = () => {
             {services.map((service, index) => (
               <button
                 onClick={() => scrollToId(`service-${index}`)}  
-                className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+                className={`uppercase font-bold text-[16px] px-4 py-2  rounded-2xl text-black hover:bg-gray-100
                 ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`}
               >
                 {service.title}

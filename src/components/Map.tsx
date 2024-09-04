@@ -13,8 +13,8 @@ const Map = () => {
       >
         {/* <h1 className='text-3xl font-medium'>An Expert in International Relocation Services</h1> */}
         <FadeIn>
-        <h1 className=' text-xl sm:text-4xl font-medium bg-white'>We cover all continents</h1>
-        <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10'>Over the last 15 years , we've grown into an international relocation company with a presence of 20+ partners aroudn the world.</p>
+        <h1 className='text-6xl bg-white'>We cover all continents</h1>
+        <p className='text-2xl w-2/3 text-gray-400 mx-auto py-6 pb-10'>Over the last 15 years , we've grown into an international relocation company with a presence of 20+ partners aroudn the world.</p>
    
         </FadeIn>
         {/* <h2 className='text-5xl font-extralight'>We Have More Than 20+ Country Coverage Area</h2>
