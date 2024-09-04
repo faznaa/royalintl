@@ -138,9 +138,13 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        <div className="h-[1000px] w-[1200px] z-20 px-auto flex justify-center items-center object-center">
+        <motion.div
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{delay:2,duration:1,ease:'easeIn'}}
+        className="h-[1000px] w-[1200px] z-20 px-auto flex justify-center items-center object-center">
           <World data={sampleArcs} globeConfig={globeConfig} scrollYProgress={scrollYProgress} />
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

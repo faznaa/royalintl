@@ -2,14 +2,23 @@ import { InfiniteMovingCards } from 'components/ui/InfiniteMovingCards'
 import React from 'react'
 
 export default function TrustedByLeaders() {
-    const items = [
-        {name:'Facebook',src:'companies/1.png'},
-        {name:'bloomberg',src:'companies/2.png'},
-        {name:'Twitter',src:'companies/3.png'},
-        {name:'Company A',src:'companies/4.png'},
-        {name:'Company C',src:'companies/5.png'},
-        {name:'Company D',src:'companies/6.png'}
-    ]
+  const items = [
+    { name: 'Accenture', src: 'companies/accenture.png' },
+    { name: 'Adobe', src: 'companies/adobe.png' },
+    { name: 'Airtel', src: 'companies/airtel.png' },
+    { name: 'Amazon', src: 'companies/amazon.png' },
+    { name: 'Benz', src: 'companies/benz.png' },
+    { name: 'EY', src: 'companies/ey.png' },
+    { name: 'GE Healthcare', src: 'companies/ge_healthcare.png' },
+    { name: 'JP Morgan', src: 'companies/jpmorgan.png' },
+    { name: 'KPMG', src: 'companies/kpmg.png' },
+    { name: 'L&T', src: 'companies/lt.png' },
+    { name: 'Signify', src: 'companies/signify.png' },
+    { name: 'Vodafone', src: 'companies/vodafone.png' },
+    { name: 'Walmart', src: 'companies/walmart.png' },
+    { name: 'Wipro', src: 'companies/wipro.png' }
+];
+
   return (
 
           <div className="h-[30rem] py-28 rounded-md flex flex-col antialiased bg-black items-center justify-center relative overflow-hidden">

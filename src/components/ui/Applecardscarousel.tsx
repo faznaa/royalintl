@@ -119,21 +119,10 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           </div>
         </div>
 
-        {/* <button
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-40"
-          onClick={scrollLeft}
-        >
-          <IconArrowNarrowLeft />
-        </button>
-        <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-40"
-          onClick={scrollRight}
-        >
-          <IconArrowNarrowRight />
-        </button> */}
+  
 
        <div className="w-full sm:max-w-md mx-auto">
-       <div className="flex justify-start  mr-10 z-40 border-t border-gray-400  ">
+       <div className="flex justify-start items-center  mr-10 z-40 border-t border-gray-400  ">
           {items.map((item:any, idx:number) => (
             <button
               className={`z-40 h-6 w-auto px-2 pt-6 text-white font-lg  ${idx==currentIndex ? 'border-t-4 border-white': 'border-b-4 border-transparent'}`}
@@ -141,7 +130,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               onClick={() => scrollToIndex(idx)}
             >
               {/* {idx + 1} */}
-              <img src={item.logo} />
+              <img src={item.logo} className="h-6 w-auto " />
             </button>
           ))}
         </div>
@@ -248,7 +237,7 @@ export const Card = ({
       </motion.button>
       <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white px-1 text-pretty text-sm md:text-sm font-medium   font-sans mt-2"
+            className="text-white mx-7 3xl:mx-7 h-10  text-pretty text-sm md:text-sm font-medium   font-sans mt-2"
           >
             {card.title}
           </motion.p>

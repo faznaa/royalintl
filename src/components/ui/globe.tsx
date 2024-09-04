@@ -250,7 +250,7 @@ export function World(props: WorldProps) {
   const { globeConfig, scrollYProgress } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
-  const [fov,setFov] = useState(35)
+  const [fov,setFov] = useState(40)
   const camera = new PerspectiveCamera(fov, aspect, 180, 1800)
   useEffect(() => {
     
@@ -259,6 +259,7 @@ export function World(props: WorldProps) {
       // if((val*100) % 10 && val<0.4) {
         // setFov(40 + 40*val)
         camera.setFocalLength(40-32*val)
+        // 
       // }
     })
   },[scrollYProgress])
