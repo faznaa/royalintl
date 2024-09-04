@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import MobileNavbar from "../MobileNavbar";
 import { Link } from "react-router-dom";
+import { HoverBorderGradient } from "components/ui/HoverBorderGradient";
 // import { Link } from "react-router-dom";
 const NavbarItem = (props: any) => {
   const { isWhiteTheme, ..._props } = props;
@@ -97,14 +98,22 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
           </div>
          </div>
          <div className=" w-64  flex justify-end">
-         <button className="  rounded-3xl  bg-black px-4  text-white py-1.5">
+         {/* <button className="  rounded-3xl  bg-black px-4  text-white py-1.5">
+         <div className="flex justify-center items-center space-x-2">
+         Get In Touch 
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+</svg></div> */}
+         <HoverBorderGradient>
          <div className="flex justify-center items-center space-x-2">
          Get In Touch 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
 </svg></div>
+         </HoverBorderGradient>
 
-         </button>
+
+         {/* </button> */}
          </div>
         
         </div>

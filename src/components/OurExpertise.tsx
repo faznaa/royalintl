@@ -127,8 +127,8 @@ const OurExpertise: React.FC = () => {
             // opacity: textOpacity,
           }}
         >
-          <h3 className="text-5xl leading-[1.3]">International Relocation</h3>
-          <p className="w-full">
+          <h3 className="text-[60px] leading-[1.3]">International Relocation</h3>
+          <p className="w-full text-[24px]">
             With over 15 years of experience, Royal International Worldwide
             Relocations is a trusted leader in the relocation industry. We offer
             reliable, safe, and affordable services both domestically and
@@ -145,11 +145,11 @@ const OurExpertise: React.FC = () => {
               //   opacity: figureOpacity,
               // }}
             >
-              <div className="space-y-2">
+              <div className="space-y-2 text-[16px]">
                 <FigureDigits digits={150} text="K" />
                 <p className="uppercase">home moving</p>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 text-[16px]">
                 <FigureDigits digits={250} text="K" />
                 <p className="uppercase">ship expedition</p>
               </div>

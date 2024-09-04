@@ -91,7 +91,7 @@ const Hero = () => {
        
         className="relative h-[1100px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
-        <motion.div className="-mt-[36rem]" style={{ opacity: opacityOfBtns }}>
+        <motion.div className="-mt-[28rem]" style={{ opacity: opacityOfBtns }}>
           <motion.div className="absolute top-0 left-56"
           style={{
             x:pillLeft,
@@ -100,14 +100,22 @@ const Hero = () => {
           >
             <CustomText>5K Ship expedition</CustomText>
           </motion.div>
-          <motion.div className="absolute top-48 left-40"
+          <motion.div className="absolute top-40 left-40"
+          style={{
+            x:pillLeft,
+            y:pillTop
+          }}
+          >
+            <CustomText>5K Ship expedition</CustomText>
+          </motion.div>
+          <motion.div className="absolute top-80 left-40"
            style={{
             x:pillLeft
           }}
           >
             <CustomText>10K Home Moving</CustomText>
           </motion.div>
-          <motion.div className="absolute top-96 left-56"
+          <motion.div className="absolute top-[32rem] left-56"
            style={{
             x:pillLeft,
             y:pillBottom
@@ -121,14 +129,21 @@ const Hero = () => {
           }}>
             <CustomText>5K Ship expedition</CustomText>
           </motion.div>
-          <motion.div className="absolute top-48 right-40"
+          <motion.div className="absolute top-40 right-40"
           style={{
             x:pillRight,
           }}
           >
             <CustomText>10K Home Moving</CustomText>
           </motion.div>
-          <motion.div className="absolute top-96 right-56"
+          <motion.div className="absolute top-80 right-40"
+          style={{
+            x:pillRight,
+          }}
+          >
+            <CustomText>5K Ship expedition</CustomText>
+          </motion.div>
+          <motion.div className="absolute top-[32rem] right-56"
           style={{
             x:pillRight,
             y:pillBottom
@@ -136,6 +151,7 @@ const Hero = () => {
           >
             <CustomText>100M Trucking</CustomText>
           </motion.div>
+          
         </motion.div>
 
         <motion.div
