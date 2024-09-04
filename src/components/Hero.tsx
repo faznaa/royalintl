@@ -8,7 +8,7 @@ import { globeConfig, sampleArcs } from "../data/globeutils";
 import FadeIn from "./FadeIn";
 
 const CustomText = ({ children }: any) => (
-  <div className="px-4 py-2 uppercase text-sm text-white z-40 bg-red-800 rounded-2xl">
+  <div className="px-5 py-5 uppercase text-sm text-black font-semibold z-40 bg-gray-400 border-2  border-gray-500 rounded-full">
     {children}
   </div>
 );
@@ -46,13 +46,13 @@ const Hero = () => {
   // }, [scrollYProgress]);
 
   return (
-    <section className="relative w-screen  lg:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
+    <section className="relative w-screen  3xl:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
       <div className="sticky top-0 w-full h-screen z-0 overflow-hidden">
         <WaveParticles starSize={"1.0"}/>
       </div>
       <motion.div
         style={{ translateY: translateOut, opacity: opacity, scale: textScale }}
-        className="absolute top-0 w-full h-full flex flex-col justify-center items-center"
+        className="absolute top-0 w-full h-full flex flex-col justify-center items-center "
       >
         <AnimatePresence>
           <FadeIn>
@@ -86,14 +86,11 @@ const Hero = () => {
         </div> */}
       </motion.div>
       <motion.div
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 1 }}
-        // style={{ translateY: translateUp }}
-        // transition={{ delay: 2, duration: 0.5 }}
-        className="relative h-[900px] w-full mx-auto flex justify-center items-center flex-col z-10 "
+       
+        className="relative h-[1100px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
-        <motion.div className="-mt-96" style={{ opacity: opacityOfBtns }}>
-          <motion.div className="absolute top-20 left-72"
+        <motion.div className="-mt-[36rem]" style={{ opacity: opacityOfBtns }}>
+          <motion.div className="absolute top-0 left-56"
           style={{
             x:pillLeft,
             y:pillTop
@@ -101,35 +98,35 @@ const Hero = () => {
           >
             <CustomText>5K Ship expedition</CustomText>
           </motion.div>
-          <motion.div className="absolute top-48 left-60"
+          <motion.div className="absolute top-48 left-40"
            style={{
             x:pillLeft
           }}
           >
             <CustomText>10K Home Moving</CustomText>
           </motion.div>
-          <motion.div className="absolute top-80 left-72"
+          <motion.div className="absolute top-96 left-56"
            style={{
             x:pillLeft,
             y:pillBottom
           }}>
             <CustomText>100M Trucking</CustomText>
           </motion.div>
-          <motion.div className="absolute top-20 right-72"
+          <motion.div className="absolute top-0 right-56"
           style={{
             x:pillRight,
             y:pillTop
           }}>
             <CustomText>5K Ship expedition</CustomText>
           </motion.div>
-          <motion.div className="absolute top-48 right-60"
+          <motion.div className="absolute top-48 right-40"
           style={{
             x:pillRight,
           }}
           >
             <CustomText>10K Home Moving</CustomText>
           </motion.div>
-          <motion.div className="absolute top-80 right-72"
+          <motion.div className="absolute top-96 right-56"
           style={{
             x:pillRight,
             y:pillBottom
@@ -139,7 +136,7 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        <div className="h-[800px] w-[900px] z-20 px-auto flex justify-center items-center object-center">
+        <div className="h-[1000px] w-[1200px] z-20 px-auto flex justify-center items-center object-center">
           <World data={sampleArcs} globeConfig={globeConfig} scrollYProgress={scrollYProgress} />
         </div>
       </motion.div>
