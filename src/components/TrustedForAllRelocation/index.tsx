@@ -122,14 +122,26 @@ export default function TrustedForAllRelocation() {
 
 
         <div className='pt-28 flex justify-between items-center w-full sm:max-w-7xl mx-auto z-20'>
-          <div className='text-white  w-full'>
-            <h1               className="text-4xl  font-semibold relative z-20 text-gray-300 text-center mb-10 tracking-tighter"
+          <motion.div
+            className='text-white  w-full'
+            initial={{ translateX: "-40%", opacity: 0 }}
+            whileInView={{ translateX: "0%", opacity: 1 }}
+            exit={{ translateX: "-40%", opacity: 0 }}
+            transition={{ duration: .5, ease: "easeIn" }}
+            >
+            <h1 className="text-4xl  font-semibold relative z-20 text-gray-300 text-center mb-10 tracking-tighter"
             >Get in touch</h1>
             <p className='text-gray-500 text-lg text-center'>Lorem ipsum dolor sit amet </p>
-          </div>
-          <div className='w-full'>
+          </motion.div>
+          <motion.div
+            className='w-full'
+            initial={{ translateX: "40%", opacity: 0 }}
+            whileInView={{ translateX: "0%", opacity: 1 }}
+            exit={{ translateX: "40%", opacity: 0 }}
+            transition={{ duration: .5, ease: "easeIn" }}
+          >
             <SignupFormDemo/>
-          </div>
+          </motion.div>
         </div>
         <Footer/>
           

@@ -91,8 +91,8 @@ const OurExpertise: React.FC = () => {
 
   const showFigureOnScroll: MotionValue<number> = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.5],
-    [0, 0, 1]
+    [0, 0.2, 0.25, 0.5],
+    [0, 0, 1, 1]
   );
 
   useEffect(() => {
@@ -134,27 +134,33 @@ const OurExpertise: React.FC = () => {
             reliable, safe, and affordable services both domestically and
             internationally, with a focus on quality and timely delivery
           </p>
-          {showFigure &&
-            <motion.div
-              className="flex justify-center gap-4 gap-x-10"
-              initial={{ translateY: 20, opacity: 0 }}
-              animate={{ translateY: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              // style={{
-              //   translateY: figureTransalteY,
-              //   opacity: figureOpacity,
-              // }}
-            >
-              <div className="space-y-2 text-[16px]">
-                <FigureDigits digits={150} text="K" />
-                <p className="uppercase">home moving</p>
-              </div>
-              <div className="space-y-2 text-[16px]">
-                <FigureDigits digits={250} text="K" />
-                <p className="uppercase">ship expedition</p>
-              </div>
-            </motion.div>
-          }
+          <div className="block">
+            {/* {showFigure && */}
+              <motion.div
+                className="flex justify-center gap-4 gap-x-10"
+                initial={{ translateY: 20, opacity: 0 }}
+                animate={{ translateY: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                // style={{
+                //   translateY: figureTransalteY,
+                //   opacity: figureOpacity,
+                // }}
+              >
+                {/* {showFigure && */}
+                  <>
+                    <div className="space-y-2 text-[24px]">
+                      <FigureDigits digits={150} text="K" />
+                      <p className="uppercase">home moving</p>
+                    </div>
+                    <div className="space-y-2 text-[24px]">
+                      <FigureDigits digits={250} text="K" />
+                      <p className="uppercase">ship expedition</p>
+                    </div>
+                  </>
+                {/* } */}
+              </motion.div>
+            {/* } */}
+          </div>
         </motion.div>
         <GoogleGeminiEffect
           svgPaths={rightPaths}

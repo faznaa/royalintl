@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import img1 from '../../assets/images/img1.jpg';
 import img2 from '../../assets/images/img2.jpg';
 import img3 from '../../assets/images/img3.jpg';
@@ -98,65 +98,87 @@ const services: ServiceType[] = [
 
 // Services component
 const Services: React.FC = () => {
-  const [selectedId,setSelectedId] = React.useState<string>('service-0')
+  const [selectedId,setSelectedId] = useState('service-0');
+  const [isVisible, setIsVisible] = useState(false);
   const container = useRef(null);
   const { scrollYProgress, scrollY } = useScroll({
     target: container,
     offset: ['start start', 'end end']
   })
-  const z = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
-  const tabHidden = useTransform(scrollYProgress, [0,0.96,1], [1,1,0]);
+  const zTab = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
+  const tabHidden = useTransform(scrollYProgress, [0,0.99,1], [1,1,0]);
+  const cardsVisible = useTransform(scrollYProgress, [0,0.99,1], [true, true, false]);
+  // const cardsTranslateY = useTransform(scrollYProgress, [0,0.8,1], [1, 1, 0]);
+
+  useEffect(() => {
+    const unsubscribe = cardsVisible.onChange((latest) => {
+      // if (!latest) {
+        setIsVisible(latest);
+      // }
+    });
+  
+    // Cleanup the subscription when the component unmounts
+    return () => unsubscribe();
+  }, [cardsVisible]);
+
   const scrollToId = (id: string) => {
     setSelectedId(id)
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      
     }
   };
   return (
     <section
-      className="relative h-auto bg-white z-20 pt-40"
+      className="relative h-auto bg-white pt-40 "
+      ref={container}
     >
        <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center'>Our Specializations</h1></FadeIn>
        <FadeIn> <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6 pb-10 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
-        <motion.div
-          ref={container}
-          className='relative h-auto'
-        >
-            <motion.div
-              className='sticky top-[12%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight'
-              style={{
-                zIndex: z,
-                opacity: tabHidden
-              }}  
-            >
-          {services.map((service, index) => (<button onClick={() => scrollToId(`service-${index}`)}  
-          
-          className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
-            ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`} >{service.title}</button>))}
+          <motion.div
+            className='sticky top-[12%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10'
+            // style={{
+            //   zIndex: zTab,
+            //   opacity: tabHidden
+            // }}  
+          >
+            {services.map((service, index) => (
+              <button
+                onClick={() => scrollToId(`service-${index}`)}  
+                className={`uppercase font-medium px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+                ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`}
+              >
+                {service.title}
+              </button>
+            ))}
           </motion.div>
-          {services.map((service, index) => {
-            const targetScale = 1 - ( (services.length - index) * 0.05);
-            return <ServiceCard
-                    key={index}
-                    index={index}
-                    bg={service.bg}
-                    textColor='#ffffff'
-                    title={service.title}
-                    subtitle={service.subtitle}
-                    description={service.description}
-                    src={service.images[0]}
-                    progress={scrollYProgress}
-                    range={[index * .25, 1]}
-                    targetScale={targetScale}
-                    gradientBg={service.gradientBg}
-                  />
-          }
-          )}
-        </motion.div>
+          <motion.div className='h-[500vh] relative'
+          style={{
+            // opacity: cardsTranslateY,
+            // translateY: cardsTranslateY,
+          }}
+          >
+            {isVisible &&  services.map((service, index) => {
+              const targetScale = 1 - ( (services.length - index) * 0.05);
+              return <ServiceCard
+                      key={index}
+                      index={index}
+                      bg={service.bg}
+                      textColor='#ffffff'
+                      title={service.title}
+                      subtitle={service.subtitle}
+                      description={service.description}
+                      src={service.images[0]}
+                      progress={scrollYProgress}
+                      range={[index * .25, 1]}
+                      targetScale={targetScale}
+                      gradientBg={service.gradientBg}
+                    />
+            }
+            )}
+          </motion.div>
     </section>
   );
 };
