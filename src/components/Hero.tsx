@@ -6,6 +6,7 @@ import BorderMagicBtn from "./ui/BorderMagicBtn";
 import { World } from "./ui/globe";
 import { globeConfig, sampleArcs } from "../data/globeutils";
 import FadeIn from "./FadeIn";
+import { Sparkles } from "./Sparkles";
 
 const CustomText = ({ children }: any) => (
   <div className="px-5 py-5 uppercase text-sm text-black font-semibold z-40 bg-gray-400 border-2  border-gray-500 rounded-full">
@@ -48,7 +49,8 @@ const Hero = () => {
   return (
     <section className="relative w-screen  3xl:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
       <div className="sticky top-0 w-full h-screen z-0 overflow-hidden">
-        <WaveParticles starSize={"1.0"}/>
+        {/* <WaveParticles starSize={"1.0"}/> */}
+        <Sparkles />
       </div>
       <motion.div
         style={{ translateY: translateOut, opacity: opacity, scale: textScale }}

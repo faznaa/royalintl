@@ -1,13 +1,13 @@
-import WaveParticles from 'components/WaveParticles'
-import React, { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
-import { Card,Carousel } from 'components/ui/Applecardscarousel';
+import { useRef, useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Carousel } from 'components/ui/Applecardscarousel';
 import FadeIn from 'components/FadeIn';
 import { SignupFormDemo } from './form';
 import Footer from 'components/Footer';
 
 // import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Sparkles } from 'components/Sparkles';
 const DummyContent = () => <></>
 const items = [
   {name:'Facebook',src:'companies/1.png'},
@@ -72,62 +72,7 @@ function CarouselDemo() {
       <div className='w-1/3 h-full absolute right-0 bg-black opacity-80 blur-3xl z-20'></div>
 
       <Carousel items={data} />
-      {/* <Carousel
-  additionalTransfrom={0}
-  afterChange={(previousSlide, { currentSlide }) => handleSlideChange(currentSlide)}
-  arrows={true}
-  autoPlaySpeed={3000}
-  centerMode={false}
-  className=""
-  containerClass="container-with-dots"
-  dotListClass=""
-  draggable
-  focusOnSelect={false}
-  infinite
-  itemClass=""
-  keyBoardControl
-  minimumTouchDrag={80}
-  pauseOnHover
-  renderArrowsWhenDisabled={false}
-  renderButtonGroupOutside={true}
-  renderDotsOutside={true}
-  responsive={{
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024
-      },
-      items: 3,
-      partialVisibilityGutter: 40
-    },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0
-      },
-      items: 1,
-      partialVisibilityGutter: 30
-    },
-    tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464
-      },
-      items: 2,
-      partialVisibilityGutter: 30
-    }
-  }}
-  rewind={false}
-  rewindWithAnimation={false}
-  rtl={false}
-  shouldResetAutoplay
-  showDots={true}
-  sliderClass=""
-  slidesToSlide={1}
-  swipeable
->
-  {data?.map((card, index) =>    <Card key={card.src} card={card} index={index} isMiddle={(currentSlide)===(index+4)}/> )}
-</Carousel> */}
+    
     </div>
   );
 }
@@ -158,9 +103,10 @@ export default function TrustedForAllRelocation() {
     //   })
     // },[scrollYProgress])
     return (
-      <section className="relative w-full 3xl:h-[180vh] 2xl:h-[230vh] bg-black" ref={ref}>
-        <div className=" overflow-hidden z-0 absolute  h-[50vh]  rounded-b-full">
-          <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} />
+      <section className="relative w-full  3xl:h-[180vh] 2xl:h-[230vh] bg-black" ref={ref}>
+        <div className="w-full overflow-hidden z-0 absolute top-0 h-[50vh]  rounded-b-full">
+          {/* <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} /> */}
+          <Sparkles />
         </div>
         <motion.div
         // style={{ translateY: translateOut, opacity: opacity,scale:textScale }}

@@ -1,29 +1,14 @@
 import React from 'react';
-import svg from '../assets/svg/map1.svg';
+import svg from '../assets/svg/map2.svg';
 import PingDot from '../components/PingDot';
 import FadeIn from './FadeIn';
-// import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import { motion } from 'framer-motion';
 
-function getDeviceDimensions() {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  return { width, height };
-}
-
-// Usage
 const Map = () => {
-  // const [ref, isVisible] = useIntersectionObserver({
-  //   threshold: 0.1,
-  // });
-  const isVisible = true;
-
-  const { width, height } = getDeviceDimensions();
-  console.log(`Device width: ${width}px, height: ${height}px`);
-
   return (
-    <div className='w-full  h-screen flex flex-col justify-center items-center text-center space-y-6 pb-8 overflow-hidden'>
+    <div className='w-full h-auto flex flex-col justify-center items-center text-center space-y-6 pb-8 overflow-hidden'>
       <div 
-        // ref={ref} 
+        // ref={ref}
         className={`w-[60%] space-y-6 transform transition-all duration-[1s] ease-out bg-white`}
       >
         {/* <h1 className='text-3xl font-medium'>An Expert in International Relocation Services</h1> */}
@@ -35,18 +20,23 @@ const Map = () => {
         {/* <h2 className='text-5xl font-extralight'>We Have More Than 20+ Country Coverage Area</h2>
         <p className='text-lg'>In the last 15 years, We have become an international relocation company by  expanding our services to offer a strong presence and coverage in 20+  countries across Europe, Asia and Africa through our partners.</p> */}
       </div>
-      <div className='w-full overflow-hidden h-[600px] rounded-t-[100%]'>
-      <div className='w-full relative'>
-        <PingDot top="20" left="10"/>
-        <PingDot top="30" left="15"/>
-        <PingDot top="35" left="8"/>
-        <PingDot top="45" left="45"/>
-        <PingDot top="55" left="65"/>
-        <PingDot top="65" left="73.5"/>
-        <PingDot top="53" left="72.1"/>
-        <img src={svg} alt="svg" className='w-full h-auto object-cover z-0'/>
-      </div>
-      </div>
+      <motion.div 
+        initial={{ scale: .5, translateY: 20 }}
+        whileInView={{ scale: 1, translateY: 0 }}
+        transition={{ duration: 1.5, ease: "easeIn" }}
+        className='w-full overflow-hidden h-full rounded-t-[100%]'
+      >
+        <div className='w-full relative'>
+          <PingDot top="20" left="30"/>
+          <PingDot top="30" left="15"/>
+          <PingDot top="35" left="20"/>
+          <PingDot top="45" left="45"/>
+          <PingDot top="30" left="65"/>
+          <PingDot top="35" left="73.5"/>
+          <PingDot top="38" left="70"/>
+          <img src={svg} alt="svg" className='w-full h-auto object-contain z-0'/>
+        </div>
+      </motion.div>
     </div>
   )
 }

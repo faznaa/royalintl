@@ -15,7 +15,7 @@ interface SvgPath {
 }
 
 interface GoogleGeminiEffectProps {
-  svgPaths: SvgPath[];   // Include the svgPaths prop here
+  svgPaths: SvgPath[]; // Include the svgPaths prop here
   pathLengths: MotionValue<number>[];
   className?: string;
 }
@@ -28,10 +28,11 @@ export const GoogleGeminiEffect: React.FC<GoogleGeminiEffectProps> = ({
   return (
     <div className={cn("", className)}>
       <svg
-        width="337"
-        height="362"
+        // width="337"
+        // height="362"
         viewBox="0 0 337 362"
         xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full"
         // className="absolute right-0 top-1/2 w-full"
       >
         {svgPaths.map((pathData, index) => (
