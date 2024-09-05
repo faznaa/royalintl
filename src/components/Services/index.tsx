@@ -61,37 +61,38 @@ const services: ServiceType[] = [
     fg:'#ffffff',
     gradientBg:"bg-gradient-to-br from-black to-gray-800",
   },
+  
   {
-    title: 'Clean Room and Labs',
-    subtitle: 'The Power of Secure Element Technology',
-    description:
-      'We offer state-of-the-art clean room and laboratory solutions at Royal International, designed to meet the highest standards of cleanliness and safety for various industries. Our facilities are equipped with advanced technology and precision-controlled environments, ensuring that critical research, development, and manufacturing processes are conducted with minimal contamination risk. Whether for pharmaceuticals, electronics, or biotechnology, our clean rooms and labs are customized to support your unique operational requirements.',
-    images: [cleanRoomImg1, cleanRoomImg2, cleanRoomImg3, cleanRoomImg4, cleanRoomImg5],
-    video: video2,
-     bg:'#ce4257',
-    fg:'#ffffff',
-    gradientBg:"bg-gradient-to-br from-pink-200 to-pink-400",
-  },
-  {
-    title: 'Special logistics',
+    title: 'Project logistics',
     subtitle: 'The Power of Secure Element Technology',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [logisticsImg1, logisticsImg2, logisticsImg3, logisticsImg4, logisticsImg5],
     video: video3,
-     bg:'#f27059',
-    fg:'#ffffff',
+     bg:'#ce4257',
+    fg:'#fff',
     gradientBg:"bg-gradient-to-br from-blue-600 to-sky-400",
   },
   {
-    title: 'Structured Cable Networking',
+    title: 'Clean Room/ LAB Migration',
+    subtitle: 'The Power of Secure Element Technology',
+    description:
+      'We offer state-of-the-art clean room and laboratory solutions at Royal International, designed to meet the highest standards of cleanliness and safety for various industries. Our facilities are equipped with advanced technology and precision-controlled environments, ensuring that critical research, development, and manufacturing processes are conducted with minimal contamination risk. Whether for pharmaceuticals, electronics, or biotechnology, our clean rooms and labs are customized to support your unique operational requirements.',
+    images: [cleanRoomImg1, cleanRoomImg2, cleanRoomImg3, cleanRoomImg4, cleanRoomImg5],
+    video: video2,
+     bg:'#f27059',
+    fg:'#000',
+    gradientBg:"bg-gradient-to-br from-pink-200 to-pink-400",
+  },
+  {
+    title: 'Relocation Services',
     subtitle: 'The Power of Secure Element Technology',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ducimus, quia quos quibusdam amet modi, fugit officiis reiciendis hic doloremque natus ratione non! Unde voluptatum error debitis soluta voluptas, facilis optio consectetur suscipit magni sapiente architecto perspiciatis! Minus eos nostrum explicabo cum nam, voluptatibus harum, reprehenderit at quam fugit repellendus!',
     images: [structuredCableImg1, structuredCableImg2, structuredCableImg3, structuredCableImg4, structuredCableImg5],
     video: video4,
      bg:'#db7c26',
-    fg:'#ffffff',
+    fg:'#000',
     gradientBg:"bg-gradient-to-br from-cyan-500 to-blue-300",
   },
 ];
@@ -165,7 +166,7 @@ const Services: React.FC = () => {
             {services.map((service, index) => (
               <button
                 onClick={() => scrollToId(`service-${index+1}`)}  
-                className={`uppercase font-bold text-[16px] px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+                className={`uppercase font-semibold text-[16px] px-4 py-2  rounded-2xl text-black hover:bg-gray-100
                 ${selectedId === `service-${index+1}` ? 'text-red-500  bg-gray-200' : ''}`}
               >
                 {service.title}
@@ -183,7 +184,7 @@ const Services: React.FC = () => {
                       key={index}
                       index={index}
                       bg={service.bg}
-                      textColor='#ffffff'
+                      textColor={service.fg}
                       title={service.title}
                       subtitle={service.subtitle}
                       description={service.description}
