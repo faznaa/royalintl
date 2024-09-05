@@ -63,19 +63,19 @@ const WhatSetUsApart = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start 40%", "end 60%"],
   });
 
-  const progress = useTransform(scrollYProgress, [0, 1], [0, 1.5]);
+  const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   // Scaling transforms
   const cardTranslateY = [
+    useTransform(scrollYProgress, [0, 0.4, 0.45, 0.47, 1], [1, 1, 1.2, 1, 1]),
     useTransform(scrollYProgress, [0, 0.28, 0.3, 0.35, 1], [1, 1, 1.2, 1, 1]),
     useTransform(scrollYProgress, [0, 0.18, 0.2, 0.25, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.1, 0.15, 0.2, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.35, 0.4, 0.47, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.4, 0.45, 0.5, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.5, 0.55, 0.58, 1], [1, 1, 1.2, 1, 1])
+    useTransform(scrollYProgress, [0, 0.5, 0.55, 0.6, 1], [1, 1, 1.2, 1, 1]),
+    useTransform(scrollYProgress, [0, 0.65, 0.7, 0.75, 1], [1, 1, 1.2, 1, 1]),
+    useTransform(scrollYProgress, [0, 0.78, 0.83, 0.85, 1], [1, 1, 1.2, 1, 1])
   ];
 
   // Box shadow transforms
@@ -92,7 +92,11 @@ const WhatSetUsApart = () => {
 
 //  }, [boxShadowTransforms[0]])
   return (
-    <section ref={ref} className="bg-white w-full h-auto flex flex-col justify-center items-center">
+    <section ref={ref} className="bg-primaryBg w-full h-auto flex flex-col justify-center items-center py-32"
+      // style={{
+      //   backgroundColor: "#F7F7FB",
+      // }}
+    >
       <FadeIn>
         <div className="flex flex-col justify-center items-center gap-y-6 text-center">
           <h1 className="text-6xl">What sets us apart</h1>
@@ -111,7 +115,7 @@ const WhatSetUsApart = () => {
           {whatSetsusapart?.map((i, index) => (
             <motion.div
               key={index}
-              className="bg-gray-100 border max-w-[200px] h-[200px] rounded-lg border-gray-200 flex flex-col items-center justify-between justify-self-center text-center px-4 py-4"
+              className="bg-white border max-w-[220px] h-[220px] rounded-xl border-gray-200 flex flex-col items-center justify-evenly justify-self-center text-center p-4"
               style={{
                 scale: cardTranslateY[index],
                 // boxShadow: boxShadowTransforms[index] ? `rgba(255, 0, 0, .4) 0px 15px 25px, rgba(255, 0, 0, .4) 0px 5px 10px` : 'none',
@@ -120,7 +124,7 @@ const WhatSetUsApart = () => {
               <div className="text-red-500 w-36 text-center flex justify-center items-center mt-6 scale-[2]">
                 {i.icon}
               </div>
-              <div className="text-2xl text-gray-700">{i.text}</div>
+              <div className="text-xl text-gray-700">{i.text}</div>
             </motion.div>
           ))}
         </div>
