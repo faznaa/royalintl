@@ -37,7 +37,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   });
   
 
-  const containerTranslateY = useTransform(scrollYProgress, [0, 1], ['170%', '0%']);
+  const containerTranslateY = useTransform(scrollYProgress, [0, 1], [index==0?'110%':'170%', '0%']);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
   const opacity = useTransform(progress, [range[0],range[0]+0.01], [1, 1]);

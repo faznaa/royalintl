@@ -101,15 +101,12 @@ const services: ServiceType[] = [
 // Services component
 const Services: React.FC = () => {
   const [selectedId,setSelectedId] = useState('service-1');
-  const [isVisible, setIsVisible] = useState(true);
   const container = useRef(null);
   const [scrollPro , setScrollPro]=  useState(0)
   const { scrollYProgress, scrollY } = useScroll({
     target: container,
     offset: ['start start', 'end end']
   })
-  const zTab = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
-  const tabHidden = useTransform(scrollYProgress, [0,0.99,1], [1,1,0]);
   const cardsVisible = useTransform(scrollYProgress, [0,0.99,1], [true, true, false]);
   const opacity = useTransform(scrollYProgress, [0,0.95,1], [1,1,0]);
   // const scaleX = useTransform(scrollYProgress, [0,0.5,1], [1,1,0.7]);
@@ -200,7 +197,7 @@ const Services: React.FC = () => {
             
           </motion.div>
 
-          {/* <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div> */}
+          <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div>
           <div className=' relative z-30 top-36'>
                       {/* <div className='h-[50vh] bg-transparent relative z-30'/> */}
 
