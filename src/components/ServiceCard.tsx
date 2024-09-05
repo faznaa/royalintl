@@ -93,9 +93,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {/* Text content */}
           <FadeIn>
             <div className="space-y-4">
-              <h3 className="text-5xl font-normal">{title}</h3>
+              <h3 className="text-6xl font-normal">{title}</h3>
               {/* <h4 className='text-2xl font-extralight'>{subtitle}</h4> */}
-              <p className="font-extralight py-4">{description.slice(0, 150)}</p>
+              <p className="text-2xl py-4">{description.slice(0, 150)}</p>
               <button className={`px-4 py-2 rounded-3xl ${index === 0 ? 'bg-gray-100 text-black' : 'bg-black text-white'}`}>
                 Know more &#8594;
               </button>
