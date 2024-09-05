@@ -198,7 +198,7 @@ export const Card = ({
             // scale:isMiddle?1.3:1
         }}
         onClick={handleOpen}
-        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 3xl:h-[20rem] 3xl:w-[35rem] overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-30 md:h-[17rem] md:w-[30rem] 3xl:h-[25rem] 3xl:w-[40rem]':'z-10'} mx-6`}
+        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 3xl:h-[20rem] 3xl:w-[35rem] overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-30 md:h-[17rem] md:w-[30rem] 3xl:h-[23rem] 3xl:w-[41rem]':'z-10'} mx-6`}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -233,7 +233,7 @@ export const Card = ({
         onMouseOver={(event:any) => event.target.play()}
         onMouseOut={(event:any) => event.target.pause()}
         // onClick={(event:any) => event.target.pause()}
-        autoPlay={false} loop muted className="object-fit absolute z-10 inset-0"/>
+        autoPlay={false} loop muted className="object-fit h-full absolute z-10 inset-0"/>
       </motion.button>
       <motion.div
             layoutId={layout ? `title-${card.title}` : undefined}

@@ -95,7 +95,7 @@ export default function TrustedForAllRelocation() {
     //   })
     // },[scrollYProgress])
     return (
-      <section className="relative w-full  3xl:h-[190vh] 2xl:h-[240vh] bg-black" ref={ref}>
+      <section className="relative w-full  3xl:h-[200vh] 2xl:h-[250vh] bg-black" ref={ref}>
         <div className="w-full overflow-hidden z-0 absolute top-0 h-[50vh]  rounded-b-full">
           {/* <WaveParticles starSize={starSize} AMOUNTX={100} AMOUNTY={100} /> */}
           <Sparkles />
