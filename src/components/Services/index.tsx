@@ -185,7 +185,7 @@ const Services: React.FC = () => {
             }
             )}
           </motion.div>
-          <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div>
+          {/* <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div> */}
           <div className='h-[50vh] relative z-30'>
           <TrustedByLeaders/>
           </div>
