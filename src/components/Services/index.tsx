@@ -163,7 +163,7 @@ const Services: React.FC = () => {
             {services.map((service, index) => (
               <button
                 onClick={() => scrollToId(`service-${index+1}`)}  
-                className={`uppercase font-semibold text-[16px] px-4 py-2  rounded-2xl text-black hover:bg-gray-100
+                className={`uppercase font-semibold text-[16px] px-4 py-2 rounded-2xl text-black hover:bg-gray-100
                 ${selectedId === `service-${index+1}` ? 'text-red-500  bg-gray-200' : ''}`}
               >
                 {service.title}

@@ -121,7 +121,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   
 
-       <div className="w-full sm:max-w-md 3xl:max-w-xl mx-auto">
+       <div className="w-full sm:max-w-md 3xl:max-w-2xl mx-auto">
        <div className="flex justify-start items-center  mr-10 z-40 border-t border-gray-400  ">
           {items.map((item:any, idx:number) => (
             <button
@@ -222,18 +222,18 @@ export const Card = ({
             {card.title}
           </motion.p> */}
         </div>
-        {/* <BlurImage
+       <BlurImage
           src={card.src}
           alt={card.title}
           fill
           className="object-cover absolute z-10 inset-0"
         />
-        */}
-        <video src="video1.mp4" 
+        
+        {/* <video src="video1.mp4" 
         onMouseOver={(event:any) => event.target.play()}
         onMouseOut={(event:any) => event.target.pause()}
         // onClick={(event:any) => event.target.pause()}
-        autoPlay={false} loop muted className="object-fit h-full absolute z-10 inset-0"/>
+        autoPlay={false} loop muted className="object-fit h-full absolute z-10 inset-0"/> */}
       </motion.button>
       <motion.div
             layoutId={layout ? `title-${card.title}` : undefined}
