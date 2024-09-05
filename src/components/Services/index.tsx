@@ -154,13 +154,15 @@ const Services: React.FC = () => {
               </button>
             ))}
           </motion.div>
-          <motion.div className='h-[500vh] relative'
+          <motion.div className='h-[500vh] relative z-0'
           style={{
             // opacity: cardsTranslateY,
             // translateY: cardsTranslateY,
           }}
           >
-            {isVisible &&  services.map((service, index) => {
+            {
+            // isVisible &&  
+            services.map((service, index) => {
               const targetScale = 1 - ( (services.length - index) * 0.05);
               return <ServiceCard
                       key={index}
