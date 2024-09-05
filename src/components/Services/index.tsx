@@ -99,7 +99,7 @@ const services: ServiceType[] = [
 
 // Services component
 const Services: React.FC = () => {
-  const [selectedId,setSelectedId] = useState('service-0');
+  const [selectedId,setSelectedId] = useState('service-1');
   const [isVisible, setIsVisible] = useState(true);
   const container = useRef(null);
   const [scrollPro , setScrollPro]=  useState(0)
