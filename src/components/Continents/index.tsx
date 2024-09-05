@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import FigureDigits from "components/FigureDigits";
 
 const FigureCaption = ({ children }: any) => (
-  <div className="text-gray-700 text-sm uppercase tracking-normal">
+  <div className="text-gray-700 font-bold uppercase tracking-normal">
     {children}
   </div>
 );

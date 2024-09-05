@@ -95,15 +95,15 @@ const WhatSetUsApart = () => {
     <section ref={ref} className="bg-white w-full h-auto flex flex-col justify-center items-center">
       <FadeIn>
         <div className="flex flex-col justify-center items-center gap-y-6 text-center">
-          <h1 className="text-xl sm:text-4xl font-medium">What sets us apart</h1>
-          <p className="text-md sm:max-w-sm text-gray-400">
+          <h1 className="text-6xl">What sets us apart</h1>
+          <p className="text-2xl w-1/2 text-gray-400">
             Over the last 15 years, we've grown into an international relocation company with a presence of 20+ partners around the world.
           </p>
         </div>
       </FadeIn>
       <motion.div className="relative w-full h-screen flex justify-center">
-        <PingDot top="2" left="49.6" />
-        <PingDot top="95.5" left="49.6" />
+        <PingDot top="2" left="49.55" width="w-4" height="h-4" scale="scale-100"/>
+        <PingDot top="95.5" left="49.55" width="w-4" height="h-4" scale="scale-100"/>
         <div className="w-full h-full mx-auto absolute top-0 z-0">
           <ProgressLineSVG progress={progress} />
         </div>
@@ -111,16 +111,16 @@ const WhatSetUsApart = () => {
           {whatSetsusapart?.map((i, index) => (
             <motion.div
               key={index}
-              className="bg-gray-100 border max-w-[150px] h-[150px] rounded-lg border-gray-200 flex flex-col items-center justify-between justify-self-center text-center px-4 py-4"
+              className="bg-gray-100 border max-w-[200px] h-[200px] rounded-lg border-gray-200 flex flex-col items-center justify-between justify-self-center text-center px-4 py-4"
               style={{
                 scale: cardTranslateY[index],
                 // boxShadow: boxShadowTransforms[index] ? `rgba(255, 0, 0, .4) 0px 15px 25px, rgba(255, 0, 0, .4) 0px 5px 10px` : 'none',
               }}
             >
-              <div className="text-red-500 w-36 text-center flex justify-center mt-6">
+              <div className="text-red-500 w-36 text-center flex justify-center items-center mt-6 scale-[2]">
                 {i.icon}
               </div>
-              <div className="text-sm text-gray-700">{i.text}</div>
+              <div className="text-2xl text-gray-700">{i.text}</div>
             </motion.div>
           ))}
         </div>

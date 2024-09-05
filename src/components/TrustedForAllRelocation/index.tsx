@@ -111,7 +111,7 @@ export default function TrustedForAllRelocation() {
               transition={{ duration: 0.7 }}
               exit={{ opacity: 0, scale: 0.8 }}
               // style={{ scale: size }}
-              className="text-4xl  font-semibold relative z-20 text-gray-300 text-center mb-10 tracking-tighter"
+              className="text-6xl relative text-white text-center mb-10 tracking-tighter"
             >
               Trusted for all relocations
             </motion.h1>
@@ -129,9 +129,9 @@ export default function TrustedForAllRelocation() {
             exit={{ translateX: "-40%", opacity: 0 }}
             transition={{ duration: .5, ease: "easeIn" }}
             >
-            <h1 className="text-4xl  font-semibold relative z-20 text-gray-300 text-center mb-10 tracking-tighter"
+            <h1 className="text-6xl relative z-2 text-center mb-10 tracking-tighter"
             >Get in touch</h1>
-            <p className='text-gray-500 text-lg text-center'>Lorem ipsum dolor sit amet </p>
+            <p className='text-gray-500 text-2xl text-center'>Lorem ipsum dolor sit amet </p>
           </motion.div>
           <motion.div
             className='w-full'
