@@ -33,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start end", "start start"],
+    offset: ["start end", "end start"],
   });
 
   const containerTranslateY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);

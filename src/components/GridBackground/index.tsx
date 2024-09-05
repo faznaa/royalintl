@@ -449,9 +449,7 @@ export default function GridBackground() {
       animate={{ opacity: 1 }}
       transition={{ duration: 2, delay: 5 }}      
       />
-      <div className="absolute h-[500px] w-[600px] z-20 right-0  mr-18  ">
-            <World data={sampleArcs} globeConfig={globeConfig} />
-          </div>
+     
      <div>
   
      {/* <p className="text-4xl sm:text-7xl font-semibold relative z-20 text-gray-300

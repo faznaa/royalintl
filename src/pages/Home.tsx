@@ -51,7 +51,7 @@ export default function Home() {
       <OurExpertise />
       {/* <Hero /> */}
       <Services />
-      <TrustedByLeaders/>
+      {/* <TrustedByLeaders/> */}
       <Continents/>
       <WhatSetUsApart />
       <TrustedForAllRelocation />

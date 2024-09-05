@@ -32,6 +32,7 @@ import ServiceCard from 'components/ServiceCard';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import FadeIn from 'components/FadeIn';
+import TrustedByLeaders from 'components/TrustedByLeaders';
 
 // Define the structure of a service object
 interface ServiceType {
@@ -99,8 +100,9 @@ const services: ServiceType[] = [
 // Services component
 const Services: React.FC = () => {
   const [selectedId,setSelectedId] = useState('service-0');
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const container = useRef(null);
+  const [scrollPro , setScrollPro]=  useState(0)
   const { scrollYProgress, scrollY } = useScroll({
     target: container,
     offset: ['start start', 'end end']
@@ -108,13 +110,16 @@ const Services: React.FC = () => {
   const zTab = useTransform(scrollYProgress, [0, .9, 1], [20, 20, 0]);
   const tabHidden = useTransform(scrollYProgress, [0,0.99,1], [1,1,0]);
   const cardsVisible = useTransform(scrollYProgress, [0,0.99,1], [true, true, false]);
+  const opacity = useTransform(scrollYProgress, [0,0.95,1], [1,1,0]);
+  // const scaleX = useTransform(scrollYProgress, [0,0.5,1], [1,1,0.7]);
   // const cardsTranslateY = useTransform(scrollYProgress, [0,0.8,1], [1, 1, 0]);
 
   useEffect(() => {
-    const unsubscribe = cardsVisible.onChange((latest) => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
       // if (!latest) {
-        setIsVisible(latest);
+        // setIsVisible(latest);
       // }
+      setScrollPro(scrollYProgress.get())
     });
   
     // Cleanup the subscription when the component unmounts
@@ -130,7 +135,7 @@ const Services: React.FC = () => {
   };
   return (
     <section
-      className="relative h-auto bg-white pt-40 "
+      className="relative  bg-white pt-40 h-auto"
       ref={container}
     >
        <FadeIn><h1 className=' text-xl sm:text-4xl font-medium text-center'>Our Specializations</h1></FadeIn>
@@ -154,13 +159,14 @@ const Services: React.FC = () => {
               </button>
             ))}
           </motion.div>
-          <motion.div className='h-[500vh] relative'
+          <motion.div className='h-[700vh] relative'
           style={{
-            // opacity: cardsTranslateY,
+            opacity: opacity,
+            // scale:scaleX
             // translateY: cardsTranslateY,
           }}
           >
-            {isVisible &&  services.map((service, index) => {
+            { services.map((service, index) => {
               const targetScale = 1 - ( (services.length - index) * 0.05);
               return <ServiceCard
                       key={index}
@@ -172,13 +178,17 @@ const Services: React.FC = () => {
                       description={service.description}
                       src={service.images[0]}
                       progress={scrollYProgress}
-                      range={[index * .25, 1]}
+                      range={[index * .20, 1]}
                       targetScale={targetScale}
                       gradientBg={service.gradientBg}
                     />
             }
             )}
           </motion.div>
+          <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div>
+          <div className='h-[50vh] relative z-30'>
+          <TrustedByLeaders/>
+          </div>
     </section>
   );
 };
