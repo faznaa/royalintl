@@ -178,7 +178,7 @@ const Services: React.FC = () => {
                       description={service.description}
                       src={service.images[0]}
                       progress={scrollYProgress}
-                      range={[index * .25, 1]}
+                      range={[index * .25, 0.8]}
                       targetScale={targetScale}
                       gradientBg={service.gradientBg}
                     />
