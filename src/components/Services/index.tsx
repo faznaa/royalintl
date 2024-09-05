@@ -153,7 +153,7 @@ const Services: React.FC = () => {
       ref={container}
     >
        <FadeIn><h1 className='text-6xl text-center'>Our Specializations</h1></FadeIn>
-       <FadeIn> <p className='text-2xl w-1/2 text-gray-400 mx-auto py-6 pb-10 text-center'>
+       <FadeIn> <p className='text-2xl w-1/2 text-gray-400 mx-auto py-6 pb-16 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
           <motion.div

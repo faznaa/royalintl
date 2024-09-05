@@ -34,14 +34,18 @@ export function SignupFormDemo() {
           <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
+          <Label htmlFor="phone">Email Address</Label>
+          <Input id="phone" placeholder="+91 98765 67876" type="phone" />
+        </LabelInputContainer>
+        <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Subject</Label>
-          <Input id="password" placeholder="••••••••" type="text" />
+          <Input id="password" placeholder="Your Subject" type="text" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
           <Label htmlFor="twitterpassword">Message</Label>
           <Input
             id="twitterpassword"
-            placeholder="••••••••"
+            placeholder="Hello there"
             type="textarea"
           />
         </LabelInputContainer>

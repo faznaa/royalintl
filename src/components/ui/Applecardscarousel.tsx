@@ -121,11 +121,11 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   
 
-       <div className="w-full sm:max-w-md mx-auto">
+       <div className="w-full sm:max-w-md 3xl:max-w-xl mx-auto">
        <div className="flex justify-start items-center  mr-10 z-40 border-t border-gray-400  ">
           {items.map((item:any, idx:number) => (
             <button
-              className={`z-40 h-6 w-auto px-2 pt-6 text-white font-lg  ${idx==currentIndex ? 'border-t-4 border-white': 'border-b-4 border-transparent'}`}
+              className={`z-40 h-6 w-[20rem] px-2 pt-6 text-white font-lg  ${idx==currentIndex ? 'border-t-4 border-white': 'border-b-4 border-transparent'}`}
               key={idx}
               onClick={() => scrollToIndex(idx)}
             >

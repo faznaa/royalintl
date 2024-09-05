@@ -51,6 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         rows={3}
         value={props.value}
+        placeholder={props.placeholder}
       />:
         <input
           type={type}
