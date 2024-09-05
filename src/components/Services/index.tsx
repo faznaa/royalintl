@@ -112,7 +112,7 @@ const Services: React.FC = () => {
   const cardsVisible = useTransform(scrollYProgress, [0,0.99,1], [true, true, false]);
   const opacity = useTransform(scrollYProgress, [0,0.95,1], [1,1,0]);
   // const scaleX = useTransform(scrollYProgress, [0,0.5,1], [1,1,0.7]);
-  // const cardsTranslateY = useTransform(scrollYProgress, [0,0.8,1], [1, 1, 0]);
+  // const cardsTranslateY = useTransform(scrollYProgress, [0,0.95,1], [1, 1, 0]);
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
@@ -135,7 +135,7 @@ const Services: React.FC = () => {
   };
   return (
     <section
-      className="relative  bg-white pt-40 h-auto"
+      className="relative  bg-white py-40 h-auto"
       ref={container}
     >
        <FadeIn><h1 className='text-6xl text-center'>Our Specializations</h1></FadeIn>
@@ -143,7 +143,7 @@ const Services: React.FC = () => {
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
           <motion.div
-            className='sticky top-[12%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10'
+            className='sticky top-[10%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10'
             // style={{
             //   zIndex: zTab,
             //   opacity: tabHidden
@@ -178,14 +178,16 @@ const Services: React.FC = () => {
                       description={service.description}
                       src={service.images[0]}
                       progress={scrollYProgress}
-                      range={[index * .20, 1]}
+                      range={[index * .25, 1]}
                       targetScale={targetScale}
                       gradientBg={service.gradientBg}
                     />
             }
             )}
-            <div id='service-4'/>
+            <div id='service-4' ></div>
+
           </motion.div>
+
           {/* <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div> */}
           <div className='h-[50vh] relative z-30'>
           <TrustedByLeaders/>
