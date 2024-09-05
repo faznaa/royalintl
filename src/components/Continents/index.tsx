@@ -29,7 +29,7 @@ export default function Continents() {
     </svg>
   );
   return (
-    <div className="bg-white text-black h-full w-full min-h-screen px-10 py-32 text-center z-30">
+    <div className="bg-white text-black h-full w-full min-h-screen px-10 py-32 text-center z-40">
       {/* <h1 className=' text-xl sm:text-4xl font-medium '>We cover all continents</h1>
         <p className='text-md sm:max-w-sm text-gray-400 mx-auto py-6'>Over the last 15 years , we've grown into an international relocation company with a presence of 20+ partners aroudn the world.</p>
         <div className='h-[400px] w-3/4 mx-auto overflow-hidden'>

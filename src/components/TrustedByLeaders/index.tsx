@@ -21,13 +21,13 @@ export default function TrustedByLeaders() {
 
   return (
 
-          <div className="h-[30rem] py-28 rounded-md flex flex-col antialiased bg-black items-center justify-center relative overflow-hidden">
-          <h1 className=' text-6xl text-white text-center my-10  '>Trusted By Leaders</h1>
-      <InfiniteMovingCards
-        items={items}
-        direction="right"
-        speed="slow"
-      />
-    </div>
+    <div className="h-[30rem] py-28 rounded-md flex flex-col antialiased bg-black items-center justify-center relative overflow-hidden">
+    <h1 className=' text-6xl text-white text-center my-10  '>Trusted By Leaders</h1>
+<InfiniteMovingCards
+  items={items}
+  direction="right"
+  speed="slow"
+/>
+</div>
   )
 }

@@ -116,10 +116,23 @@ const Services: React.FC = () => {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      // if (!latest) {
-        // setIsVisible(latest);
-      // }
       setScrollPro(scrollYProgress.get())
+
+      // if id service-1 is visible set selectedId to service-1 and for every service
+      // if id service-2 is visible set selectedId to service-2 and for every service
+      if (scrollYProgress.get() > 0 && scrollYProgress.get() <= 0.47) {
+        setSelectedId('service-1');
+      }
+      if (scrollYProgress.get() > 0.47 && scrollYProgress.get() <= 0.65) {
+        setSelectedId('service-2');
+      }
+      if (scrollYProgress.get() > 0.65 && scrollYProgress.get() <= 0.85) {
+        setSelectedId('service-3');
+      }
+      if (scrollYProgress.get() > 0.85 && scrollYProgress.get() < 1) {
+        setSelectedId('service-4'); 
+      }
+
     });
   
     // Cleanup the subscription when the component unmounts
@@ -144,10 +157,10 @@ const Services: React.FC = () => {
         </p></FadeIn>
           <motion.div
             className='sticky top-[10%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10'
-            // style={{
+            style={{
             //   zIndex: zTab,
-            //   opacity: tabHidden
-            // }}  
+              opacity: opacity
+            }}  
           >
             {services.map((service, index) => (
               <button
@@ -162,8 +175,6 @@ const Services: React.FC = () => {
           <motion.div className='h-[500vh] relative'
           style={{
             opacity: opacity,
-            // scale:scaleX
-            // translateY: cardsTranslateY,
           }}
           >
             { services.map((service, index) => {
@@ -178,18 +189,20 @@ const Services: React.FC = () => {
                       description={service.description}
                       src={service.images[0]}
                       progress={scrollYProgress}
-                      range={[index * .25, 0.8]}
+                      range={[index * .25, 1]}
                       targetScale={targetScale}
                       gradientBg={service.gradientBg}
                     />
             }
             )}
-            <div id='service-4' ></div>
-
+            <div id='service-4' className='h-[100vh]'></div>
+            
           </motion.div>
 
           {/* <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div> */}
-          <div className='h-[50vh] relative z-30'>
+          <div className=' relative z-30 top-36'>
+                      {/* <div className='h-[50vh] bg-transparent relative z-30'/> */}
+
           <TrustedByLeaders/>
           </div>
     </section>

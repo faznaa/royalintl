@@ -35,11 +35,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     target: container,
     offset: ["start end", "end start"],
   });
+  
 
   const containerTranslateY = useTransform(scrollYProgress, [0, 1], ['170%', '0%']);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
   const opacity = useTransform(progress, [range[0],range[0]+0.01], [1, 1]);
+  // const classFixed = useTransform(progress, [0,0.9,1], ['fixed','fixed','relative']);
 
   return (
     <section
@@ -48,7 +50,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       id={`service-${index}`}
     >
       <motion.div
-        className="w-full h-screen fixed flex justify-center items-center overflow-hidden"
+        className={`w-full h-screen flex justify-center items-center overflow-hidden fixed`}
         style={{
           top: `calc(1% + ${index * 30}px)`,
           zIndex: index,
