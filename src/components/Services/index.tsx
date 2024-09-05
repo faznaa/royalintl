@@ -151,15 +151,15 @@ const Services: React.FC = () => {
           >
             {services.map((service, index) => (
               <button
-                onClick={() => scrollToId(`service-${index}`)}  
+                onClick={() => scrollToId(`service-${index+1}`)}  
                 className={`uppercase font-bold text-[16px] px-4 py-2  rounded-2xl text-black hover:bg-gray-100
-                ${selectedId === `service-${index}` ? 'text-red-500  bg-gray-200' : ''}`}
+                ${selectedId === `service-${index+1}` ? 'text-red-500  bg-gray-200' : ''}`}
               >
                 {service.title}
               </button>
             ))}
           </motion.div>
-          <motion.div className='h-[700vh] relative'
+          <motion.div className='h-[500vh] relative'
           style={{
             opacity: opacity,
             // scale:scaleX
@@ -184,6 +184,7 @@ const Services: React.FC = () => {
                     />
             }
             )}
+            <div id='service-4'/>
           </motion.div>
           {/* <div className='sticky z-50 bottom-10 left-10 bg-red-600 w-64 text-white'>{scrollPro}</div> */}
           <div className='h-[50vh] relative z-30'>
