@@ -57,11 +57,11 @@ function CarouselDemo() {
 
   
   return (
-    <div className="py-10 pt-0">
+    <div className="py-10 pt-0 relative ">
 
       {/* black shadow on left and right 1/3 width of screen */}
-      <div className='w-1/3 h-full absolute bg-black opacity-60 blur-3xl z-20'></div>
-      <div className='w-1/3 h-full absolute right-0 bg-black opacity-80 blur-3xl z-20'></div>
+      <div className='w-3/12 h-full absolute bg-gradient-to-r  from-black via-black to-transparent z-20'></div>
+      <div className='w-3/12 h-full absolute right-0 bg-gradient-to-l from-black via-black to-transparent   z-20'></div>
 
       <Carousel items={data} />
     
@@ -115,7 +115,7 @@ export default function TrustedForAllRelocation() {
             >
               Trusted for all relocations
             </motion.h1>
-            <div className='w-screen sm:max-w-7xl'>
+            <div className='w-screen   '>
             <CarouselDemo/>
             </div>
         </FadeIn>

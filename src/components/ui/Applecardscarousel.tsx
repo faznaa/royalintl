@@ -48,8 +48,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   useEffect(() => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 230 : 400;
-      const gap = isMobile() ? 4 : 8;
+      const cardWidth = isMobile() ? 230 : 580;
+      const gap = isMobile() ? 4 : 12;
       const scrollPosition = (cardWidth + gap) * (currentIndex + totalItems);
       carouselRef.current.scrollTo({
         left: scrollPosition,
@@ -198,7 +198,7 @@ export const Card = ({
             // scale:isMiddle?1.3:1
         }}
         onClick={handleOpen}
-        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-30 md:h-[17rem] md:w-[30rem]':'z-10'} mx-6`}
+        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 3xl:h-[20rem] 3xl:w-[35rem] overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-30 md:h-[17rem] md:w-[30rem] 3xl:h-[25rem] 3xl:w-[40rem]':'z-10'} mx-6`}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -235,12 +235,12 @@ export const Card = ({
         // onClick={(event:any) => event.target.pause()}
         autoPlay={false} loop muted className="object-fit absolute z-10 inset-0"/>
       </motion.button>
-      <motion.p
+      <motion.div
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white mx-7 3xl:mx-7 h-10  text-pretty text-sm md:text-sm font-medium   font-sans mt-2"
+            className={`text-white mx-7 relative 3xl:mx-7 h-10  text-pretty text-sm md:text-sm 3xl:text-base font-medium    font-sans mt-2 ${isMiddle?'z-50':'z-10'}`}
           >
             {card.title}
-          </motion.p>
+          </motion.div>
     </>
   );
 };

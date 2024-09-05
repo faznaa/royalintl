@@ -34,15 +34,15 @@ export function SignupFormDemo() {
           <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Label htmlFor="password">Subject</Label>
+          <Input id="password" placeholder="••••••••" type="text" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
-          <Label htmlFor="twitterpassword">Your twitter password</Label>
+          <Label htmlFor="twitterpassword">Message</Label>
           <Input
             id="twitterpassword"
             placeholder="••••••••"
-            type="twitterpassword"
+            type="textarea"
           />
         </LabelInputContainer>
 

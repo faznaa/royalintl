@@ -52,7 +52,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <motion.div
         className={`w-full h-screen flex justify-center items-center overflow-hidden fixed`}
         style={{
-          top: `calc(1% + ${index * 50}px)`,
+          top: `calc(1% + ${index * 32}px)`,
           zIndex: index,
           translateY: containerTranslateY,
           // opacity: opacity,
