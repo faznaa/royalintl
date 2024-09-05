@@ -9,7 +9,7 @@ import FadeIn from "./FadeIn";
 import { Sparkles } from "./Sparkles";
 
 const CustomText = ({ children }: any) => (
-  <div className="px-5 py-5 uppercase text-sm text-black font-semibold z-40 bg-gray-400 border-2  border-gray-500 rounded-full">
+  <div className="px-5 py-5 uppercase text-sm text-black font-semibold z-40 bg-primaryBg border-2  border-gray-500 rounded-full">
     {children}
   </div>
 );

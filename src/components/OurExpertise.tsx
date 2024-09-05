@@ -68,7 +68,7 @@ const OurExpertise: React.FC = () => {
   const [showFigure, setShowFigure] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start 80%", "end start"],
   });
 
   const leftPathLengthFirst = useTransform(scrollYProgress, [0.2, 0.4], [0.2, 1.2]);
@@ -105,7 +105,7 @@ const OurExpertise: React.FC = () => {
   
   return (
     <motion.div
-      className="h-[400vh] bg-black w-full relative pt-40 overflow-clip -z-10"
+      className="h-[300vh] bg-black w-full relative pt-40 overflow-clip -z-10"
       ref={ref}
     >
       <motion.div className="fixed top-0 w-full h-screen flex justify-center items-center -z-10">
@@ -150,11 +150,11 @@ const OurExpertise: React.FC = () => {
                   <>
                     <div className="space-y-2">
                       <FigureDigits digits={150} text="k" />
-                      <p className="uppercase text-[16px] font-bold">home moving</p>
+                      <p className="uppercase text-[16px] font-medium tracking-wider">home moving</p>
                     </div>
                     <div className="space-y-2">
                       <FigureDigits digits={250} text="k" />
-                      <p className="uppercase text-[16px] font-bold">ship expedition</p>
+                      <p className="uppercase text-[16px] font-medium tracking-wider">ship expedition</p>
                     </div>
                   </>
                 {/* } */}

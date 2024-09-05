@@ -43,7 +43,7 @@ const FigureDigits = ({ digits, text }: any) => {
     }, [digits, alreadyAnimated, controls]);
 
     return (
-        <div ref={ref} className='overflow-hidden text-red-500 text-6xl tracking-wide'>
+        <div ref={ref} className='overflow-hidden text-red-500 text-6xl tracking-wide space-x-2'>
             <motion.div
                 initial={{ y: '100%', opacity: 0 }}
                 animate={controls}
@@ -51,7 +51,9 @@ const FigureDigits = ({ digits, text }: any) => {
             >
                 {currentValue}
             </motion.div>
-            {text}
+            <span>
+                {text}
+            </span>
         </div>
     );
 };

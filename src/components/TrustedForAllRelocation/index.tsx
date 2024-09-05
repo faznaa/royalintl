@@ -129,8 +129,7 @@ export default function TrustedForAllRelocation() {
             exit={{ translateX: "-40%", opacity: 0 }}
             transition={{ duration: .5, ease: "easeIn" }}
             >
-            <h1 className="text-6xl relative z-2 text-center mb-10 tracking-tighter"
-            >Get in touch</h1>
+            <h1 className="text-5xl relative z-2 text-center mb-6">Get in touch</h1>
             <p className='text-gray-500 text-2xl text-center'>Lorem ipsum dolor sit amet </p>
           </motion.div>
           <motion.div

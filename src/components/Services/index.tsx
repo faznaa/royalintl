@@ -146,7 +146,7 @@ const Services: React.FC = () => {
   };
   return (
     <section
-      className="relative  bg-white py-40 h-auto"
+      className="relative bg-primaryBg py-40 h-auto"
       ref={container}
     >
        <FadeIn><h1 className='text-6xl text-center'>Our Specializations</h1></FadeIn>

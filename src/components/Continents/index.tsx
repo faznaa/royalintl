@@ -1,12 +1,12 @@
 import FadeIn from "components/FadeIn";
 import { Figure } from "components/Figure";
 import Map from "components/Map";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import FigureDigits from "components/FigureDigits";
 
 const FigureCaption = ({ children }: any) => (
-  <div className="text-gray-700 font-bold uppercase tracking-normal">
+  <div className="text-gray-700 font-medium uppercase tracking-wider">
     {children}
   </div>
 );
@@ -45,26 +45,26 @@ export default function Continents() {
         <div className="grid grid-cols-4 justify-between text-center">
           <div className="">
             {/* <Figure>146 K</Figure> */}
-            <FigureDigits digits={10} text="K" />
+            <FigureDigits digits={10} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div>
-            <FigureDigits digits={200} text="K" />
+            <FigureDigits digits={200} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div className="">
-            <FigureDigits digits={46} text="K" />
+            <FigureDigits digits={46} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div>
-            <FigureDigits digits={145} text="K" />
+            <FigureDigits digits={145} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
         </div>
       </div>
-      <div className="text-gray-400 mx-auto text-center mt-10">
+      {/* <div className="text-gray-400 mx-auto text-center mt-10">
         Packages moved across globe.
-      </div>
+      </div> */}
     </div>
   );
 }

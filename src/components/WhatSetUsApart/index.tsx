@@ -121,7 +121,7 @@ const WhatSetUsApart = () => {
                 // boxShadow: boxShadowTransforms[index] ? `rgba(255, 0, 0, .4) 0px 15px 25px, rgba(255, 0, 0, .4) 0px 5px 10px` : 'none',
               }}
             >
-              <div className="text-red-500 w-36 text-center flex justify-center items-center mt-6 scale-[2]">
+              <div className="text-red-500 w-36 text-center flex justify-center items-center mb-4 scale-[2]">
                 {i.icon}
               </div>
               <div className="text-xl text-gray-700">{i.text}</div>
