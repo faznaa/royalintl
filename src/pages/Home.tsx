@@ -42,16 +42,10 @@ const ResponsiveChecked = () => {
 
 export default function Home() {
   return (
-    <div className=''>
-        {/* <HeroFazna/> */}
-        <Hero/>
-      {/* <ResponsiveChecked/> */}
-      {/* <GridBackground /> */}
-      {/* <Map /> */}
+    <div className='w-screen overflow-x-hidden'>
+      <Hero/>
       <OurExpertise />
-      {/* <Hero /> */}
       <Services />
-      {/* <TrustedByLeaders/> */}
       <Continents/>
       <WhatSetUsApart />
       <TrustedForAllRelocation />
