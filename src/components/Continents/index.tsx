@@ -49,7 +49,7 @@ export default function Continents() {
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div>
-            <FigureDigits digits={200} text="k" />
+            <FigureDigits digits={200} initialCurrentValue={150} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div className="">
@@ -57,7 +57,7 @@ export default function Continents() {
             <FigureCaption>Home moving</FigureCaption>
           </div>
           <div>
-            <FigureDigits digits={145} text="k" />
+            <FigureDigits digits={145} initialCurrentValue={100} text="k" />
             <FigureCaption>Home moving</FigureCaption>
           </div>
         </div>
