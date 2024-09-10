@@ -95,6 +95,8 @@ const OurExpertise: React.FC = () => {
     [0, 0, 1, 1]
   );
 
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.85, 1], [0, 1, 1, 0]);
+
   useEffect(() => {
     const unsubscribe = showFigureOnScroll.onChange(latest => {
       setShowFigure(latest === 1);
@@ -107,8 +109,15 @@ const OurExpertise: React.FC = () => {
     <motion.div
       className="h-[300vh] bg-black w-full relative pt-40 overflow-clip -z-10"
       ref={ref}
+      // initial={{ opacity: 0 }}
+      // whileInView={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
     >
-      <motion.div className="fixed top-0 w-full h-screen flex justify-center items-center -z-10">
+      <motion.div className="fixed top-0 w-full h-screen flex justify-center items-center -z-10"
+        style={{
+          opacity //Added opacity to hide path and text visible outside this seciton
+        }}
+      >
         <GoogleGeminiEffect
           svgPaths={leftPaths}
           pathLengths={[
