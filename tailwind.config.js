@@ -18,7 +18,7 @@ module.exports = {
         keyframes: {
           scroll: {
             to: {
-              transform: "translate(calc(-50% - 0.5rem))",
+              transform: "translate(calc(-10% - 0.5rem))", // changed the translate percentage to move the container intial position
             },
           },
         },

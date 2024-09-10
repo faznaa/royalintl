@@ -26,7 +26,7 @@ export default function TrustedByLeaders() {
 <InfiniteMovingCards
   items={items}
   direction="right"
-  speed="slow"
+  speed="fast" // after changed the initial position of the moving container, it moves very slowly. so i changed this fast
 />
 </div>
   )
