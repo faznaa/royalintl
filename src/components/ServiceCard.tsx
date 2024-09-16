@@ -17,6 +17,60 @@ interface ServiceCardProps {
   gradientBg: string;
 }
 
+/**
+* ServiceCard component that displays a single service offering with animated features.
+* The component uses Framer Motion for scroll-based animations and transformations.
+* 
+* It showcases a service with an image, title, description, and a call-to-action button
+* in a visually appealing card format. The card's position, scale, and opacity change
+* based on the scroll position, creating an interactive and engaging user experience.
+* 
+* @example
+* // Example usage of the ServiceCard component
+* import ServiceCard from "components/ServiceCard";
+* 
+*function ServicesSection() {
+*return (
+*        <ServiceCard
+*          bg="#ffffff"
+*          textColor="#000000"
+*          title="Data Center Migration"
+*          subtitle="Seamless Transitions"
+*          description="We offer comprehensive data center migration services..."
+*          src="/path/to/image.jpg"
+*          index={0}
+*          progress={scrollYProgress}
+*           range={[0, 0.5]}
+*           targetScale={0.8}
+*           gradientBg="bg-gradient-to-br from-blue-500 to-purple-500"
+*         />
+* );
+* }
+* 
+* @param {ServiceCardProps} props All props dont have default value,
+*   - bg: string - Background color of the card.
+*   - textColor: string - Text color for the card content.
+*   - title: string - Title of the service.
+*   - subtitle: string - Subtitle of the service (currently not used in the render).
+*   - description: string - Description of the service.
+*   - src: string - Source URL for the service image.
+*   - index: number - Index of the card, used for positioning and z-index.
+*   - progress: MotionValue<number> - MotionValue representing overall scroll progress.
+*   - range: [number, number] - Range for scaling animation.
+*   - targetScale: number - Target scale value for the card.
+*   - gradientBg: string - CSS classes for gradient background.
+*
+* @returns {JSX.Element} A section container with the following structure:
+* An outer motion.div that controls the card's position and translation based on scroll.
+* An inner motion.div that represents the card itself, with background color, gradient, and scale animations.
+* An image section with a motion.img that scales based on scroll progress. 
+*  A text content section wrapped in a FadeIn component for a smooth appearance effect.  
+*  The text content includes the service title, description, and a "Know more" button. 
+*  The component uses the following key features:
+*  Framer Motion's useScroll and useTransform for scroll-based animations.  
+*  React's useRef for creating a reference to the container element.  
+*  Custom scaling and opacity transformations based on scroll progress.
+*/
 const ServiceCard: React.FC<ServiceCardProps> = ({
   bg,
   textColor,

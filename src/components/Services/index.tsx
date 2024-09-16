@@ -36,14 +36,14 @@ import TrustedByLeaders from 'components/TrustedByLeaders';
 
 // Define the structure of a service object
 interface ServiceType {
-  title: string;
-  subtitle: string;
-  description: string;
-  images: string[];
-  video: string;
-  bg:string;
-  fg:string;
-  gradientBg: string;
+  title: string; // The title of the service
+  subtitle: string; // The subtitle of the service
+  description: string; // A detailed description of the service
+  images: string[]; // An array of image URLs for the service
+  video: string; // The URL of a video associated with the service
+  bg:string; // The background color for the service card
+  fg:string; // The foreground (text) color for the service card
+  gradientBg: string; // The gradient background for the service card
 }
 
 // Define the array of images
@@ -97,10 +97,41 @@ const services: ServiceType[] = [
   },
 ];
 
+/**
+ * Services component that displays a section of services offered by a company.
+ * The component uses Framer Motion for scroll-based animations and interactive features.
+ * 
+ * It showcases various services offered by the company, using a combination of
+ * animated cards, sticky navigation, and scroll-based interactions to create
+ * an engaging and informative user experience.
+ * 
+ * refer https://blog.olivierlarose.com/tutorials/cards-parallax
+ * 
+ * The component uses the following key features:
+ *  - Framer Motion's useScroll and useTransform for scroll-based animations.
+ *  - React's useState and useEffect for managing component state and side effects.
+ *  - Custom click handler (scrollToId) for smooth scrolling to specific service cards.
+ * 
+ * @example
+ * // Example usage of the Services component
+ * import Services from "components/Services";
+ * 
+ * function App() {
+ *   return <Services />;
+ * }
+ * 
+ * @returns {JSX.Element} A section container with the following structure:
+ *  - FadeIn components wrap the title and description, providing a transition effect where the content moves from bottom to top with opacity changing from 0 to 1.
+ *  - A sticky navigation bar at the top, highlighting the current service based on scroll position.
+ *  - A series of ServiceCard components, each representing a different service offered by the company.
+ *  - Each ServiceCard scales and transforms based on the scroll progress, creating a parallax-like effect.
+ *  - A TrustedByLeaders component at the bottom of the section.
+ * 
+ * @param props No props are expected for this component.
+ */
 
-// Services component
 const Services: React.FC = () => {
-  const [selectedId,setSelectedId] = useState('service-1');
+  const [selectedId,setSelectedId] = useState('service-1'); // Based on scrollYProgress we will change the active tab to indicate the current service
   const container = useRef(null);
   const [scrollPro , setScrollPro]=  useState(0)
   const { scrollYProgress, scrollY } = useScroll({
@@ -141,7 +172,7 @@ const Services: React.FC = () => {
     setSelectedId(id)
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth' }); // scroll to the particular card based on user interaction with tab
     }
   };
   return (
@@ -153,12 +184,16 @@ const Services: React.FC = () => {
        <FadeIn> <p className='text-2xl w-1/2 text-gray-400 mx-auto py-6 pb-16 text-center'>
           Moving beyond relocation - innovating the future of high tech logistics
         </p></FadeIn>
+        {/*
+          The below div contains navigation tab for service card, the div will stick to the top.
+          Buttons dynamically scroll to the respective service cards, creating a smooth and interactive navigation experience.
+        */}
           <motion.div
             className='sticky top-[10%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10'
             style={{
             //   zIndex: zTab,
               opacity: opacity
-            }}  
+            }}
           >
             {services.map((service, index) => (
               <button
@@ -176,7 +211,8 @@ const Services: React.FC = () => {
           }}
           >
             { services.map((service, index) => {
-              const targetScale = 1 - ( (services.length - index) * 0.05);
+              const targetScale = 1 - ( (services.length - index) * 0.05); // 1 - (5-0) * 0.05 => 1 - 5 * 0.05 => 1 - 0.25 => 0.75 for index 0
+              // refer https://blog.olivierlarose.com/tutorials/cards-parallax
               return <ServiceCard
                       key={index}
                       index={index}
@@ -187,8 +223,8 @@ const Services: React.FC = () => {
                       description={service.description}
                       src={service.images[0]}
                       progress={scrollYProgress}
-                      range={[index * .25, 1]}
-                      targetScale={targetScale}
+                      range={[index * .25, 1]} // when to start scaling down the card, after the card sticked to top then we have to scale it down
+                      targetScale={targetScale} // how much to scale down the card, for low index value the scaling will be more
                       gradientBg={service.gradientBg}
                     />
             }

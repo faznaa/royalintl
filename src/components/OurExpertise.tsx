@@ -3,7 +3,27 @@ import React, { RefObject, useEffect, useRef, useState } from "react";
 import { GoogleGeminiEffect } from "../components/ui/google-gemini-effect";
 import FigureDigits from "./FigureDigits";
 
-const leftPaths = [
+/**
+ * Represents a single SVG path with its color.
+ * 
+ * @interface Path
+ */
+interface Path {
+  /** The SVG path data string. */
+  path: string;
+  
+  /** The color of the SVG path stroke. */
+  color: string;
+}
+
+/**
+ * Array of path objects for the left side of the animation.
+ * Each path object defines the SVG path and its stroke color.
+ * 
+ * @type {Path[]}
+ */
+
+const leftPaths: Path[] = [
   {
     path: "M-214 92.5H9.15594C68.7022 92.5 127.233 107.924 179.046 137.27V137.27C201.512 149.993 226.015 158.72 251.466 163.062L298 171",
     // color: "#FFB7C5",
@@ -31,7 +51,13 @@ const leftPaths = [
   },
 ];
 
-const rightPaths = [
+/**
+ * Array of path objects for the right side of the animation.
+ * Each path object defines the SVG path and its stroke color.
+ * 
+ * @type {Path[]}
+ */
+const rightPaths: Path[] = [
   {
     path: "M27.1251 183.086L75.6702 191.367C102.22 195.896 127.783 205 151.219 218.274V218.274C205.271 248.887 266.331 264.978 328.45 264.978L561.249 264.978",
     // color: "#FFB7C5",
@@ -59,17 +85,54 @@ const rightPaths = [
   },
 ];
 
+/**
+ * Props for the GoogleGeminiEffect component.
+ * 
+ * @interface GoogleGeminiEffectProps
+ */
 interface GoogleGeminiEffectProps {
+  /** Array of motion values representing the lengths of the paths. */
   pathLengths: MotionValue<number>[];
 }
 
+/**
+ * @component
+ * This component creates a scrollable section with animated paths and text,
+ * showcasing the company's expertise in international relocation.
+ * Used framer motion for tracking scroll progress.
+ * 
+ *  @example
+ * // Example usage of the OurExpertise component
+ * import OurExpertise from "components/OurExpertise";
+ * 
+ * function App() {
+ *   return <OurExpertise />;
+ * }
+ * @returns {JSX.Element} A motion.div container with the following structure:
+ *   - A fixed position motion.div for the main content
+ *     - Two GoogleGeminiEffect components for left and right animated paths
+ *     - A central motion.div for text content:
+ *       - Heading ("International Relocation")
+ *       - Paragraph describing the company's experience
+ *       - A container for animated figures:
+ *         - Two FigureDigits components with accompanying text
+ */
+
 const OurExpertise: React.FC = () => {
-  const ref = useRef(null);
+  const ref = useRef(null); // Ref to track the DOM element and ref is usefull when trigerring animation based on events
   const [showFigure, setShowFigure] = useState(false);
+
+  // useScroll is a hook provided by Framer Motion that allows you to track the scroll position of the page or a specific scrollable container.
+  // It gives you access to reactive values that represent the scroll progress and scroll position, which you can use to create dynamic, scroll-based animations.
+  // https://www.framer.com/motion/use-scroll/
+
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end start"],
+    target: ref, // it will give scroll progress for that particular target container
+    offset: ["start 80%", "end start"], // when to start the scroll progress and when to end scroll progress
   });
+
+  // useTransform can map a motion value from one range of values to another 
+  // https://framer.com/motion/use-transform/
 
   const leftPathLengthFirst = useTransform(scrollYProgress, [0.2, 0.4], [0.2, 1.2]);
   const leftPathLengthSecond = useTransform(scrollYProgress, [0.2, 0.4], [0.15, 1.2]);
@@ -88,7 +151,7 @@ const OurExpertise: React.FC = () => {
 
   const figureTransalteY = useTransform(scrollYProgress, [0.25, 0.5], ["10%", "0%"]);
   const figureOpacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.5], [0, 0, 0, 1]);
-
+  
   const showFigureOnScroll: MotionValue<number> = useTransform(
     scrollYProgress,
     [0, 0.2, 0.25, 0.5],

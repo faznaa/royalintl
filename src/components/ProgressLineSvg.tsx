@@ -4,7 +4,21 @@ import { motion, MotionValue } from "framer-motion";
 interface ProgressLineSVGProps {
   progress?: MotionValue;
 }
-
+/**
+ * This is used for highlighting scrollProgress in WhatSetsUsApart section based on scroll using framer motion
+ * @example
+ * // Example usage of the ProgressLineSVG component
+ * import ProgressLineSVG from "components/ProgressLineSVG";
+ * 
+ * function App() {
+ *   return <ProgressLineSVG progress={progress}/>;
+ * }
+ * @param {ProgressLineSVGProps} props progress prop should be motion value from 0 to 1.
+ * @returns {JSX.Element} a div container with the following strucuture
+ *  - svg wraps path and motion.path
+ *  - path is initial line across the component
+ *  - motion.path is used for indicating the scrollProgress of the parent WhatsetsUsApart section.
+ */
 const ProgressLineSVG: React.FC<ProgressLineSVGProps> = ({ progress = 0 }) => {
   return (
     <div className="w-full h-full z-0">
@@ -30,7 +44,8 @@ const ProgressLineSVG: React.FC<ProgressLineSVGProps> = ({ progress = 0 }) => {
           style={{ pathLength: progress }}
           transition={{ type: "spring", stiffness: 50, damping: 20 }}
         />
-        <defs>
+        {/* The below is used for gradient color path */}
+        {/* <defs>
           <linearGradient
             id="line-progress"
             x1="-6.08%"
@@ -44,7 +59,7 @@ const ProgressLineSVG: React.FC<ProgressLineSVGProps> = ({ progress = 0 }) => {
             <stop offset="0.881552" stopColor="#324EEF" />
             <stop offset="1" stopColor="#E5E6E8" />
           </linearGradient>
-        </defs>
+        </defs> */}
       </svg>
     </div>
   );

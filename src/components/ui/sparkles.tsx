@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useId, useMemo } from "react";
 import { useEffect, useState } from "react";
@@ -18,6 +19,52 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
+
+/**
+ * The `SparklesCore` component is a core utility for rendering interactive particle animations using the `tsparticles` library.
+ * It allows customization of particle properties such as size, color, speed, and density. The component also supports animation control using Framer Motion.
+ * 
+ * This component can be used to add dynamic particle effects to any section of your app.
+ *
+ * @component
+ * @example
+ * // Example usage:
+ * import { SparklesCore } from './SparklesCore';
+ *
+ * const App = () => (
+ *   <div className="relative h-screen">
+ *     <SparklesCore 
+ *       id="particles-effect"
+ *       className="absolute inset-0"
+ *       background="transparent"
+ *       particleSize={2}
+ *       particleColor="#00ff00"
+ *       particleDensity={200}
+ *     />
+ *  *   </div>
+ * );
+ *
+ * export default App;
+ *
+ * @typedef {Object} ParticlesProps
+ * @property {string} [id] - Unique ID for the particles instance.
+ * @property {string} [className] - Additional CSS classes for the container.
+ * @property {string} [background] - Background color for the particle canvas.
+ * @property {number} [particleSize] - Default size of the particles.
+ * @property {number} [minSize] - Minimum size for the particles.
+ * @property {number} [maxSize] - Maximum size for the particles.
+ * @property {number} [speed] - Speed of particle animation.
+ * @property {string} [particleColor] - Color of the particles.
+ * @property {number} [particleDensity] - The number of particles displayed on the screen.
+ *
+ * @param {ParticlesProps} props - The props that configure the particle effect.
+ * @returns {JSX.Element} A motion-wrapped div containing the particle animation.
+ *
+ * @see {@link https://ui.aceternity.com/components/sparkles | aceternity ui sparkles} for more details on the props 
+ * @see {@link https://www.npmjs.com/package/@tsparticles/react | tsparticles documentation} for more details on the particle engine.
+ * @see {@link motion} for animation controls provided by Framer Motion.
+ */
+
 export const SparklesCore = (props: ParticlesProps) => {
   const {
     id,

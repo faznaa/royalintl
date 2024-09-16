@@ -3,8 +3,13 @@ import PingDot from "components/PingDot";
 import ProgressLineSVG from "components/ProgressLineSvg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-
-const dummyIcon = (
+/**
+ * A dummy SVG icon used as a placeholder for each unique feature in the `WhatSetUsApart` component.
+ * Represents an SVG star icon with customizable stroke and fill properties.
+ * 
+ * @constant {JSX.Element} dummyIcon
+ */
+const dummyIcon: JSX.Element = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -20,6 +25,13 @@ const dummyIcon = (
     />
   </svg>
 );
+
+/**
+ * An array of objects representing each unique feature that sets the company apart.
+ * Each feature includes descriptive text, an associated icon, and positioning information (top and left).
+ * 
+ * @constant {Array<{text: string, icon: JSX.Element, top: string, left: string}>} whatSetsusapart
+ */
 const whatSetsusapart = [
   {
     text: "100% safety and quality migration",
@@ -59,8 +71,34 @@ const whatSetsusapart = [
   },
 ];
 
-const WhatSetUsApart = () => {
-  const ref = useRef(null);
+/**
+ * @component
+ * WhatSetUsApart component that displays unique features of a company.
+ * The component uses Framer Motion for scroll-based animations.
+ * 
+ * It showcases various qualities and benefits that set the company apart, 
+ * using a combination of SVG icons and text descriptions in a visually appealing format.
+ * We use SVG path to highlight each feature based on scroll.
+ * 
+ * @example
+ * // Example usage of the WhatSetUsApart component
+ * import WhatSetUsApart from "components/WhatSetUsApart";
+ * 
+ * function App() {
+ *   return <WhatSetUsApart />;
+ * }
+ * 
+ * @returns {JSX.Element} A section container with the following strucutre.
+ *  - A FadeIn component wraps title and description to give transition like title and description moves from bottom to top with opacity from 0 t0 1.
+ *  - A motion.div wraps (PingDot, ProgressLineSVG) component and WhatSetsUsApart container contains card
+ *  - PingDot to highlight starting and ending point of the progressLineSvg.
+ *  - progressLineSvg takes scrollYprogress to reach its full pathLength.
+ *  - whatSetsUsApart container show all features and scale based on SVG path position to highlight the current card.
+ * @param props No props are expected.
+ */
+
+const WhatSetUsApart: React.FC = () => {
+  const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 40%", "end 60%"],
@@ -68,7 +106,6 @@ const WhatSetUsApart = () => {
 
   const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  // Scaling transforms
   const cardTranslateY = [
     useTransform(scrollYProgress, [0, 0.4, 0.45, 0.47, 1], [1, 1, 1.2, 1, 1]),
     useTransform(scrollYProgress, [0, 0.28, 0.3, 0.35, 1], [1, 1, 1.2, 1, 1]),
@@ -78,7 +115,6 @@ const WhatSetUsApart = () => {
     useTransform(scrollYProgress, [0, 0.78, 0.83, 0.85, 1], [1, 1, 1.2, 1, 1])
   ];
 
-  // Box shadow transforms
   const boxShadowTransforms = [
     useTransform(scrollYProgress, [0, 0.28, 0.3, 0.35, 1], [false, true, true, false, false]),
     useTransform(scrollYProgress, [0, 0.18, 0.2, 0.25, 1], [false, true, true, false, false]),
@@ -87,16 +123,9 @@ const WhatSetUsApart = () => {
     useTransform(scrollYProgress, [0, 0.4, 0.45, 0.5, 1], [false, true, true, false, false]),
     useTransform(scrollYProgress, [0, 0.5, 0.55, 0.58, 1], [false, true, true, false, false])
   ];
-//  useEffect(()=>{
-//    console.log(boxShadowTransforms[0]);
 
-//  }, [boxShadowTransforms[0]])
   return (
-    <section ref={ref} className="bg-primaryBg w-full h-auto flex flex-col justify-center items-center py-32"
-      // style={{
-      //   backgroundColor: "#F7F7FB",
-      // }}
-    >
+    <section ref={ref} className="bg-primaryBg w-full h-auto flex flex-col justify-center items-center py-32">
       <FadeIn>
         <div className="flex flex-col justify-center items-center gap-y-6 text-center">
           <h1 className="text-6xl">What sets us apart</h1>
@@ -118,7 +147,6 @@ const WhatSetUsApart = () => {
               className="bg-white border max-w-[220px] h-[220px] rounded-xl border-gray-200 flex flex-col items-center justify-evenly justify-self-center text-center p-4"
               style={{
                 scale: cardTranslateY[index],
-                // boxShadow: boxShadowTransforms[index] ? `rgba(255, 0, 0, .4) 0px 15px 25px, rgba(255, 0, 0, .4) 0px 5px 10px` : 'none',
               }}
             >
               <div className="w-36 text-center flex justify-center items-center mb-4 scale-[2]" style={{ color: "#C9372C" }}>

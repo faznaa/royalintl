@@ -4,6 +4,39 @@ import PingDot from '../components/PingDot';
 import FadeIn from './FadeIn';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+/**
+ * A React component that displays a scalable world map with ping dots indicating
+ * locations on the map. The map scales as the user scrolls, and a heading and
+ * description are displayed above the map.
+ *
+ * The map scaling is handled using Framer Motion's `useScroll` and `useTransform` hooks.
+ * It features a dynamic scale that increases as the user scrolls down.
+ * 
+ * The component also makes use of the `PingDot` and `FadeIn` components to display
+ * location indicators on the map and to animate text elements, respectively.
+ * 
+ * @example
+ * * // Example usage:
+ * import Map from './Map';
+ *
+ * const App = () => (
+ *   <div>
+ *     <Map />
+ *   </div>
+ * );
+ * 
+ * export default App;
+ * @param props This component does not receive props
+ * 
+ * @returns {JSX.Element}  A div container with the following structure:
+ *  - div wraps title and description with fade in effect
+ *  - motion.div wraps another motion div that contains ping dot and map
+ * 
+ *  @see {@link PingDot} for the component that displays the ping dots on the map.
+ * @see {@link FadeIn} for the component that animates the fade-in effect of the text.
+ * @see {@link https://www.framer.com/motion/} for more information about Framer Motion.
+ */
+
 const Map = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -11,11 +44,11 @@ const Map = () => {
     offset: ["start 60%", "end 80%"],
   });
 
-  const mapScale = useTransform(scrollYProgress, [0, .8], [.8, 1]);
+  const mapScale = useTransform(scrollYProgress, [0, .8], [.8, 1]); // on scroll map scale up
 
   return (
     <div ref={ref} className='w-full h-auto flex flex-col justify-center items-center text-center space-y-6 pb-8 overflow-hidden'>
-      <div 
+      <div
         // ref={ref}
         className={`w-[60%] space-y-6 transform transition-all duration-[1s] ease-out`}
       >
@@ -34,6 +67,7 @@ const Map = () => {
         // transition={{ duration: 1.5, ease: "easeIn" }}
         className='w-full overflow-hidden h-full rounded-t-[100%] flex justify-center items-center'
       >
+        {/* ping dot is used for indicating location in the map and it takes props for placing it across the map */}
         <motion.div className='w-[80%] relative' style={{ scale: mapScale }}>
           <PingDot top="20" left="30"/>
           <PingDot top="30" left="15"/>
