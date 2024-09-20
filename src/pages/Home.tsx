@@ -1,6 +1,5 @@
 import GridBackground from 'components/GridBackground'
 import Hero from 'components/Hero'
-import Services from 'components/Services'
 import React, { useEffect, useState } from 'react'
 import Map from "components/Map";
 import OurExpertise from "components/OurExpertise";
@@ -9,6 +8,8 @@ import TrustedByLeaders from 'components/TrustedByLeaders';
 import Continents from 'components/Continents';
 import TrustedForAllRelocation from 'components/TrustedForAllRelocation';
 import WhatSetUsApart from 'components/WhatSetUsApart';
+import Services from 'components/Services';
+import MainService from 'components/Services';
 
 
 const ResponsiveChecked = () => {
@@ -45,7 +46,7 @@ export default function Home() {
     <div className='w-screen overflow-x-hidden'>
       <Hero/>
       <OurExpertise />
-      <Services />
+      <MainService />
       <Continents/>
       <WhatSetUsApart />
       <TrustedForAllRelocation />

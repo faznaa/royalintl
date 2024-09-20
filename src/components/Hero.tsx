@@ -47,7 +47,7 @@ const Hero = () => {
   // }, [scrollYProgress]);
 
   return (
-    <section className="relative w-screen  3xl:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
+    <section className="relative w-screen h-[160vh]  3xl:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
       <div className="sticky top-0 w-full h-screen z-0 overflow-hidden">
         {/* <WaveParticles starSize={"1.0"}/> */}
         <Sparkles />
@@ -62,9 +62,10 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7 }}
-              className="text-6xl text-center font-medium relative z-20 text-gray-300 tracking-tighter mb-10"
+              className="text-4xl sm:text-6xl text-center font-medium relative z-20 text-gray-300 tracking-tighter mb-10"
             >
               We offer you{" "}
+              <div className="block sm:hidden"><br/></div>
               <span className="text-red-600">
                 <FlipWords words={["Expertise", "Efficiency", "Reliability"]} />
               </span>
@@ -89,7 +90,7 @@ const Hero = () => {
       </motion.div>
       <motion.div
        
-        className="relative h-[1100px] w-full mx-auto flex justify-center items-center flex-col z-10 "
+        className="relative h-screen sm:h-[1100px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
         <motion.div className="-mt-[28rem]" style={{ opacity: opacityOfBtns }}>
           <motion.div className="absolute top-0 left-56"
@@ -154,13 +155,15 @@ const Hero = () => {
           
         </motion.div>
 
+        <div className="sm:py-10">
         <motion.div
         initial={{opacity:0}}
         animate={{opacity:1}}
         transition={{delay:2,duration:1,ease:'easeIn'}}
-        className="h-[1000px] w-[1200px] z-20 px-auto flex justify-center items-center object-center">
+        className="h-[500px] w-[600px] sm:h-[1040px] bg-transparent sm:w-[1200px] z-20 px-auto flex justify-center items-center object-center">
           <World data={sampleArcs} globeConfig={globeConfig} scrollYProgress={scrollYProgress} />
         </motion.div>
+        </div>
       </motion.div>
     </section>
   );

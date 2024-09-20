@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
-const FigureDigits = ({ initialCurrentValue, digits, text }: any) => {
+const FigureDigits = ({ initialCurrentValue=0, digits, text }: any) => {
     const [currentValue, setCurrentValue] = useState(initialCurrentValue);
     const [alreadyAnimated, setAlreadyAnimated] = useState(false);
     const controls = useAnimation();
