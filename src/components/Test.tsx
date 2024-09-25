@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useAnimation, useScroll } from 'framer-motion';
+import { AnimatePresence } from "framer-motion";
 
 const Card = ({ index, isVisible }: { index: number; isVisible: boolean }) => (
     <motion.div
@@ -11,6 +12,7 @@ const Card = ({ index, isVisible }: { index: number; isVisible: boolean }) => (
         <p className='text-3xl'>Card #{index}</p>
     </motion.div>
 );
+
 
 export default function Test() {
     const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -26,7 +28,7 @@ export default function Test() {
     }, [scrollYProgress]);
 
     return (
-        <div className='h-[200vh] w-screen'>
+        <div className='h-[200vh] pt-40 w-screen'>
             <div className='fixed w-screen top-20 grid grid-cols-2 sm:grid-cols-3 gap-4'>
                 {items.map((i) => (
                     <Card key={i} index={i} isVisible={i <= visibleCards} />

@@ -7,6 +7,7 @@ import { World } from "./ui/globe";
 import { globeConfig, sampleArcs } from "../data/globeutils";
 import FadeIn from "./FadeIn";
 import { Sparkles } from "./Sparkles";
+import { useEntry } from "data/contentfulservice";
 
 const CustomText = ({ children }: any) => (
   <div className="px-5 py-5 uppercase text-sm text-black font-semibold z-40 bg-primaryBg border-2  border-gray-500 rounded-full">
@@ -16,6 +17,7 @@ const CustomText = ({ children }: any) => (
 
 const Hero = () => {
   const ref = useRef(null);
+  const { entry, loading } = useEntry()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -45,6 +47,9 @@ const Hero = () => {
   //     setStarSize(75-(100*val))
   //   });
   // }, [scrollYProgress]);
+  if(loading) {
+    return null
+  }
 
   return (
     <section className="relative w-screen h-[160vh]  3xl:h-[170vh]  xl:h-[180vh] bg-black " ref={ref}>
@@ -64,10 +69,10 @@ const Hero = () => {
               transition={{ duration: 0.7 }}
               className="text-4xl sm:text-6xl text-center font-medium relative z-20 text-gray-300 tracking-tighter mb-10"
             >
-              We offer you{" "}
+              {entry.heroTitle} {" "}
               <div className="block sm:hidden"><br/></div>
               <span className="text-red-600">
-                <FlipWords words={["Expertise", "Efficiency", "Reliability"]} />
+                <FlipWords words={entry.heroTitleChangingWords} />
               </span>
             </motion.h1>
           </FadeIn>
