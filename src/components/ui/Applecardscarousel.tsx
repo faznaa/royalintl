@@ -6,10 +6,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@tabler/icons-react";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 import { cn } from "lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "components/hooks/useOutsideClick";
@@ -33,12 +30,55 @@ export const CarouselContext = createContext<{
   onCardClose: () => {},
   currentIndex: 0,
 });
+const useWidth = () => {
+  const [width, setWidth] = useState(0)
+  const handleResize = () => setWidth(window.innerWidth)
+  useEffect(() => {
+      handleResize()
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return width
+}
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const windowWidth = useWidth()
   const totalItems = items.length;
   const duplicatedItems = [...items, ...items, ...items]; // Duplicate items
+  const [cardWidth, setCardWidth] = useState(560); // Default to 560 (3xl width)
+  const [gap, setGap] = useState(16); // Default to gap for larger screens
+
+  useEffect(() => {
+    const updateCardDimensions = () => {
+        const screenWidth = windowWidth
+        console.log("SCREEN WIDTH", screenWidth)
+        if (screenWidth < 768) {
+          setCardWidth(320); // w-80 for mobile
+          setGap(4);
+        } else if (screenWidth >= 768 && screenWidth < 1800) {
+          setCardWidth(384); // w-96 for medium screens
+          setGap(16);
+        } else {
+          setCardWidth(560); // 3xl:w-[35rem] for large screens
+          setGap(24);
+        }
+      
+    };
+
+    // Update dimensions when the component mounts
+    // updateCardDimensions();
+
+    // Update card dimensions on window resize
+    // window.addEventListener("resize", updateCardDimensions);
+
+    // // Clean up event listener on component unmount
+    // return () => {
+    //   window.removeEventListener("resize", updateCardDimensions);
+    // };
+  }, [windowWidth]);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -48,21 +88,21 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   useEffect(() => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 230 : 580;
-      const gap = isMobile() ? 4 : 12;
+      // const cardWidth = isMobile() ? 230 : 560;
+      // const gap = isMobile() ? 4 : 16;
+      console.log("cardWidth", cardWidth, "gap", gap);
       const scrollPosition = (cardWidth + gap) * (currentIndex + totalItems);
       carouselRef.current.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
       });
     }
-  }, [currentIndex]);
+  }, [currentIndex,carouselRef]);
 
   const scrollToIndex = (index: number) => {
     const wrappedIndex = (index + totalItems) % totalItems;
     setCurrentIndex(wrappedIndex);
   };
-
 
   const handleCardClose = (index: number) => {
     const wrappedIndex = (index + totalItems) % totalItems;
@@ -73,11 +113,35 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     return window && window.innerWidth < 768;
   };
 
+  const getCardDimensions = () => {
+    const screenWidth = window.innerWidth;
+    let cardWidth, gap;
+
+    if (screenWidth < 768) {
+      // Mobile
+      cardWidth = 320; // w-80 (tailwind w-80 is 320px)
+      gap = 4;
+    } else if (screenWidth >= 768 && screenWidth < 1536) {
+      // Medium to large screens (md:w-96)
+      cardWidth = 384; // md:w-96 (tailwind w-96 is 384px)
+      gap = 16;
+    } else {
+      // Extra large screens (3xl:w-[35rem])
+      cardWidth = 560; // 3xl:w-[35rem] is 560px
+      gap = 24;
+    }
+
+    return { cardWidth, gap };
+  };
+
+
   return (
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
       <div className="relative w-full">
+      {/* <h1 className="text-3xl text-white text-center">Apple Cards {cardWidth}</h1> */}
+
         <div
           className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none]"
           ref={carouselRef}
@@ -113,28 +177,36 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 key={"card" + index}
                 className="last:pr-[5%] md:last:pr-[33%] rounded-3xl "
               >
-                <Card logo={card.logo} key={card.src} card={card} index={index} isMiddle={currentIndex === (index % totalItems)} />
+                <Card
+                  logo={card.logo}
+                  key={card.src}
+                  card={card}
+                  index={index}
+                  isMiddle={currentIndex === index % totalItems}
+                />
               </motion.div>
             ))}
           </div>
         </div>
 
-  
-
-       <div className="w-full sm:max-w-md 3xl:max-w-2xl mx-auto">
-       <div className="flex justify-start items-center  mr-10 z-40 border-t border-gray-400  ">
-          {items.map((item:any, idx:number) => (
-            <button
-              className={`z-40 h-6 w-[20rem] px-2 pt-6 text-white font-lg  ${idx==currentIndex ? 'border-t-4 border-white': 'border-b-4 border-transparent'}`}
-              key={idx}
-              onClick={() => scrollToIndex(idx)}
-            >
-              {/* {idx + 1} */}
-              <img src={item.logo} className="h-6 w-auto " />
-            </button>
-          ))}
+        <div className="w-full sm:max-w-md 3xl:max-w-4xl mx-auto">
+          <div className="flex justify-start items-center  mr-10 z-40 border-t border-gray-400  ">
+            {items.map((item: any, idx: number) => (
+              <button
+                className={`z-40 h-6 w-[20rem]  px-6 pt-6 text-white font-lg  ${
+                  idx == currentIndex
+                    ? "border-t-4 border-white"
+                    : "border-b-4 border-transparent"
+                }`}
+                key={idx}
+                onClick={() => scrollToIndex(idx)}
+              >
+                {/* {idx + 1} */}
+                <img src={item.logo} className="h-6 w-auto mx-auto" />
+              </button>
+            ))}
+          </div>
         </div>
-       </div>
       </div>
     </CarouselContext.Provider>
   );
@@ -145,11 +217,11 @@ export const Card = ({
   logo,
   index,
   layout = false,
-  isMiddle = false
+  isMiddle = false,
 }: {
   card: Card;
   index: number;
-  logo:string;
+  logo: string;
   layout?: boolean;
   isMiddle?: boolean;
 }) => {
@@ -185,62 +257,44 @@ export const Card = ({
     onCardClose(index);
   };
 
-  const ref= useRef()
+  const ref = useRef();
 
   return (
     <>
-      <AnimatePresence>
-       
-      </AnimatePresence>
+      <AnimatePresence></AnimatePresence>
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        style={{
+        style={
+          {
             // scale:isMiddle?1.3:1
-        }}
+          }
+        }
         onClick={handleOpen}
-        className={`rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-[13rem] md:w-96 3xl:h-[20rem] 3xl:w-[35rem] overflow-hidden flex flex-col items-center justify-start relative ${isMiddle?'z-30 md:h-[17rem] md:w-[30rem] 3xl:h-[23rem] 3xl:w-[41rem]':'z-10'} mx-6`}
+        className={`rounded-3xl bg-gray-100 ${isMiddle ? 'opacity-100' : 'opacity-30'} dark:bg-neutral-900 h-[20rem] w-[35rem] overflow-hidden flex flex-col items-center justify-start relative  mx-6`}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
-          {/* <motion.p
+          <motion.img
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white text-sm md:text-base font-medium font-sans text-left"
-          >
-            {card.category}
-          </motion.p> */}
-          <motion.img 
-                      layoutId={layout ? `category-${card.category}` : undefined}
-        src={logo}
-                      className="absolute left-5 top-5 text-left h-8 w-auto"
-          >
-
-          </motion.img>
-          {/* <motion.p
-            layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
-          >
-            {card.title}
-          </motion.p> */}
+            src={logo}
+            className="absolute left-5 top-5 text-left h-8 w-auto"
+          ></motion.img>
         </div>
-       <BlurImage
+        <BlurImage
           src={card.src}
           alt={card.title}
           fill
           className="object-cover absolute z-10 inset-0"
         />
-        
-        {/* <video src="video1.mp4" 
-        onMouseOver={(event:any) => event.target.play()}
-        onMouseOut={(event:any) => event.target.pause()}
-        // onClick={(event:any) => event.target.pause()}
-        autoPlay={false} loop muted className="object-fit h-full absolute z-10 inset-0"/> */}
       </motion.button>
       <motion.div
-            layoutId={layout ? `title-${card.title}` : undefined}
-            className={`text-white mx-7 relative 3xl:mx-7 h-10  text-pretty text-sm md:text-sm 3xl:text-base font-medium    font-sans mt-2 ${isMiddle?'z-50':'z-10'}`}
-          >
-            {card.title}
-          </motion.div>
+        layoutId={layout ? `title-${card.title}` : undefined}
+        className={`${isMiddle ? "text-white" : "text-gray-500"} mx-7 relative 3xl:mx-7 h-10  text-pretty text-sm md:text-sm 3xl:text-base font-medium    font-sans mt-2 ${
+          isMiddle ? "z-50" : "z-10"
+        }`}
+      >
+        {card.title}
+      </motion.div>
     </>
   );
 };

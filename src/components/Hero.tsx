@@ -97,6 +97,7 @@ const Hero = () => {
        
         className="relative h-screen sm:h-[1100px] w-full mx-auto flex justify-center items-center flex-col z-10 "
       >
+        
         <motion.div className="-mt-[28rem]" style={{ opacity: opacityOfBtns }}>
           <motion.div className="absolute top-0 left-56"
           style={{

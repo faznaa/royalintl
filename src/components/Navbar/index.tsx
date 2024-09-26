@@ -58,7 +58,7 @@ const Navbar = ({ isWhiteTheme = false }: any) => {
     >
       <MobileNavbar hasScrolled={hasScrolled || isWhiteTheme} />
 
-      <div className="hidden md:block  mx-auto  px-4">
+      <div className="hidden md:block  mx-auto  px-2">
         <div className="flex justify-start items-center">
           <div className="flex justify-start items-center space-x-4 ml-6">
             <a href="/" className="pt-2 ">
