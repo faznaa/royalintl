@@ -8,12 +8,14 @@ import AnimatedText from "./components/AnimatedText";
 import ReactLenis from "lenis/dist/lenis-react";
 import GridBackground from "./components/GridBackground";
 import { TracingBeam } from "components/ui/TracingBeam";
-import Services from "components/Services";
 import About from "./pages/About";
 
 import { TracingBeam2 } from "components/ui/TracingBeam2";
 import AnimatedText2 from "components/AnimatedText2";
 import Home from "pages/Home";
+import { offsets, services } from "data/services";
+import MainService from "components/Services";
+import Test from "components/Test";
 
 function App() {
  
@@ -29,7 +31,9 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<MainService  />} />
+          <Route path="/test" element={<Test  />} />
+
       </Routes>
     </Router>
   );

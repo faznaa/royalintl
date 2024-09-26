@@ -31,18 +31,22 @@ export function SignupFormDemo() {
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+          <Input id="email" placeholder="myname@gmail.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Label htmlFor="phone">Phone</Label>
+          <Input id="phone" placeholder="+91 98765 67876" type="phone" />
+        </LabelInputContainer>
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="password">Subject</Label>
+          <Input id="password" placeholder="Your Subject" type="text" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
-          <Label htmlFor="twitterpassword">Your twitter password</Label>
+          <Label htmlFor="twitterpassword">Message</Label>
           <Input
             id="twitterpassword"
-            placeholder="••••••••"
-            type="twitterpassword"
+            placeholder="Hello there"
+            type="textarea"
           />
         </LabelInputContainer>
 
@@ -50,7 +54,7 @@ export function SignupFormDemo() {
           className="bg-gradient-to-br relative group/btn from-black  to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
         >
-          Sign up &rarr;
+          Submit &rarr;
           <BottomGradient />
         </button>
 

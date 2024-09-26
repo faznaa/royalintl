@@ -23,5 +23,14 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "typedocOptions": {
+    "entryPoints": [
+      "src/*.tsx",
+      "src/pages/*.tsx",
+      "src/components/**/*.tsx", // <--- take everything from this location
+      "src/components/*.tsx",
+    ],
+    "out": "docs/typedoc" // <--- output directory
+  }
 }

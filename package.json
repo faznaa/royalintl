@@ -13,12 +13,16 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.104",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.3.24",
+    "contentful": "^11.0.3",
+    "framer-motion": "^11.3.31",
     "lenis": "^1.1.9",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^10.18.0",
@@ -26,6 +30,7 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^9.13.0",
+    "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^2.5.2",
@@ -38,7 +43,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "type-docs": "typedoc"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +65,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.11",
-    "tailwindcss": "^3.4.9"
+    "tailwindcss": "^3.4.9",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.26.7"
   }
 }

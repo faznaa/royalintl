@@ -1,46 +1,167 @@
-# Getting Started with Create React App
+# Royal International
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Royal International, a service-based company in Bangalore, offers a range of services including Data Center Migration, Project Logistics, Clean Room/LAB Migration, and Relocation Services. This project focuses on enhancing the company's digital presence by showcasing its services, highlighting what differentiates Royal International from its competitors, and featuring its clients to build trust and credibility.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Scripts](#scripts)
+- [Folder Structure](#folder-structure)
+- [Type Docs Installation Setup](#type-docs-installation-setup)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
+- Interactive Animations: Smooth animations using Framer Motion for an enhanced user experience.
+- Customizable Components: Easily customizable components built with Tailwind CSS.
+- TypeScript Integration: Provides type safety and better developer tooling.
+
+## Tech Stack
+
+- **React** – for building the user interface.
+- **Tailwind CSS** – for styling with utility-first classes.
+- **TypeScript** – for type safety and enhanced development experience.
+- **Framer Motion** – for smooth animations and transitions.
+- **Aeternity UI** – for prebuilt UI components.
+- **shadcn** – for UI styling and custom design components.
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/your-repo.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd your-repo
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+
+## Usage
+
+To start the development server:
+
+```
+npm start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Scripts
 
-### `npm test`
+- `npm start`: Runs the app in development mode.
+- `npm build`: Builds the app for production.
+- `npm test`: Runs the test suite.
+- `npm lint`: Lints the codebase.
+- `npm run type-docs`: invoke TypeDoc to create documentation based on TypeScript code and comments.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Folder Structure
 
-### `npm run build`
+```
+src/
+├── assets/        # Static assets like images, fonts
+├── components/    # Reusable components
+├── components/ui  # Reusable components from acternity
+├── data/          # Data for globe used in Hero section
+├── pages/         # Page-level components
+├── hooks/         # Custom hooks
+├── utils/         # Utility functions
+├── styles/        # Global styles
+├── App.tsx        # Root component
+└── index.tsx      # Entry point
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## TypeDoc Installation and Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To generate documentation for this project, we use [TypeDoc](https://typedoc.org/), a documentation generator for TypeScript.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For more details, check out this [blog article about typedoc installation](https://dev.to/mirzaleka/learn-how-to-document-javascripttypescript-code-using-jsdoc-typedoc-359h) on TypeScript documentation best practices.
 
-### `npm run eject`
+### Step 1: Install TypeDoc
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+First, you need to install TypeDoc as a development dependency:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm install typedoc --save-dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Step 2: Configure TypeDoc
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can configure TypeDoc by adding a script in your `package.json` file:
 
-## Learn More
+```json
+{
+  "scripts": {
+    "type-docs": "typedoc" // npm run type-docs for generating documents based on type docs comment
+  }
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This command will generate documentation in the `docs/` directory based on the TypeScript files in the `src/` folder.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Step 3: Customize TypeDoc Configuration
+
+We have made the TypeDoc configuration in tsconfig.json file
+
+```json
+"typedocOptions": {
+  "entryPoints": [
+    "src/*.tsx",
+    "src/pages/*.tsx",
+    "src/components/**/*.tsx", // <--- take everything from this location
+    "src/components/*.tsx",
+  ],
+  "out": "docs/typedoc" // <--- output directory
+}
+```
+
+**We haven't used this typedoc.json file in the project but this gives more customization**
+
+You can also create a `typedoc.json` configuration file in the root directory for more advanced options. Here's an example:
+
+```json
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeExternals": true
+}
+```
+
+This config customizes the input and output settings for the documentation generation.
+
+### Step 4: Generate Documentation
+
+Once TypeDoc is set up, you can generate the documentation by running:
+
+```
+npm run type-docs
+```
+
+This will output the generated documentation into the `docs/` folder.
+
+### Step 5: Viewing the Documentation
+
+You can view the generated documentation by opening the `index.html` file inside the `docs/` folder in a browser.
+
+For more information about TypeDoc configuration, check the [official documentation](https://typedoc.org/guides/installation/).
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new feature branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE` file for details.

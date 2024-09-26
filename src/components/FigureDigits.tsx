@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
-const FigureDigits = ({ digits, text }: any) => {
-    const [currentValue, setCurrentValue] = useState(0);
+const FigureDigits = ({ initialCurrentValue=0, digits, text }: any) => {
+    const [currentValue, setCurrentValue] = useState(initialCurrentValue);
     const [alreadyAnimated, setAlreadyAnimated] = useState(false);
     const controls = useAnimation();
     const ref = useRef<HTMLDivElement>(null);
@@ -12,19 +12,23 @@ const FigureDigits = ({ digits, text }: any) => {
             (entries) => {
                 const entry = entries[0];
                 if (entry.isIntersecting && !alreadyAnimated) {
-                    const duration = 2000; // 2 seconds
-                    const intervalTime = duration / digits;
+                    const duration = 2000; // 2 seconds total for animation
+                    const frameRate = 60; // Number of frames per second
+                    const totalFrames = (duration / 1000) * frameRate; // Calculate total frames for the animation
 
+                    const increment = digits / totalFrames; // Amount to increment the number by each frame
                     let currentDigit = 0;
+
                     const interval = setInterval(() => {
-                        if (currentDigit <= digits) {
-                            setCurrentValue(currentDigit);
-                            currentDigit += 1;
-                        } else {
+                        currentDigit += increment;
+                        if (currentDigit >= digits) {
+                            setCurrentValue(digits); // Set the final value exactly
                             clearInterval(interval);
                             setAlreadyAnimated(true);
+                        } else {
+                            setCurrentValue(Math.round(currentDigit));
                         }
-                    }, intervalTime);
+                    }, 1000 / frameRate); // Update based on frame rate
 
                     controls.start({ y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } });
                     observer.disconnect(); // Stop observing after animation starts
@@ -43,7 +47,7 @@ const FigureDigits = ({ digits, text }: any) => {
     }, [digits, alreadyAnimated, controls]);
 
     return (
-        <div ref={ref} className='overflow-hidden text-red-500 font-medium text-4xl tracking-wide'>
+        <div ref={ref} className='overflow-hidden text-6xl tracking-wide space-x-2' style={{ color: "#C9372C"}}>
             <motion.div
                 initial={{ y: '100%', opacity: 0 }}
                 animate={controls}
@@ -51,7 +55,9 @@ const FigureDigits = ({ digits, text }: any) => {
             >
                 {currentValue}
             </motion.div>
-            {text}
+            <span>
+                {text}
+            </span>
         </div>
     );
 };

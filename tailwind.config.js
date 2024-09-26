@@ -18,14 +18,14 @@ module.exports = {
         keyframes: {
           scroll: {
             to: {
-              transform: "translate(calc(-50% - 0.5rem))",
+              transform: "translate(calc(-10% - 0.5rem))", // changed the translate percentage to move the container intial position
             },
           },
         },
       colors:{
         primary: "#C12929",
-        darkred:'#8D0000'
-
+        darkred:'#8D0000',
+        primaryBg: "#F7F7FB",
       },
       fontFamily:{
         'poppins':['Poppins', 'sans-serif'],
@@ -36,6 +36,9 @@ module.exports = {
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
       },
+      screens:{
+        '3xl':'1800px'
+      }
     },
   },
   plugins: [

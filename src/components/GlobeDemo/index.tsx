@@ -130,7 +130,7 @@ export function GlobeDemo() {
       startLng: -58.3816,
       endLat: 22.3193,
       endLng: 114.1694,
-      arcAlt: 0.7,
+      arcAlt: 0.4,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
     {
@@ -175,7 +175,7 @@ export function GlobeDemo() {
       startLng: 28.315853,
       endLat: 1.094136,
       endLng: -63.34546,
-      arcAlt: 0.7,
+      arcAlt: 0.4,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
     {
@@ -265,7 +265,7 @@ export function GlobeDemo() {
       startLng: 114.1694,
       endLat: -22.9068,
       endLng: -43.1729,
-      arcAlt: 0.7,
+      arcAlt: 0.4,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
     {
@@ -283,7 +283,7 @@ export function GlobeDemo() {
       startLng: -43.1729,
       endLat: 28.6139,
       endLng: 77.209,
-      arcAlt: 0.7,
+      arcAlt: 0.4,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
     {
@@ -422,9 +422,7 @@ export function GlobeDemo() {
           </p>
         </motion.div>
         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-        <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />
-        </div>
+        
       </div>
     </div>
   );
