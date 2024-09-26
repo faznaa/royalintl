@@ -102,7 +102,7 @@ const navigation = {
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 className="h-7"
               />
-              <p className="text-lg leading-6 text-gray-300">
+              <p className="text-lg leading-6 text-white opacity-60 ">
                 Making the world a better place through constructing elegant hierarchies.
               </p>
               <div className="flex space-x-6">
@@ -121,7 +121,7 @@ const navigation = {
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.solutions.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} className="text-lg leading-6 text-gray-300 hover:text-white">
+                        <a href={item.href} className="text-lg leading-6 text-white opacity-60 hover:text-white hover:opacity-100">
                           {item.name}
                         </a>
                       </li>
@@ -133,7 +133,7 @@ const navigation = {
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.support.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} className="text-lg leading-6 text-gray-300 hover:text-white">
+                        <a href={item.href} className="text-lg leading-6 text-white opacity-60 hover:text-white hover:opacity-100">
                           {item.name}
                         </a>
                       </li>
@@ -147,7 +147,7 @@ const navigation = {
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.company.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} className="text-lg leading-6 text-gray-300 hover:text-white">
+                        <a href={item.href} className="text-lg leading-6 text-white opacity-60 hover:text-white hover:opacity-100">
                           {item.name}
                         </a>
                       </li>
@@ -159,7 +159,7 @@ const navigation = {
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.legal.map((item) => (
                       <li key={item.name}>
-                        <a href={item.href} className="text-lg leading-6 text-gray-300 hover:text-white">
+                        <a href={item.href} className="text-lg leading-6 text-white opacity-60 hover:text-white hover:opacity-100">
                           {item.name}
                         </a>
                       </li>

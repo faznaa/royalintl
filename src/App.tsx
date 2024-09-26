@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Helmet } from "react-helmet";
+//import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
