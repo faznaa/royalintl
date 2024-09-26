@@ -107,12 +107,12 @@ const WhatSetUsApart: React.FC = () => {
   const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const cardTranslateY = [
-    useTransform(scrollYProgress, [0, 0.4, 0.45, 0.47, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.28, 0.3, 0.35, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.18, 0.2, 0.25, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.5, 0.55, 0.6, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.65, 0.7, 0.75, 1], [1, 1, 1.2, 1, 1]),
-    useTransform(scrollYProgress, [0, 0.78, 0.83, 0.85, 1], [1, 1, 1.2, 1, 1])
+    useTransform(scrollYProgress, [0, 0.4, 0.45, 0.47, 1], ["220px", "220px", "250px", "220px", "220px"]),
+    useTransform(scrollYProgress, [0, 0.28, 0.3, 0.35, 1],  ["220px", "220px", "250px", "220px", "220px"]),
+    useTransform(scrollYProgress, [0, 0.18, 0.2, 0.25, 1],  ["220px", "220px", "250px", "220px", "220px"]),
+    useTransform(scrollYProgress, [0, 0.5, 0.55, 0.6, 1],  ["220px", "220px", "250px", "220px", "220px"]),
+    useTransform(scrollYProgress, [0, 0.65, 0.7, 0.75, 1],  ["220px", "220px", "250px", "220px", "220px"]),
+    useTransform(scrollYProgress, [0, 0.78, 0.83, 0.85, 1],  ["220px", "220px", "250px", "220px", "220px"])
   ];
 
   const boxShadowTransforms = [
@@ -144,9 +144,11 @@ const WhatSetUsApart: React.FC = () => {
           {whatSetsusapart?.map((i, index) => (
             <motion.div
               key={index}
-              className="bg-white border max-w-[220px] h-[220px] rounded-xl border-gray-200 flex flex-col items-center justify-evenly justify-self-center text-center p-4"
+              className="bg-white border w-[220px] h-[220px] rounded-xl border-gray-200 flex flex-col items-center justify-evenly justify-self-center text-center p-4"
               style={{
-                scale: cardTranslateY[index],
+                // scale: cardTranslateY[index],
+                width:cardTranslateY[index],
+                height:cardTranslateY[index],
               }}
             >
               <div className="w-36 text-center flex justify-center items-center mb-4 scale-[2]" style={{ color: "#C9372C" }}>

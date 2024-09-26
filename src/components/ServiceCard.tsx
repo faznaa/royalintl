@@ -114,16 +114,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         // id={`service-${index}`}
       >
         <motion.div
-          className={`w-3/4 h-[75%] grid grid-cols-2 items-center gap-x-12 sm:gap-x-20 p-12 rounded-3xl overflow-hidden ${gradientBg}`}
-          style={{
-            backgroundColor: bg,
-            color: textColor,
-            scale,
-            backgroundImage: `url("${svg}")`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-        >
+  className={`relative w-3/4 h-[75%] grid grid-cols-2 items-center gap-x-12 sm:gap-x-20 p-12 rounded-3xl overflow-hidden ${gradientBg}`}
+  style={{
+    backgroundColor: bg,
+    color: textColor,
+    scale,
+  }}
+>
+  {/* Background image with opacity */}
+  <div
+    className="absolute inset-0 bg-no-repeat bg-cover"
+    style={{
+      backgroundImage: `url("${svg}")`,
+      opacity: 0.5, // Adjust the opacity here
+      zIndex: 0, // Ensure the background image stays behind the content
+    }}
+  />
           {/* <div
           className="w-full h-64 p-4 rounded-xl"
           style={{
