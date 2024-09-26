@@ -26,6 +26,7 @@ interface ServicesProps {
 const ServicesItem: React.FC<ServicesProps> = ({ services, offsets, rangeStart, rangeEnd }) => {
   const [selectedId, setSelectedId] = useState('service-1');
   const container = useRef(null);
+  const [topFixed, setTopFixed] = useState("sticky");
   const [scrollPro, setScrollPro] = useState(0);
   const { scrollYProgress, scrollY } = useScroll({
     target: container,
@@ -36,6 +37,11 @@ const ServicesItem: React.FC<ServicesProps> = ({ services, offsets, rangeStart, 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(() => {
       setScrollPro(scrollYProgress.get());
+      if(scrollYProgress.get() > offsets[0]) {
+          setTopFixed("fixed")
+      }else{
+          setTopFixed("sticky")
+      }
 
       // Dynamically determine which service is selected based on scroll position
       for (let i = 0; i < offsets.length; i++) {
@@ -68,7 +74,7 @@ const ServicesItem: React.FC<ServicesProps> = ({ services, offsets, rangeStart, 
       </FadeIn>
 
       <motion.div
-        className="sticky top-[10%] flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10"
+        className={`${topFixed} top-[10%]  flex w-full items-center justify-center gap-x-6 uppercase text-sm tracking-tight z-10`}
         style={{ opacity }}
       >
         {services.map((service, index) => (
